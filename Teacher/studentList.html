@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="smallmobile.css" media="(max-width: 390px)">
+    <script defer src="etud.js"> </script>
+
+    <script defer src="mobilescreen.js"></script>
+    <script defer src="script.js"></script>
+    <script defer src="textbook.js"></script>
+    <script defer src="list.js"></script>
+    <title>Student</title>
+</head>
+
+<body>
+
+    <nav class="sidebar close">
+
+        <header>
+
+            <div class="image-text">
+
+                <span class="imageprofil">
+
+
+                </span>
+
+
+
+                <div class="text logo-text">
+
+                    <a href="/index.html" class="hometext"><span class="name ">Home Teacher</span></a>
+
+                    <a href="/profil.html" class="username "> <span class="profession ">
+                            Nom Prenom
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+
+
+
+            <i class='bx bx-chevron-right toggle'></i>
+            <i class='bx bx-menu togglemenu2'></i>
+
+
+        </header>
+
+
+
+        <div class="menu-bar">
+
+            <div class="menu">
+
+
+
+                <li class="search-box">
+
+                    <i class='bx bx-search icon'></i>
+
+                    <input type="text" placeholder="Search...">
+
+                </li>
+
+
+
+                <ul class="menu-links">
+
+                    <li class="nav-link ">
+
+                        <a href="/schedule.html">
+
+                            <i class='bx bx-grid icon'></i>
+
+                            <span class="text nav-text ">Schedule</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="nav-link hover">
+
+                        <a href="class.html">
+
+                            <i class='bx bx-copy icon  texthover'></i>
+
+                            <span class="text nav-text texthover">Class</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="appele.html">
+
+                            <i class='bx bx-credit-card-front icon'></i>
+
+                            <span class="text nav-text ">Verre Appele</span>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-link">
+
+                        <a href="/communication.html">
+
+                            <i class='bx bx-message-minus icon'></i>
+
+                            <span class="text nav-text">Communication</span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="/annoces.html">
+
+                            <i class='bx bx-bell icon'></i>
+
+                            <span class="text nav-text ">Advertisement</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="bottom-content">
+
+                <li class="">
+
+                    <a href="#">
+
+                        <i class='bx bx-log-out icon'></i>
+
+                        <span class="text nav-text">Logout</span>
+
+                    </a>
+
+                </li>
+
+
+
+                <li class="mode">
+
+                    <div class="sun-moon">
+
+                        <i class='bx bx-moon icon moon'></i>
+
+                        <i class='bx bx-sun icon sun'></i>
+
+                    </div>
+
+                    <span class="mode-text text">Dark mode</span>
+
+
+
+                    <div class="toggle-switch">
+
+                        <span class="switch"></span>
+
+                    </div>
+
+                </li>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </nav>
+
+
+
+    <section class="home hometextbool">
+        <div class="headermobile">
+            <i class='bx bx-menu togglemenu'></i>
+
+            <div class="text texthome">1AS-G1</div>
+        </div>
+
+
+        <div class="titlenote">
+            <a href="/Etud1.html" class="btnleft"> <i class='bx bx-reply'></i>
+            </a>
+            <span>
+                Student
+            </span>
+        </div>
+        <div class="contentnotes liststudent">
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>evalution</th>
+                        <th>Homework -1</th>
+                        <th>Homework -2</th>
+                        <th>Control </th>
+                        <th>Avreage </th>
+                        <th>edite </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student active-row">
+                        <td>Ghrab</td>
+                        <td>Wissal</td>
+                        <td>18</td>
+                        <td>18</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite activeedite"><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+                    <tr class="student">
+                        <td>Ghrab</td>
+                        <td>hadjer</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td> <a href="#" class="edite "><i class='bx bx-edit-alt'></i></a></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>

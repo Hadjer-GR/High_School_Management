@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="smallmobile.css" media="(max-width: 380px)">
+    <!-- <script defer src="script.js"></script> -->
+    <script defer src="etud.js"> </script>
+
+    <script defer src="mobilescreen.js"></script>
+
+
+    <title>Etud-01</title>
+</head>
+
+<body>
+
+    <nav class="sidebar close">
+
+        <header>
+
+            <div class="image-text">
+
+                <span class="imageprofil">
+
+
+                </span>
+
+
+
+                <div class="text logo-text">
+
+                    <a href="/index.html" class="hometext"><span class="name  ">Home Parent</span></a>
+
+                    <a href="/profil.html" class="username "> <span class="profession ">
+                            Nom Prenom
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <i class='bx bx-chevron-right toggle'></i>
+            <i class='bx bx-menu togglemenu2'></i>
+
+
+        </header>
+
+
+
+        <div class="menu-bar">
+
+            <div class="menu">
+
+
+
+                <li class="search-box">
+
+                    <i class='bx bx-search icon'></i>
+
+                    <input type="text" placeholder="Search...">
+
+                </li>
+
+
+
+                <ul class="menu-links">
+
+                    <li class="nav-link">
+
+                        <a href="/addProfil.html">
+
+                            <i class='bx bx-home-alt icon'></i>
+
+                            <span class="text nav-text">Add Student</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="nav-link hover">
+
+                        <a href="/Etud1.html">
+
+                            <i class='bx bx-bar-chart-alt-2 icon texthover'></i>
+
+                            <span class="text nav-text texthover">Etud-01</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="/etud2.html">
+
+                            <i class='bx bx-bell icon '></i>
+
+                            <span class="text nav-text ">Etud-02</span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+
+
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="/annoces.html">
+
+                            <i class='bx bx-bell icon'></i>
+
+                            <span class="text nav-text ">Annonces</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="bottom-content">
+                <ul>
+                    <li class="">
+
+                        <a href="#">
+
+                            <i class='bx bx-log-out icon'></i>
+
+                            <span class="text nav-text">Logout</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="mode">
+
+                        <div class="sun-moon">
+
+                            <i class='bx bx-moon icon moon'></i>
+
+                            <i class='bx bx-sun icon sun'></i>
+
+                        </div>
+
+                        <span class="mode-text text">Dark mode</span>
+
+
+
+                        <div class="toggle-switch">
+
+                            <span class="switch"></span>
+
+                        </div>
+
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </div>
+
+
+
+    </nav>
+
+
+    <!--  main -->
+    <section class="home homeetud">
+        <div class="headermobile">
+            <i class='bx bx-menu togglemenu'></i>
+
+            <div class="text texthome">Etudient-01</div>
+        </div>
+        <div class="contentetud">
+
+
+            <div class="holder">
+
+                <div class="holde1 absences">
+                    <input type="checkbox" id="checkabsences">
+                    <label for="checkabsences"> Absences And Delay <br>
+                        <i class='bx bx-run'></i>
+                    </label>
+
+                </div>
+                <div class=" holde1 note">
+                    <a href="note.html">&nbsp;&nbsp;The Notes&nbsp;&nbsp; <br>
+                        <i class='bx bx-edit-alt'></i></a>
+                </div>
+                <div class="holde1 textbook">
+                    <a href="textbook.html"> The Text Book <br>
+                        <i class='bx bx-book-open'></i>
+                    </a>
+                </div>
+
+
+            </div>
+            <!-- design schedule of the student -->
+            <div class="text textschedule"> <span> schedule :</span> </div>
+
+            <div class="table">
+            </div>
+        </div>
+
+        <!-- design Absences And Delay  after enter btn Absences And Delay -->
+        <div class=" contentabsences" id="contentAbsent">
+
+            <div class="cardeabsences">
+                <h2> &nbsp;&nbsp;<i class='bx bx-run'></i> &nbsp;&nbsp;Absences</h2>
+                <div class="time">
+                    <h2>19/03/2022</h2>
+                    <h2> 10:00-> 11:00</h2>
+                </div>
+                <div class="justifie">
+                    <i class='bx bxs-user-check'></i>
+                    <a href="#" class="justified"> Justified</a>
+                </div>
+            </div>
+
+
+
+
+            <!-- design btn View Alll -->
+            <div class="view">
+                <a href="/Absences.html"> View All</a>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+
+    <script>
+        // design click btn Absences And Delay
+        /*
+         *****
+         *
+         *
+         *
+         */
+        const absences = document.getElementById("contentAbsent");
+        console.log(absences);
+        const showabsences = document.querySelectorAll("#checkabsences");
+        showabsences.forEach((item) => {
+            item.addEventListener("change", (eo) => {
+                if (item.checked) {
+                    absences.style.display = "block";
+                } else {
+                    absences.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
