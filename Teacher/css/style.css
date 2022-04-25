@@ -113,7 +113,7 @@ body.dark {
   height: 50px;
   background-position: center;
   background-size: cover;
-  background-image: url(./IMG_20200323_175334_433.jpg);
+  background-image: url(/img/imgProdil.jpg);
   border-radius: 10px;
   margin-right: 10px;
 }

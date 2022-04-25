@@ -57,7 +57,7 @@ mychart1.forEach((item) => {
         text: "Absences And Delay",
         display: true,
       },
-      aspectRatio: 1.9,
+      aspectRatio: 2.1,
     },
   });
 });
