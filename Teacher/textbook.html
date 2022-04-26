@@ -16,6 +16,8 @@
     <script defer src="js/mobilescreen.js"></script>
     <script defer src="js/script.js"></script>
     <script defer src="js/textbook.js"></script>
+    <script defer src="ckeditor/ckeditor.js"></script>
+    <script defer src="js/writeinTextbook.js"></script>
     <script defer src="js/writetextbook.js"></script>
 </head>
 
@@ -274,18 +276,22 @@
 
 
 
-            <!-- after enter Add Lesson -->
-
-
             <div class="makeposte">
-
-                <form>
-                    <input type="text" placeholder="title of the lesson" required class="titleposte" />
-                    <textarea cols="20" rows="6" placeholder="Content Lesson" class="Advertise"></textarea>
+                <div class="closewritelesson">
+                    <span>
+                        <i class='bx bx-x btnclosewritelesson'></i>
+                    </span>
+                </div>
+                <form action="" method="post">
+                    <textarea cols="60" rows="60" placeholder="ContentLesson" class="Advertise" name="contentleson"
+                        required></textarea>
                     <input type="submit" value=" + Add Lesson" class="published">
                 </form>
 
             </div>
+
+
+
 
 
 

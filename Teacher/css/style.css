@@ -1575,14 +1575,29 @@ form .button input:hover {
   transition: 0.2s;
 }
 
-/* deseign the post add lesson after enter Add  lesson in text book page */
+/* design the post add lesson after enter Add  lesson in text book page */
 
 .hometextbool .makeposte {
   position: absolute;
-  top: 25%;
+  top: 20%;
   width: 50%;
+  height: 350px;
   left: 15%;
   border: none;
   z-index: 2;
   display: none;
+}
+.hometextbool .makeposte .closewritelesson span i {
+  font-size: 1.6em;
+  cursor: pointer;
+}
+.hometextbool .makeposte .closewritelesson span i:hover {
+  transform: scale(1.2);
+  transition: 0.2s;
+}
+.hometextbool .makeposte textarea {
+  position: relative;
+  width: 100%;
+  height: 50% !important;
+  border: 2px solid green;
 }

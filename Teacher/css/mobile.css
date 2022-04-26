@@ -572,3 +572,15 @@ form .category {
 dialog.writelesson {
   left: 10% !important;
 }
+
+/* design write lesson in textbook */
+.hometextbool .makeposte {
+  position: absolute;
+  top: 20% !important;
+  width: 80%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: none;
+  z-index: 2;
+  display: none;
+}

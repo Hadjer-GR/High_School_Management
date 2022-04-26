@@ -54,3 +54,21 @@
 .homeprofil .container .group ul li a i {
   font-size: 0.9em !important;
 }
+/*
+*
+*
+*
+*/
+
+/* design write lesson in textbook */
+.hometextbool .makeposte {
+  position: absolute;
+  top: 10% !important;
+  width: 85%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  height: 400px !important;
+  border: none;
+  z-index: 2;
+  display: none;
+}
