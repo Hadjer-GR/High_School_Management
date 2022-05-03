@@ -590,10 +590,35 @@ body.dark .home .text {
   padding-top: 10px;
   height: 85%;
 }
+.resulttext .physiq {
+  border: 4px solid #3eb489 !important;
+}
+.resulttext .scienc {
+  border: 4px solid #00ced1 !important;
+}
+.resulttext .islami {
+  border: 4px solid #ffdb58 !important;
+}
+.resulttext .engli {
+  border: 4px solid var(--primary-color) !important;
+}
+.resulttext .frenc {
+  border: 4px solid #657383 !important;
+}
+.resulttext .arabi {
+  border: 4px solid #b38481 !important;
+}
+.resulttext .spor {
+  border: 4px solid #307d7e !important;
+}
+.resulttext .spor2 {
+  border: 4px solid #c88141 !important;
+}
 .resulttext .addlesson {
   position: absolute;
   bottom: 5%;
 }
+
 .resulttext .addlesson a {
   text-decoration: none;
   padding: 15px 10px;
