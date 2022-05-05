@@ -21,7 +21,7 @@
 <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="login" class="sign-in-form">
+                <form  method="post" action="login" class="sign-in-form">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>

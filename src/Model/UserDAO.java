@@ -23,6 +23,20 @@ public class UserDAO {
 	 * 
 	 */
 	
+	// check login  && find type_account
+	private static final String check_login_sql="select id from account where username=?and password =?;";
+	private  static final  String type_teacher_sql="select id from enseignement where Account_id=?;";
+	private  static final  String type_Parent_sql="select id  from parent where Account_id=?;";
+	private  static final  String type_Admin_sql="select id  from admin where Account_id=?;";
+	private  static final  String type_Secretaire_sql="select id  from sécretaire where Account_id=?;";
+
+	
+	/*
+	 * 
+	 * 
+	 * 
+	 */
+	
 	//TextBook
 		private static final String Add_Lesson_sql="insert into lesson(date,text)values(?,?);";
 		private static final String Select_All_Lesson="select * from lesson;";
@@ -165,5 +179,126 @@ public class UserDAO {
 			       mycon.close();		
 					
 				}
+	/*
+	 * 
+	 * define type  of account Admin or secretaire or teacher or Parent
+	 */
+				
+ public Type_Account  type_account(int id_account) throws SQLException, ClassNotFoundException {
+					 
+		 
+		 int id=0;
+		 
+		 Type_Account type_Account =new Type_Account();
+
+		 try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			PreparedStatement mystat;
+			mystat=mycon.prepareStatement(type_teacher_sql);
+			mystat.setInt(1,id_account);
+		 ResultSet result=mystat.executeQuery();
+
+			 while(result.next()) {
+				 id=result.getInt(1);
+			 }
+			 if(id !=0) {
+				 type_Account.setType("Teacher");
+				 type_Account.setId_account(id_account);
+			 }else {
+				 mystat=mycon.prepareStatement(type_Parent_sql);
+					mystat.setInt(1,id_account);
+				  result=mystat.executeQuery();
+
+					 while(result.next()) {
+						 id=result.getInt(1);
+					 }
+					 if(id !=0) {
+						 type_Account.setType("Parent");
+						 type_Account.setId_account(id_account);
+
+					 }else {
+						 
+						 mystat=mycon.prepareStatement(type_Secretaire_sql);
+							mystat.setInt(1,id_account);
+						  result=mystat.executeQuery();
+
+							 while(result.next()) {
+								 id=result.getInt(1);
+							 }
+							 if(id !=0) {
+								 type_Account.setType("Secretaire");
+								 type_Account.setId_account(id_account);
+
+							 }else {
+								 
+								 mystat=mycon.prepareStatement(type_Admin_sql);
+									mystat.setInt(1,id_account);
+								  result=mystat.executeQuery();
+
+									 while(result.next()) {
+										 id=result.getInt(1);
+									 }
+									 if(id !=0) {
+										 type_Account.setType("Admin");
+										 type_Account.setId_account(id_account);
+
+									 }
+								 
+								 
+								 
+							 }
+						 
+						 
+						 
+						 
+						 
+						 
+					 }
+			 }
+		  return  type_Account;
+ }
+				
+				
+				
+				
+				
+				
+				
+				
+/*
+ * 
+ * 
+ * check login 
+ */
+				 public int checklogin(String username,String password) throws SQLException, ClassNotFoundException {
+					 
+					 Connectdb();
+					 int id_account=-1;
+					 boolean haveaccount=false;
+					 boolean typeaccount;
+					 PreparedStatement mystat;					 
+					 mystat=mycon.prepareStatement(check_login_sql);
+					 mystat.setString(1,username);
+					 mystat.setString(2,password);
+				   
+					 ResultSet result=mystat.executeQuery();
+					 while(result.next()) {
+						 id_account=result.getInt(1);
+					 }
+						
+					
+						
+						return  id_account;
+						
+						
+						
+						
+
+					 
+				 }
 				
 }
