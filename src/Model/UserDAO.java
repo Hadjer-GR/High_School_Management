@@ -29,20 +29,38 @@ public class UserDAO {
 	private  static final  String type_Parent_sql="select id  from parent where Account_id=?;";
 	private  static final  String type_Admin_sql="select id  from admin where Account_id=?;";
 	private  static final  String type_Secretaire_sql="select id  from sécretaire where Account_id=?;";
+/*
+ * 
+ * Acount
+ * 
+ */
+	private  static final  String account_info_sql="select username,password from account where id=?;";
+	private static final String update_account_sql="update   account set username=?,password=? where id=?;";
+			
 
+	/*
+	 * 
+	 *  Teacher qeury
+	 * 
+	 */
+	private static final String teacher_info_sql="select id,nom,prenom,date_naissance,numéro_contact,email,account_id,img from enseignement where id=?;";
+	private static final String update_Teacher_sql="update  enseignement set nom=?,prenom=?,numéro_contact=?,email=?,img=? where id=?;";
+			
+
+	
 	
 	/*
 	 * 
 	 * 
 	 * 
-	 */
-	
+	 * 
+	 * 
+	*/
 	//TextBook
 		private static final String Add_Lesson_sql="insert into lesson(date,text)values(?,?);";
 		private static final String Select_All_Lesson="select * from lesson;";
 		private static final String Select_Enseignant_byId="select FirstName,LastName,UserName,Password from teacher where id=?;";
 		private static final String delete_Lesson_sql="delete  from lesson where idLesson=?;";
-		private static final String update_Enseignant_sql="update   teacher set FirstName=?,LastName=?,UserName=? ?Password=? where id=?;";
 
 		/*
 		 * 
@@ -208,6 +226,8 @@ public class UserDAO {
 			 if(id !=0) {
 				 type_Account.setType("Teacher");
 				 type_Account.setId_account(id_account);
+				 type_Account.setId_user(id);
+
 			 }else {
 				 mystat=mycon.prepareStatement(type_Parent_sql);
 					mystat.setInt(1,id_account);
@@ -219,6 +239,8 @@ public class UserDAO {
 					 if(id !=0) {
 						 type_Account.setType("Parent");
 						 type_Account.setId_account(id_account);
+						 type_Account.setId_user(id);
+
 
 					 }else {
 						 
@@ -232,6 +254,7 @@ public class UserDAO {
 							 if(id !=0) {
 								 type_Account.setType("Secretaire");
 								 type_Account.setId_account(id_account);
+								 type_Account.setId_user(id);
 
 							 }else {
 								 
@@ -245,6 +268,8 @@ public class UserDAO {
 									 if(id !=0) {
 										 type_Account.setType("Admin");
 										 type_Account.setId_account(id_account);
+										 type_Account.setId_user(id);
+
 
 									 }
 								 
@@ -258,8 +283,12 @@ public class UserDAO {
 						 
 						 
 					 }
+					 
 			 }
+		       mycon.close();		
+
 		  return  type_Account;
+
  }
 				
 				
@@ -291,7 +320,8 @@ public class UserDAO {
 					 }
 						
 					
-						
+				       mycon.close();		
+
 						return  id_account;
 						
 						
@@ -300,5 +330,144 @@ public class UserDAO {
 
 					 
 				 }
-				
+				 
+				 
+				 
+/*
+ * 
+ *  Account 
+ * 
+ * 				 
+ */
+				 // get Account info
+				 
+				 public  Account account_info(int id) throws SQLException  {
+						
+						try {
+							Connectdb();
+						} catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Account account=new Account();
+						account.setId(id);
+						PreparedStatement mystat;
+						mystat=mycon.prepareStatement(account_info_sql);
+						mystat.setInt(1, id);
+						ResultSet result=mystat.executeQuery();
+						 while(result.next()) {
+							 
+						
+							 account.setUsername(result.getString(1));
+							 account.setPassword(result.getString(2));
+							 
+						 }
+					     mycon.close();		
+ 
+						 return account;
+						 
+						 
+						 
+						 }		
+				 
+				 // update Account information 
+				 
+				 
+				 
+				 public void  update_Account(Account account ) throws SQLException {
+						
+						try {
+							Connectdb();
+						} catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						PreparedStatement mystat;
+						mystat=mycon.prepareStatement(update_account_sql);
+						mystat.setString(1,account.getUsername()  );
+						mystat.setString(2,account.getPassword());
+						mystat.setInt(3,account.getId());
+					    mystat.executeUpdate();
+					   System.out.print("comlet update account ");
+			            mycon.close();
+						
+						
+					}
+
+
+/*
+ * 
+ * 
+ * Teacher 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
+				 
+				 // teacher information 
+
+public Teacher teacher_info(int id) throws SQLException  {
+	
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Teacher teacher=new Teacher();
+	PreparedStatement mystat;
+	mystat=mycon.prepareStatement(teacher_info_sql);
+	mystat.setInt(1, id);
+	ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		 
+		 teacher.setId(result.getInt(1));
+		 teacher.setLast_name(result.getString(2));
+		 teacher.setFirst_name(result.getString(3));
+
+		 teacher.setDate_birth(result.getString(4));
+		 teacher.setContact_number(result.getString(5));
+		teacher.setEmail(result.getString(6));
+		teacher.setId_account(result.getInt(7));
+		 teacher.setImg(result.getAsciiStream(8));
+		 
+	 }
+     mycon.close();		
+
+	 
+	 return teacher;
+	 
+	 
+	 
+	 }
+
+// update teacher information 
+	
+//update_Enseignant_sql
+
+		public void  update_teacher(Teacher teacher ) throws SQLException {
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			PreparedStatement mystat;
+			mystat=mycon.prepareStatement(update_Teacher_sql);
+			mystat.setString(1,  teacher.getLast_name());
+			mystat.setString(2,  teacher.getFirst_name());
+			mystat.setString(3, teacher.getContact_number() );
+			mystat.setString(4,  teacher.getEmail());
+		    mystat.setBlob(5, teacher.getImg());
+		    mystat.setInt(6,  teacher.getId());
+		    mystat.executeUpdate();
+		   System.out.print("comlet update user ");
+            mycon.close();
+			
+			
+		}
+
 }

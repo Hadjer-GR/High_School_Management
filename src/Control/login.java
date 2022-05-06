@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.Type_Account;
 import Model.UserDAO;
@@ -44,8 +45,14 @@ public class login extends HttpServlet {
 		}
           
 		 if(id_account>0) {
+			 HttpSession ses =req.getSession();
+			 
+			 
+			 
 			 try {
 				 type_Account= user.type_account(id_account);
+			    ses.setAttribute("type_account",  type_Account);
+
 				 System.out.print("id :"+type_Account.getId_account() +" type :"+type_Account.getType());
 				 
 

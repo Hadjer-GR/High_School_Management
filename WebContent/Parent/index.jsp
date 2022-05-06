@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 700px)">
     <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)"></head>
         <script defer src="<c:url value="https://cdn.jsdelivr.net/npm/chart.js"/>"></script>
-         <script defer src="<c:url value="/js/script.js"/>"></script>
+         <script defer src="<c:url value="/js/script2.js"/>"></script>
 </head>
 <body>
  <nav class="sidebar close">
@@ -264,6 +264,7 @@
 
         })
     </script>
+
 
 
 </body>

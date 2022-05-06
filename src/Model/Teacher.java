@@ -26,7 +26,7 @@ public class Teacher {
 	
 	
 	public Teacher(int id, String first_name, String last_name, String date_birth, String contact_number, String email,
-			InputStream img,int id_account) {
+			 InputStream img,int id_account) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -73,6 +73,7 @@ public class Teacher {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public InputStream getImg() {
 		return img;
 	}
@@ -80,6 +81,7 @@ public class Teacher {
 	public void setImg(InputStream img) {
 		this.img = img;
 	}
+
 	public int getId_account() {
 		return id_account;
 	}

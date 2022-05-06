@@ -1114,11 +1114,13 @@ body.dark .home .text {
 }
 .editepicture input,
 .editepicturemobile input {
-  display: none;
+ display:none;
 }
 .editepicturemobile {
   position: absolute;
-  opacity: 0;
+  display:none;
+
+ 
 }
 .container .title::before {
   content: "";

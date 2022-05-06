@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)"></head>
         <script defer src="<c:url value="https://cdn.jsdelivr.net/npm/chart.js"/>"></script>
          <script defer src="<c:url value="/js/script.js"/>"></script>
+             <script defer src="<c:url value="/js/mobilescreen.js"/>"></script>
+         
      
 <body>
  <nav class="sidebar close">
@@ -23,9 +25,9 @@
                 </span>
                 <div class="text logo-text">
 
-                    <a href="/index.html" class="hometext"><span class="name  hovername ">Home Teacher</span></a>
+                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name  hovername ">Home Teacher</span></a>
 
-                    <a href="/profil.html" class="username "> <span class="profession ">
+                    <a href="<%=request.getContextPath()%>/Teacherprofil" class="username "> <span class="profession ">
                             Nom Prenom
                         </span>
                     </a>

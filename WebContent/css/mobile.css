@@ -270,7 +270,7 @@ form .category {
   position: relative;
   flex-direction: row !important;
   position: relative !important;
-  opacity: 1 !important;
+  display: block !important;
   width: 100% !important;
   background-color: #fff !important;
 }

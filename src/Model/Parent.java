@@ -1,13 +1,12 @@
 package Model;
 
-import java.io.InputStream;
 
 public class Parent {
 	
 	private int id;
 	private String contact_number;
 	private String email;
-    private InputStream img;
+    private String img;
 
 	private int id_account;
 	
@@ -18,7 +17,7 @@ public class Parent {
 	
 	
 	
-	public Parent(int id, String contact_number, String email, InputStream img,int id_account) {
+	public Parent(int id, String contact_number, String email, String img,int id_account) {
 		super();
 		this.id = id;
 		this.contact_number = contact_number;
@@ -44,12 +43,19 @@ public class Parent {
 	public void setEmail(String email) {
 		this.email = email;
 	}	
-	public InputStream getImg() {
+	
+
+	public String getImg() {
 		return img;
 	}
-	public void setImg(InputStream img) {
+
+
+
+	public void setImg(String img) {
 		this.img = img;
 	}
+
+
 
 	public int getId_account() {
 		return id_account;
