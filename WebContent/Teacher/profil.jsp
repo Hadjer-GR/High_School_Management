@@ -13,13 +13,12 @@
   <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 700px)">
     <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
-    
-     <script defer src="<c:url value="js/script.js"/>"></script>
+   
+</head>
+ <script defer src="<c:url value="js/script.js"/>"></script>
     <script defer src="<c:url value="js/profil.js"/>"></script>
         <script defer src="<c:url value="/js/mobilescreen.js"/>"></script>
-    
-    
-</head>
+
 <body>
 
 
@@ -29,9 +28,8 @@
         <header>
 
             <div class="image-text">
-
-                <span class="imageprofil">
-
+                <span class="imageprofil" >
+                  
                 </span>
 
 
@@ -75,7 +73,7 @@
                 <ul class="menu-links">
                     <li class="nav-link  ">
 
-                        <a href="schedule.html">
+                        <a href="<%=request.getContextPath()%>/Class">
 
                             <i class='bx bx-grid icon '></i>
 
@@ -86,7 +84,7 @@
                     </li>
                     <li class="nav-link">
 
-                        <a href="/class.html">
+                        <a href="<%=request.getContextPath()%>/Class">
 
                             <i class='bx bx-home-alt icon'></i>
 

@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.ModifyView;
+
 public class UserDAO {
 	
 	
@@ -431,7 +433,7 @@ public Teacher teacher_info(int id) throws SQLException  {
 		 teacher.setContact_number(result.getString(5));
 		teacher.setEmail(result.getString(6));
 		teacher.setId_account(result.getInt(7));
-		 teacher.setImg(result.getAsciiStream(8));
+		 teacher.setImg(result.getBinaryStream(8));
 		 
 	 }
      mycon.close();		
@@ -469,5 +471,7 @@ public Teacher teacher_info(int id) throws SQLException  {
 			
 			
 		}
+	
+
 
 }

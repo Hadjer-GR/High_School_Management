@@ -27,6 +27,26 @@ public class login extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    
+    
+    
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		
+		this.getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
+
+		
+		
+		
+	}
+
+
+
+
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		  resp.setContentType("text/html");

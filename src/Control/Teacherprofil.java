@@ -1,6 +1,8 @@
 package Control;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -67,6 +69,38 @@ public class Teacherprofil extends HttpServlet {
 
 		      	System.out.print(teacher.getEmail());
 
+		   // set img profil 
+		      	
+		      	InputStream is =teacher.getImg();
+		      	
+		      	if(is != null) {
+
+		      	String uploadpath="E:/SmartSchool/WebContent/img/teacherprofil.jpg";
+		      	
+		      	try {
+					
+		      		
+		    		FileOutputStream fos=new FileOutputStream(uploadpath);
+		    		
+		    		
+		    		byte[]data=new byte[is.available()];
+		    		is.read(data);
+		    		fos.write(data);
+		    		fos.close();
+		    		System.out.println("imge is add");
+		    		}
+		    		catch(Exception e) {
+		    			e.printStackTrace();
+		    		}
+		      		
+		      	}
+		      	
+		      	
+		      	
+		      	
+		      	
+		      	
+		      	
 					RequestDispatcher dispatchor=req.getRequestDispatcher("/Teacher/profil.jsp");
 					  dispatchor.forward(req, resp);	
 			

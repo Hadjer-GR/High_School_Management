@@ -113,9 +113,10 @@ body.dark {
   height: 50px;
   background-position: center;
   background-size: cover;
-  background-image: url(/img/imgProdil.jpg);
+  background-image: url(/img/teacherprofil.jpg);
   border-radius: 10px;
   margin-right: 10px;
+  border:2px solid red;
 }
 .sidebar .icon {
   min-width: 60px;
