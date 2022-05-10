@@ -240,7 +240,7 @@ body {
   .level-2::after {
     display: block;
   }
-
+  
   .level-2-wrapper {
     width: 90%;
     margin-left: 10%;
@@ -274,12 +274,12 @@ body {
 
 /* container 2 AS  */
 
-.container2as .level-2 {
+.container .level-2 {
   width: auto;
   margin: 0 5px 40px;
   background: var(--level-2);
 }
-.container2as .level-3-wrapper::before {
+.container .level-3-wrapper::before {
   content: "";
   position: absolute;
   top: -20px;

@@ -33,9 +33,9 @@
 
                 <div class="text logo-text">
 
-                    <a href="/index.html" class="hometext"><span class="name   ">Home Teacher</span></a>
+                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name   ">Home Teacher</span></a>
 
-                    <a href="/profil.html" class="username "> <span class="profession ">
+                    <a href="<%=request.getContextPath()%>/Teacherprofil" class="username "> <span class="profession ">
                             Nom Prenom
                         </span>
                     </a>
@@ -84,7 +84,7 @@
 
                     <li class="nav-link hover">
 
-                        <a href="class.html">
+                        <a href="<%=request.getContextPath()%>/Groupes">
 
                             <i class='bx bx-copy icon  texthover'></i>
 
@@ -206,6 +206,7 @@
 
         </div>
         <div class="container">
+        
             <h1 class="level-1 rectangle">اولى ثانوي</h1>
             <ol class="level-2-wrapper">
                 <li>
@@ -214,22 +215,37 @@
                         <li>
 
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                     <%   int nbr_class=0; %>
+                            
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==1}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('علمي')}">
+                              <%    nbr_class=nbr_class+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_class==0){
+                                
+                                	%>
+                	
+                                	<li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-
+                                	
+                               <% } %>
+                                                   
+                             
+                               
                             </ol>
 
                         </li>
-                        <li>
-
-                            <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 2</a></h4>
-                                </li>
-
-                            </ol>
-                        </li>
+                        
                     </ol>
                 </li>
                 <li>
@@ -237,21 +253,35 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                 <%   int  nbr=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==1}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('ادبي')}">
+                              <%    nbr=nbr+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
+                                                   
+                             
 
                             </ol>
                         </li>
-                        <li>
-                            <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#">G 2</a></h4>
-                                </li>
-
-
-                            </ol>
-                        </li>
+                       
                     </ol>
                 </li>
             </ol>
@@ -266,9 +296,29 @@
                         <li>
 
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_2as=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('علوم')}">
+                              <%    nbr_2as=nbr_2as+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_2as==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
 
                             </ol>
                         </li>
@@ -280,9 +330,29 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                 <%   int  nbr_2as_1=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('رياضيات')}">
+                              <%    nbr_2as_1=nbr_2as_1+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_2as_1==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
 
                             </ol>
                         </li>
@@ -294,9 +364,29 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                 <%   int  nbr_2as_2=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('تسير و اقتصاد')}">
+                              <%    nbr_2as_2=nbr_2as_2+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_2as_2==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
 
                             </ol>
                         </li>
@@ -308,15 +398,30 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_2as_3=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة مدنية')}">
+                              <%     nbr_2as_3= nbr_2as_3+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_2as_3==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 2</a></h4>
-                                </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 3</a></h4>
-                                </li>
+                                    
+                               <% } %>
+                               
 
                             </ol>
                         </li>
@@ -327,16 +432,32 @@
                     <h2 class="level-2 rectangle">هندسة طرائق </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                           
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_2as_4=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة طرائق')}">
+                              <%    nbr_2as_4= nbr_2as_4+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_2as_4==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 2</a></h4>
-                                </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 3</a></h4>
-                                </li>
+                                    
+                               <% } %>
+                               
 
                             </ol>
                         </li>
@@ -347,11 +468,32 @@
                     <h2 class="level-2 rectangle">هندسة كهربائية </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                           
                             <ol class="level-4-wrapper">
-
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_2as_6=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة كهربائية ')}">
+                              <%     nbr_2as_6= nbr_2as_6+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_2as_6==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
+                               
                             </ol>
                         </li>
 
@@ -361,14 +503,32 @@
                     <h2 class="level-2 rectangle">اداب </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                           
                             <ol class="level-4-wrapper">
-
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_2as_7=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('اداب')}">
+                              <%      nbr_2as_7=  nbr_2as_7+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(  nbr_2as_7==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
-                                </li>
+                                    
+                               <% } %>
+                               
                             </ol>
                         </li>
 
@@ -378,11 +538,32 @@
                     <h2 class="level-2 rectangle">لغات </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                            
                             <ol class="level-4-wrapper">
-
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_2as_8=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('لغات')}">
+                              <%      nbr_2as_8=  nbr_2as_8+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(  nbr_2as_8==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
+                               
                             </ol>
                         </li>
 
@@ -392,7 +573,7 @@
         </div>
 
         <div class="container container2as">
-            <h1 class="level-1 rectangle">ثالثة ثانوي</h1>
+            <h1 class="level-1 rectangle">ثالثة ثانوي </h1>
             <ol class="level-2-wrapper">
                 <li>
                     <h2 class="level-2 rectangle">علوم </h2>
@@ -400,9 +581,29 @@
                         <li>
 
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_3as=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('علوم')}">
+                              <%    nbr_3as=nbr_3as+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_3as==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
 
                             </ol>
                         </li>
@@ -414,9 +615,29 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                 <%   int  nbr_3as_1=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('رياضيات')}">
+                              <%    nbr_3as_1=nbr_3as_1+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_3as_1==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
 
                             </ol>
                         </li>
@@ -428,9 +649,29 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                 <%   int  nbr_3as_2=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('تسير و اقتصاد')}">
+                              <%    nbr_3as_2=nbr_3as_2+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(nbr_3as_2==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
 
                             </ol>
                         </li>
@@ -442,15 +683,30 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_3as_3=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة مدنية')}">
+                              <%     nbr_3as_3= nbr_3as_3+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_3as_3==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 2</a></h4>
-                                </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 3</a></h4>
-                                </li>
+                                    
+                               <% } %>
+                               
 
                             </ol>
                         </li>
@@ -461,16 +717,32 @@
                     <h2 class="level-2 rectangle">هندسة طرائق </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                           
                             <ol class="level-4-wrapper">
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_3as_4=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة طرائق')}">
+                              <%    nbr_3as_4= nbr_3as_4+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_3as_4==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 2</a></h4>
-                                </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 3</a></h4>
-                                </li>
+                                    
+                               <% } %>
+                               
 
                             </ol>
                         </li>
@@ -481,11 +753,32 @@
                     <h2 class="level-2 rectangle">هندسة كهربائية </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                           
                             <ol class="level-4-wrapper">
-
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_3as_6=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة كهربائية ')}">
+                              <%     nbr_3as_6= nbr_3as_6+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_3as_6==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
+                                    
+                               <% } %>
+                               
                             </ol>
                         </li>
 
@@ -495,14 +788,32 @@
                     <h2 class="level-2 rectangle">اداب </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                           
                             <ol class="level-4-wrapper">
-
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
+                                  <%   int  nbr_3as_7=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('اداب')}">
+                              <%      nbr_3as_7=  nbr_3as_7+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(  nbr_3as_7==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
                                 </li>
-                                <li>
-                                    <h4 class="level-4 rectangle"><a href="#"> G 1</a></h4>
-                                </li>
+                                    
+                               <% } %>
+                               
                             </ol>
                         </li>
 
@@ -512,12 +823,32 @@
                     <h2 class="level-2 rectangle">لغات </h2>
                     <ol class="level-3-wrapper">
                         <li>
+                            
                             <ol class="level-4-wrapper">
-
-                                <li>
+                                  <%   int  nbr_3as_8=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('لغات')}">
+                              <%      nbr_3as_8=  nbr_3as_8+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if(  nbr_3as_8==0){
+                                
+                                    %>
+                    
+                                    <li>
                                     <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
                                     </h4>
                                 </li>
+                                    
+                               <% } %>
+                               
                             </ol>
                         </li>
 
@@ -526,7 +857,7 @@
             </ol>
         </div>
 
-
+        
 
 
 

@@ -65,7 +65,7 @@
 
                     <li class="nav-link  ">
 
-                        <a href="<%=request.getContextPath()%>/Class">
+                        <a href="#">
 
                             <i class='bx bx-grid icon '></i>
 
@@ -78,7 +78,7 @@
 
                     <li class="nav-link ">
 
-                        <a href="class.html">
+                        <a href="<%=request.getContextPath()%>/Groupes">
 
                             <i class='bx bx-copy icon '></i>
 

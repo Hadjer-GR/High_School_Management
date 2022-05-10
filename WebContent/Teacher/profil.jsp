@@ -73,7 +73,7 @@
                 <ul class="menu-links">
                     <li class="nav-link  ">
 
-                        <a href="<%=request.getContextPath()%>/Class">
+                        <a href="#">
 
                             <i class='bx bx-grid icon '></i>
 
@@ -84,7 +84,7 @@
                     </li>
                     <li class="nav-link">
 
-                        <a href="<%=request.getContextPath()%>/Class">
+                        <a href="<%=request.getContextPath()%>/Groupes">
 
                             <i class='bx bx-home-alt icon'></i>
 

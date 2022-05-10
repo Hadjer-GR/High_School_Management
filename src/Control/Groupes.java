@@ -1,32 +1,64 @@
 package Control;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.Group;
 import Model.Type_Account;
+import Model.UserDAO;
 
 /**
- * Servlet implementation class Class
+ * Servlet implementation class Groupes
  */
-@WebServlet("/Class")
-public class Class extends HttpServlet {
+@WebServlet("/Groupes")
+public class Groupes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Groupes() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+
 		resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
 
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 		if (type_Account != null) {
 			
-			this.getServletContext().getRequestDispatcher("/Teacher/Class.jsp").forward(req, resp);
+			UserDAO user=new UserDAO();
+			ArrayList<Integer> list_class_id=new ArrayList();
+			ArrayList<Group> class_list=new ArrayList();
+			
+			try {
+				list_class_id=user.teacher_class(type_Account.getId_user());
+				
 
+		    	class_list=user.class_info(list_class_id);
+
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			req.setAttribute("class_list", class_list);
+			this.getServletContext().getRequestDispatcher("/Teacher/Class.jsp").forward(req, resp);
+    
 			
 		}else {
 			
@@ -36,9 +68,6 @@ public class Class extends HttpServlet {
 			
 			
 		}
-		
-		
-		
 		
 		
 	}

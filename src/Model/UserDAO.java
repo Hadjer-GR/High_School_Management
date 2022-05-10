@@ -1,13 +1,14 @@
 package Model;
 
+import java.sql.Array;
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.ModifyView;
 
 public class UserDAO {
 	
@@ -47,7 +48,8 @@ public class UserDAO {
 	 */
 	private static final String teacher_info_sql="select id,nom,prenom,date_naissance,numéro_contact,email,account_id,img from enseignement where id=?;";
 	private static final String update_Teacher_sql="update  enseignement set nom=?,prenom=?,numéro_contact=?,email=?,img=? where id=?;";
-			
+	private static final String teacher_class_sql="select class_id from enseignement_has_class where enseig_id=?;";
+
 
 	
 	
@@ -58,6 +60,21 @@ public class UserDAO {
 	 * 
 	 * 
 	*/
+	
+	
+	// Class 
+	String range="";
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
 	//TextBook
 		private static final String Add_Lesson_sql="insert into lesson(date,text)values(?,?);";
 		private static final String Select_All_Lesson="select * from lesson;";
@@ -471,7 +488,108 @@ public Teacher teacher_info(int id) throws SQLException  {
 			
 			
 		}
-	
+		
+		
+//  define teacher class 
+		
+		public ArrayList<Integer>  teacher_class(int id) throws SQLException  {
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ArrayList<Integer> class_id= new ArrayList();
+			  int id_class=0;
+			PreparedStatement mystat;
+			mystat=mycon.prepareStatement(teacher_class_sql);
+			mystat.setInt(1, id);
+			ResultSet result=mystat.executeQuery();
+			 while(result.next()) {
+				 
+				 id_class=result.getInt(1);
+				 class_id.add(id_class);
+				 
+			 }
+		     mycon.close();		
+
+
+			 return class_id;
+			 
+			 
+			 
+			 }
+		
+	// get class indormation 	
+		
+public ArrayList<Group>  class_info(ArrayList<Integer> class_id) throws SQLException  {
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ArrayList<Group> class_info= new ArrayList();
+			 Group group;
+			 
+			PreparedStatement mystat;
+			
+			int d=class_id.size();
+			
+			System.out.println(d);
+			int i;
+			for( i=0;i<d;i++) {
+				range=range+"?,";
+			}
+			String k;
+			k=range.substring(0, range.length() - 1);;
+			
+			range=k;
+			String sql="select * from class where id in (";
+			sql=sql+k;
+			sql=sql+");";
+			
+			System.out.print(sql);
+
+			
+	       mystat=mycon.prepareStatement(sql);
+	        int d1=1;
+	       for( i=0;i<=class_id.size()-1;i++) {
+				mystat.setInt(d1, class_id.get(i));
+				d1=d1+1;
+				System.out.print(" class_id"+class_id.get(i)+"d1:"+d1);
+
+			}
+	      
+	     
+       
+	         
+			ResultSet result=mystat.executeQuery();
+			 while(result.next()) {
+				 group=new Group();
+				 
+				 group.setId(result.getInt(1));
+				 group.setNbr_class(result.getInt(2));
+				 group.setId_period(result.getInt(3));
+				 group.setSpecialiste(result.getString(4));
+				 group.setId_niveau(result.getInt(5));
+			  System.out.print(result.getString(4));
+
+				 class_info.add(group);
+				 
+			 }
+		     mycon.close();		
+
+
+			 return class_info ;
+			 
+			 
+			 
+			 }
+		
+		
 
 
 }
