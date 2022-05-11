@@ -1,0 +1,122 @@
+:root {
+  --border-color: #ebedf2;
+  --title-color: #898b96;
+}
+
+.green {
+  background-color: #2ecc71;
+}
+.turquoise {
+  background-color: #1abc9c;
+}
+.navy {
+  background-color: #34495e;
+}
+.blue {
+  background-color: #3498db;
+}
+.purple {
+  background-color: #9b59b6;
+}
+.grey {
+  background-color: #bdc3c7;
+  color: #202020;
+}
+.gray {
+  background-color: #7f8c8d;
+}
+.red {
+  background-color: #e74c3c;
+}
+.orange {
+  background-color: #f39c12;
+}
+.yellow {
+  background-color: #f1c40f;
+  color: #303030;
+}
+
+.day-columns {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  justify-content: flex-start;
+}
+.day-columns .day-column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: auto;
+  /* min-width: 160px; */
+  border: 1px solid #ebedf2;
+
+  border-left: none;
+}
+.day-columns .day-column:first-child {
+  border-left: 1px solid #ebedf2;
+}
+.day-columns .day-column .day-header {
+  border-bottom: 1px solid #ebedf2;
+  text-align: center;
+  font-size: 1.4em;
+  padding: 5px;
+  color: #898b96;
+}
+.day-columns .day-column .day-content {
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 5px;
+  overflow-y: auto;
+}
+.day-columns .day-column .day-content .event {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 3px;
+  color: white;
+  height: 60px;
+  padding: 5px;
+  box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+}
+.day-columns .day-column .day-content .event .title {
+  font-size: 1.1em;
+}
+.day-columns .day-column .day-content .event footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.day-columns .day-column .day-content .event span {
+  font-size: 1.2em;
+}
+.day-columns .day-column .day-footer {
+  border-top: 1px solid #ebedf2;
+  padding: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #575962;
+}
+
+.table_teacher .container {
+  width: 100vw;
+  height: 80vh !important;
+  padding: 0 !important;
+  margin-left: 5% !important;
+}
+@media screen and (max-width: 700px) {
+  .table_teacher .container {
+    overflow-x: scroll !important;
+    margin: 0 !important;
+  }
+  .day-columns .day-column .day-content .event .title {
+    font-size: 1em !important;
+  }
+}

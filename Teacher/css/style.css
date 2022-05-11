@@ -905,8 +905,8 @@ body.dark .home .text {
   width: 60%;
   height: 500px;
   margin-top: 3%;
+  border: 2px solid red;
   border-radius: 10px;
-  background-image: url(./table.png);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   background-size: cover;
 }
@@ -1126,6 +1126,9 @@ body.dark .home .text {
   border-radius: 5px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
+.homeetud .container .title::before {
+  display: none !important;
+}
 .content form .picture {
   position: absolute;
   top: -22%;
@@ -1240,7 +1243,8 @@ form .button input:hover {
 */
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
