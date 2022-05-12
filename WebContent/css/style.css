@@ -113,10 +113,10 @@ body.dark {
   height: 50px;
   background-position: center;
   background-size: cover;
-  background-image: url(/img/teacherprofil.jpg);
+  background-image: url(/img/profilimg.jpg);
   border-radius: 10px;
   margin-right: 10px;
-  border:2px solid red;
+  
 }
 .sidebar .icon {
   min-width: 60px;
@@ -1133,6 +1133,9 @@ body.dark .home .text {
   border-radius: 5px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
+.table_teacher .title::before{
+	display:none;
+}
 .content form .picture {
   position: absolute;
   top: -22%;
@@ -1145,7 +1148,7 @@ body.dark .home .text {
   border-radius: 50%;
   margin-bottom: 10px;
   background-color: #fff;
-  background-image: url(./IMG_20200323_175334_433.jpg);
+  background-image: url(E:smartSchool/img/profilimg.jpg);
   background-size: cover;
   background-position: center;
   border: 2px solid rgba(0, 0, 0, 0.2);

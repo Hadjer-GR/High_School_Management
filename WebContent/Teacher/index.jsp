@@ -26,7 +26,7 @@
                 </span>
                 <div class="text logo-text">
 
-                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name  hovername ">Home Teacher</span></a>
+                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name  hovername ">Accueil Enseignant</span></a>
 
                     <a href="<%=request.getContextPath()%>/Teacherprofil" class="username "> <span class="profession ">
                             Nom Prenom
@@ -65,11 +65,11 @@
 
                     <li class="nav-link  ">
 
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/Schedule">
 
                             <i class='bx bx-grid icon '></i>
 
-                            <span class="text nav-text ">Schedule</span>
+                            <span class="text nav-text ">Programme</span>
 
                         </a>
 

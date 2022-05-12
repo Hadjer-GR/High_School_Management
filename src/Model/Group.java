@@ -6,6 +6,14 @@ public class Group {
 	 private int id_period;
 	 private String specialiste ;
 	 private int id_niveau;
+	 private int emlpoi_id;
+	 
+	public int getEmlpoi_id() {
+		return emlpoi_id;
+	}
+	public void setEmlpoi_id(int emlpoi_id) {
+		this.emlpoi_id = emlpoi_id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -36,15 +44,18 @@ public class Group {
 	public void setId_niveau(int id_niveau) {
 		this.id_niveau = id_niveau;
 	}
-	public Group(int id, int nbr_class, int id_period, String specialiste, int id_niveau) {
+	
+	
+	
+	public Group(int id, int nbr_class, int id_period, String specialiste, int id_niveau, int emlpoi_id) {
 		super();
 		this.id = id;
 		this.nbr_class = nbr_class;
 		this.id_period = id_period;
 		this.specialiste = specialiste;
 		this.id_niveau = id_niveau;
+		this.emlpoi_id = emlpoi_id;
 	}
-	 
 	public Group() {
 		
 	}

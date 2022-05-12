@@ -49,6 +49,7 @@ public class UserDAO {
 	private static final String teacher_info_sql="select id,nom,prenom,date_naissance,numéro_contact,email,account_id,img from enseignement where id=?;";
 	private static final String update_Teacher_sql="update  enseignement set nom=?,prenom=?,numéro_contact=?,email=?,img=? where id=?;";
 	private static final String teacher_class_sql="select class_id from enseignement_has_class where enseig_id=?;";
+	private static final String teacher_emploi_sql="select Emploi_temp_id from  emploi_temp_has_enseignement where enseig_id=?;";
 
 
 	
@@ -521,7 +522,7 @@ public Teacher teacher_info(int id) throws SQLException  {
 			 
 			 }
 		
-	// get class indormation 	
+	// get class indormation that the teacher study 	 
 		
 public ArrayList<Group>  class_info(ArrayList<Integer> class_id) throws SQLException  {
 			
@@ -575,8 +576,8 @@ public ArrayList<Group>  class_info(ArrayList<Integer> class_id) throws SQLExcep
 				 group.setId_period(result.getInt(3));
 				 group.setSpecialiste(result.getString(4));
 				 group.setId_niveau(result.getInt(5));
-			  System.out.print(result.getString(4));
-
+				 group.setEmlpoi_id(result.getInt(6));
+             
 				 class_info.add(group);
 				 
 			 }
@@ -589,7 +590,177 @@ public ArrayList<Group>  class_info(ArrayList<Integer> class_id) throws SQLExcep
 			 
 			 }
 		
+// emploi de temps 
+
+// get  Arraylist  emploi_temp  of the teacher 
+
+    public ArrayList<Integer> teacher_emploi(int id) throws SQLException  {
+	
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<Integer> emploi_temp=new ArrayList();
+	int  emlpoi_temp_id=0;
+	PreparedStatement mystat;
+	mystat=mycon.prepareStatement(teacher_emploi_sql);
+	mystat.setInt(1, id);
+	ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		 
+		 emlpoi_temp_id=result.getInt(1);
+		 System.out.println(emlpoi_temp_id);
+		 emploi_temp.add(emlpoi_temp_id);
+		 
+	 }
+	 
+     mycon.close();		
+	 return emploi_temp;
+	 
+	 }
+    
+    
+  //  Programmme de l'enseignant  
+
+	
+public ArrayList<Emploi>  teacher_emploi_info(ArrayList<Integer> emploi_temp_id) throws SQLException  {
 		
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 ArrayList<Emploi> list_emploi= new ArrayList();
+		 Emploi emploi;
+		 
+		PreparedStatement mystat;
+		
+		int d=emploi_temp_id.size();
+		
+		System.out.println(d);
+		int i;
+		for( i=0;i<d;i++) {
+			range=range+"?,";
+		}
+		String k;
+		k=range.substring(0, range.length() - 1);;
+		
+		range=k;
+		String sql="select * from emploi_temp where id in(";
+		sql=sql+k;
+		sql=sql+");";
+		
+		System.out.print(sql);
+
+		
+       mystat=mycon.prepareStatement(sql);
+        int d1=1;
+       for( i=0;i<=emploi_temp_id.size()-1;i++) {
+			mystat.setInt(d1, emploi_temp_id.get(i));
+			d1=d1+1;
+			System.out.print(" class_id"+emploi_temp_id.get(i)+"d1:"+d1);
+
+		}
+      
+     
+   
+         
+		ResultSet result=mystat.executeQuery();
+		 while(result.next()) {
+			 emploi=new Emploi();
+			 emploi.setId(result.getInt(1));
+			 emploi.setOpen_time(result.getString(2));
+			 emploi.setDay(result.getString(3));
+			 emploi.setEmploi_id(result.getInt(4));
+			 emploi.setMatiere_id(result.getInt(5));
+			  
+		  list_emploi.add(emploi);
+			 
+		 }
+	     mycon.close();		
+
+
+		 return list_emploi ;
+		 
+		 
+		 
+		 }
+
+// array list of the class inside Emploi de temp teacher
+
+
+
+public ArrayList<Group>  class_emploi(ArrayList<Integer> emploi_id) throws SQLException  {
+	
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 ArrayList<Group> class_info= new ArrayList();
+	 Group group;
+	 
+	PreparedStatement mystat;
+	
+	int d=emploi_id.size();
+	
+	System.out.println(d);
+	range="";
+	int i;
+	for( i=0;i<d;i++) {
+		range=range+"?,";
+	}
+	String k;
+	k=range.substring(0, range.length() - 1);;
+	
+	range=k;
+	String sql="select * from class where emploi_id in (";
+	sql=sql+k;
+	sql=sql+");";
+	
+	System.out.print(sql);
+
+	
+   mystat=mycon.prepareStatement(sql);
+   int d1=1;
+   for( i=0;i<=emploi_id.size()-1;i++) {
+		mystat.setInt(d1, emploi_id.get(i));
+		d1=d1+1;
+		
+	}
+  
+ 
+
+     
+	ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		 group=new Group();
+		 
+		 group.setId(result.getInt(1));
+		 group.setNbr_class(result.getInt(2));
+		 group.setId_period(result.getInt(3));
+		 group.setSpecialiste(result.getString(4));
+		 group.setId_niveau(result.getInt(5));
+		 group.setEmlpoi_id(result.getInt(6));
+        System.out.println(group.getSpecialiste());
+		 class_info.add(group);
+		 
+	 }
+     mycon.close();		
+
+
+	 return class_info ;
+	 
+	 
+	 
+	 }
+
+
+
 
 
 }

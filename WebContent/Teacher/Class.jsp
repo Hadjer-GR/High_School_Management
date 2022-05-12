@@ -33,7 +33,7 @@
 
                 <div class="text logo-text">
 
-                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name   ">Home Teacher</span></a>
+                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name   ">Accueil  Enseignant</span></a>
 
                     <a href="<%=request.getContextPath()%>/Teacherprofil" class="username "> <span class="profession ">
                             Nom Prenom
@@ -71,11 +71,11 @@
                 <ul class="menu-links ">
                     <li class="nav-link ">
 
-                        <a href="/schedule.html">
+                        <a href="<%=request.getContextPath()%>/Schedule">
 
                             <i class='bx bx-grid icon'></i>
 
-                            <span class="text nav-text ">Schedule</span>
+                            <span class="text nav-text ">Programme</span>
 
                         </a>
 
@@ -207,10 +207,10 @@
         </div>
         <div class="container">
         
-            <h1 class="level-1 rectangle">اولى ثانوي</h1>
+            <h1 class="level-1 rectangle">1ème AS</h1>
             <ol class="level-2-wrapper">
                 <li>
-                    <h2 class="level-2 rectangle">علمي </h2>
+                    <h2 class="level-2 rectangle">Sciences </h2>
                     <ol class="level-3-wrapper">
                         <li>
 
@@ -220,7 +220,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==1}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('علمي')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('sciences')}">
                               <%    nbr_class=nbr_class+1; %>
                               
                              <li>                             
@@ -249,7 +249,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">ادبي </h2>
+                    <h2 class="level-2 rectangle">Lettre </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -257,7 +257,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==1}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('ادبي')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('lettres')}">
                               <%    nbr=nbr+1; %>
                               
                              <li>                             
@@ -288,10 +288,10 @@
         </div>
 
         <div class="container container2as">
-            <h1 class="level-1 rectangle">ثانية ثانوي</h1>
+            <h1 class="level-1 rectangle">2ème AS</h1>
             <ol class="level-2-wrapper">
                 <li>
-                    <h2 class="level-2 rectangle">علوم </h2>
+                    <h2 class="level-2 rectangle"> Sciences </h2>
                     <ol class="level-3-wrapper">
                         <li>
 
@@ -300,7 +300,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('علوم')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('sciences')}">
                               <%    nbr_2as=nbr_2as+1; %>
                               
                              <li>                             
@@ -326,7 +326,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">رياضيات </h2>
+                    <h2 class="level-2 rectangle">Mathématiques </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -334,7 +334,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('رياضيات')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('mathématiques')}">
                               <%    nbr_2as_1=nbr_2as_1+1; %>
                               
                              <li>                             
@@ -360,7 +360,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">تسير و اقتصاد </h2>
+                    <h2 class="level-2 rectangle">économie / gestion </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -368,7 +368,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('تسير و اقتصاد')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('économie/gestion')}">
                               <%    nbr_2as_2=nbr_2as_2+1; %>
                               
                              <li>                             
@@ -394,7 +394,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">هندسة مدنية </h2>
+                    <h2 class="level-2 rectangle"> Génie- civil </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -402,7 +402,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة مدنية')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('génie-civil')}">
                               <%     nbr_2as_3= nbr_2as_3+1; %>
                               
                              <li>                             
@@ -429,7 +429,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">هندسة طرائق </h2>
+                    <h2 class="level-2 rectangle">Génie des procédés </h2>
                     <ol class="level-3-wrapper">
                         <li>
                            
@@ -438,7 +438,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة طرائق')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('génie des procédés')}">
                               <%    nbr_2as_4= nbr_2as_4+1; %>
                               
                              <li>                             
@@ -465,7 +465,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">هندسة كهربائية </h2>
+                    <h2 class="level-2 rectangle">Génie-mécanique </h2>
                     <ol class="level-3-wrapper">
                         <li>
                            
@@ -474,7 +474,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة كهربائية ')}">
+                                   <c:if test="${class_list.getSpecialiste().equals('génie-mécanique')}">
                               <%     nbr_2as_6= nbr_2as_6+1; %>
                               
                              <li>                             
@@ -499,8 +499,43 @@
 
                     </ol>
                 </li>
+                  <li>
+                    <h2 class="level-2 rectangle">Génie-électrique </h2>
+                    <ol class="level-3-wrapper">
+                        <li>
+                           
+                            <ol class="level-4-wrapper">
+                                  <%   int  nbr_2as_9=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==2}">
+                                   <c:if test="${class_list.getSpecialiste().equals('génie-électrique')}">
+                              <%     nbr_2as_9= nbr_2as_9+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_2as_9==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
+                                </li>
+                                    
+                               <% } %>
+                               
+                            </ol>
+                        </li>
+
+                    </ol>
+                </li>
                 <li>
-                    <h2 class="level-2 rectangle">اداب </h2>
+                    <h2 class="level-2 rectangle">Lettres</h2>
                     <ol class="level-3-wrapper">
                         <li>
                            
@@ -509,7 +544,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('اداب')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('lettres')}">
                               <%      nbr_2as_7=  nbr_2as_7+1; %>
                               
                              <li>                             
@@ -535,7 +570,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">لغات </h2>
+                    <h2 class="level-2 rectangle">Langues étrangères </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             
@@ -544,7 +579,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('لغات')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('langues étrangères')}">
                               <%      nbr_2as_8=  nbr_2as_8+1; %>
                               
                              <li>                             
@@ -572,11 +607,11 @@
             </ol>
         </div>
 
-        <div class="container container2as">
-            <h1 class="level-1 rectangle">ثالثة ثانوي </h1>
+         <div class="container container2as">
+            <h1 class="level-1 rectangle">3ème AS</h1>
             <ol class="level-2-wrapper">
                 <li>
-                    <h2 class="level-2 rectangle">علوم </h2>
+                    <h2 class="level-2 rectangle"> Sciences </h2>
                     <ol class="level-3-wrapper">
                         <li>
 
@@ -585,7 +620,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('علوم')}">
+                            <c:if test="${class_list.getSpecialiste().equals('sciences')}">
                               <%    nbr_3as=nbr_3as+1; %>
                               
                              <li>                             
@@ -611,7 +646,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">رياضيات </h2>
+                    <h2 class="level-2 rectangle">Mathématiques </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -619,7 +654,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('رياضيات')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('mathématiques')}">
                               <%    nbr_3as_1=nbr_3as_1+1; %>
                               
                              <li>                             
@@ -645,7 +680,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">تسير و اقتصاد </h2>
+                    <h2 class="level-2 rectangle">économie / gestion </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -653,7 +688,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('تسير و اقتصاد')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('économie/gestion')}">
                               <%    nbr_3as_2=nbr_3as_2+1; %>
                               
                              <li>                             
@@ -679,7 +714,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">هندسة مدنية </h2>
+                    <h2 class="level-2 rectangle"> Génie- civil </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
@@ -687,7 +722,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة مدنية')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('génie-civil')}">
                               <%     nbr_3as_3= nbr_3as_3+1; %>
                               
                              <li>                             
@@ -714,7 +749,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">هندسة طرائق </h2>
+                    <h2 class="level-2 rectangle">Génie des procédés </h2>
                     <ol class="level-3-wrapper">
                         <li>
                            
@@ -723,7 +758,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة طرائق')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('génie des procédés')}">
                               <%    nbr_3as_4= nbr_3as_4+1; %>
                               
                              <li>                             
@@ -750,7 +785,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">هندسة كهربائية </h2>
+                    <h2 class="level-2 rectangle">Génie-mécanique </h2>
                     <ol class="level-3-wrapper">
                         <li>
                            
@@ -759,7 +794,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('هندسة كهربائية ')}">
+                                   <c:if test="${class_list.getSpecialiste().equals('génie-mécanique')}">
                               <%     nbr_3as_6= nbr_3as_6+1; %>
                               
                              <li>                             
@@ -784,8 +819,43 @@
 
                     </ol>
                 </li>
+                  <li>
+                    <h2 class="level-2 rectangle">Génie-électrique </h2>
+                    <ol class="level-3-wrapper">
+                        <li>
+                           
+                            <ol class="level-4-wrapper">
+                                  <%   int  nbr_3as_9=0; %>
+                             <c:forEach  items="${class_list}" var="class_list" >
+                           
+                              <c:if test="${class_list.getId_niveau()==3}">
+                                   <c:if test="${class_list.getSpecialiste().equals('génie-électrique')}">
+                              <%     nbr_3as_9= nbr_3as_9+1; %>
+                              
+                             <li>                             
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                                </li>    
+                                </c:if>
+                                </c:if>
+                                  </c:forEach>
+                                <% if( nbr_3as_9==0){
+                                
+                                    %>
+                    
+                                    <li>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    </h4>
+                                </li>
+                                    
+                               <% } %>
+                               
+                            </ol>
+                        </li>
+
+                    </ol>
+                </li>
                 <li>
-                    <h2 class="level-2 rectangle">اداب </h2>
+                    <h2 class="level-2 rectangle">Lettres</h2>
                     <ol class="level-3-wrapper">
                         <li>
                            
@@ -794,7 +864,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('اداب')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('lettres')}">
                               <%      nbr_3as_7=  nbr_3as_7+1; %>
                               
                              <li>                             
@@ -820,7 +890,7 @@
                     </ol>
                 </li>
                 <li>
-                    <h2 class="level-2 rectangle">لغات </h2>
+                    <h2 class="level-2 rectangle">Langues étrangères </h2>
                     <ol class="level-3-wrapper">
                         <li>
                             
@@ -829,7 +899,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('لغات')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('langues étrangères')}">
                               <%      nbr_3as_8=  nbr_3as_8+1; %>
                               
                              <li>                             
@@ -856,9 +926,7 @@
                 </li>
             </ol>
         </div>
-
         
-
 
 
 

@@ -38,7 +38,7 @@
 
                 <div class="text logo-text">
 
-                    <a href="/index.html" class="hometext"><span class="name ">Home Teacher</span></a>
+                    <a href="/index.html" class="hometext"><span class="name ">Accueil Enseignant</span></a>
 
                     <a href="/profil.html" class="username "> <span class="profession ">
                             Nom Prenom
