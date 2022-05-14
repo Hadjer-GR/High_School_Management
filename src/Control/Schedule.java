@@ -43,13 +43,16 @@ public class Schedule extends HttpServlet {
 			 UserDAO user =new UserDAO();
 			 ArrayList<Integer> emploi_temp_id=new ArrayList();
 			  ArrayList<Emploi> list_emploi=new ArrayList();
+			  ArrayList<Integer> list_emploi_id=new ArrayList();
+
 			  ArrayList<Group> class_emploi=new ArrayList();
 			  
 			 
 			  try {
 				emploi_temp_id=user.teacher_emploi(type_Account.getId_user());
 			    list_emploi=user.teacher_emploi_info(emploi_temp_id);
-			    class_emploi=user.class_emploi(emploi_temp_id);
+			    list_emploi_id=user.list_emploi_id(emploi_temp_id);
+			    class_emploi=user.class_emploi(list_emploi_id);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,6 +63,10 @@ public class Schedule extends HttpServlet {
 			// System.out.println("class_emploi.size"+class_emploi.size());
 			// System.out.println("comlpet schedule section");
 			
+			 
+			  System.out.println("Genie 1:"+class_emploi.get(0).getSpecialiste());
+			  System.out.println("Genie 2:"+class_emploi.get(1).getSpecialiste());
+
           
 			this.getServletContext().getRequestDispatcher("/Teacher/schedule.jsp").forward(req, resp);
 			

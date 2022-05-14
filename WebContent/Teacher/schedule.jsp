@@ -8,12 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>MySmartSchool</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
+
   <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 700px)">
+    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 880px)">
     <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
       <link rel="stylesheet" href="<c:url value="/css/table.css"/>">
+      
     
 </head>
 
@@ -36,7 +39,7 @@
 
                 <div class="text logo-text">
 
-                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name  hovername ">Accueil Enseignant</span></a>
+                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name  hovername ">Accueil </span></a>
 
                     <a href="<%=request.getContextPath()%>/Teacherprofil" class="username "> <span class="profession ">
                             Nom Prenom
@@ -92,7 +95,7 @@
 
                             <i class='bx bx-copy icon '></i>
 
-                            <span class="text nav-text ">Class</span>
+                            <span class="text nav-text ">Classe</span>
 
                         </a>
 
@@ -244,9 +247,8 @@
           
           
           </div>
-          
+
           </c:if> 
-       
 
       </c:forEach>
                                    

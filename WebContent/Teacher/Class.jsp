@@ -8,10 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>MySmartSchool</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
   <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 700px)">
+    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 880px)">
     <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
       <link rel="stylesheet" href="<c:url value="/css/class.css"/>">
     

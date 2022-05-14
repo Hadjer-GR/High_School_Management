@@ -350,11 +350,13 @@ form .category {
   justify-content: space-between;
 }
 .home .table {
-  margin-top: 10px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-  height: 500px !important;
+	 margin-top: 10px !important;
+	  margin-left: auto !important;
+	  margin-right: auto !important;
+	  height: 90vh !important;
+	  width: 98vw !important;
+	  overflow-x: scroll !important;
+	  margin: 0 !important;
 }
 
 .textschedule {
