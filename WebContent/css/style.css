@@ -65,6 +65,7 @@ body.dark {
 
 /* ===== Sidebar ===== */
 
+
 .sidebar {
   position: fixed;
 
@@ -75,7 +76,7 @@ body.dark {
   height: 100%;
 
   width: 250px;
-
+  
   padding: 10px 14px;
 
   background: var(--sidebar-color);
@@ -98,10 +99,10 @@ body.dark {
 
   display: flex;
 
-  align-items: center;
 
   margin-top: 5px;
 }
+
 
 .sidebar header .imageprofil,
 .sidebar .icon {
@@ -114,7 +115,6 @@ body.dark {
   height: 50px;
   background-position: center;
   background-size: cover;
-  background-image: url(/img/profilimg.jpg);
   border-radius: 10px;
   margin-right: 10px;
   
@@ -1151,7 +1151,6 @@ body.dark .home .text {
   border-radius: 50%;
   margin-bottom: 10px;
   background-color: #fff;
-  background-image: url(E:smartSchool/img/profilimg.jpg);
   background-size: cover;
   background-position: center;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -1330,7 +1329,7 @@ form .button input:hover {
 .home .contentnotes {
   position: relative;
   margin-top: 2%;
-  width: 80%;
+  width: 90%;
   height: 85%;
   background-color: #ffff;
   margin-left: auto;
@@ -1364,10 +1363,7 @@ form .button input:hover {
 .home .contentnotes .modeles a.thismodel {
   font-size: 1.3em;
 }
-.home .contentnotes .modeles a:hover {
-  font-size: 1.3em;
-  transition: 0.2s;
-}
+
 .home .contentnotes .result {
   position: relative;
   width: 85%;

@@ -108,7 +108,8 @@ public class Teacherprofil extends HttpServlet {
 			
 		} else {
 			
-			this.getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
+			 resp.sendRedirect(req.getContextPath() + "/login");
+
 			
 		}
 		

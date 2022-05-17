@@ -68,7 +68,7 @@ public class Schedule extends HttpServlet {
 			  System.out.println("Genie 2:"+class_emploi.get(1).getSpecialiste());
 
           
-			this.getServletContext().getRequestDispatcher("/Teacher/schedule.jsp").forward(req, resp);
+			this.getServletContext().getRequestDispatcher("/Teacher/schedule.jsp").include(req, resp);
 			
 		}else {
 			

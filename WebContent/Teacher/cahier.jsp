@@ -10,18 +10,33 @@
 <title>textBook</title>
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-  <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 700px)">
-    <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
-    <script defer src="etud.js"> </script>
 
-    <script defer src="<c:url value="/js/mobilescreen.js"/>"></script>
-    <script defer src="<c:url value="/js/script.js"/>"></script>
-    <script defer src="<c:url value="/js/textbook.js"/>"></script>
-    <script defer src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
-    <script defer src="<c:url value="/js/writeinTextbook.js"/>"></script>
-    <script defer src="<c:url value="/js/writetextbook.js"/>"></script>
-</head>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/smallmobile.css" media="(max-width: 390px)">
+    
+    <style>
+    
+    .content form .picture .img ,.sidebar header .imageprofil{
+      background-image: url("../img/profilimg.jpg");
+
+    }
+    
+    
+    
+    
+    
+    
+    </style>
+    
+    
+   <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/js/script.js"></script>
+    <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
+    
+    <script defer src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/writeinTextbook.js"></script>
+    <script defer src="${pageContext.request.contextPath}/js/writetextbook.js"></script>
+    </head>
 <body>
   <nav class="sidebar close">
 
@@ -38,7 +53,7 @@
 
                 <div class="text logo-text">
 
-                    <a href="/index.html" class="hometext"><span class="name ">Accueil Enseignant</span></a>
+                    <a href="/index.html" class="hometext"><span class="name ">Accueil </span></a>
 
                     <a href="/profil.html" class="username "> <span class="profession ">
                             Nom Prenom
@@ -104,31 +119,6 @@
 
 
 
-                    <li class="nav-link ">
-
-                        <a href="/appele.html">
-
-                            <i class='bx bx-credit-card-front icon'></i>
-
-                            <span class="text nav-text ">Verre Appele</span>
-
-                        </a>
-
-                    </li>
-
-                    <li class="nav-link">
-
-                        <a href="/communication.html">
-
-                            <i class='bx bx-message-minus icon'></i>
-
-                            <span class="text nav-text">Communication</span>
-
-                        </a>
-
-                    </li>
-
-
 
 
 
@@ -159,7 +149,7 @@
 
                 <li class="">
 
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/login">
 
                         <i class='bx bx-log-out icon'></i>
 
@@ -171,28 +161,7 @@
 
 
 
-                <li class="mode">
-
-                    <div class="sun-moon">
-
-                        <i class='bx bx-moon icon moon'></i>
-
-                        <i class='bx bx-sun icon sun'></i>
-
-                    </div>
-
-                    <span class="mode-text text">Dark mode</span>
-
-
-
-                    <div class="toggle-switch">
-
-                        <span class="switch"></span>
-
-                    </div>
-
-                </li>
-
+                
 
 
             </div>
@@ -223,33 +192,8 @@
         <div class="contentnotes">
 
             <div class="modeles" id="othermodel">
-                <a href="<c:url value="/listLesson?module=math"/>" class="math hover"> Math</a>
-                <br>
-
-                <a href="textbook/physique.jsp" class="physique"> Physique</a>
-                <br>
-
-                <a href="science.jsp" class="science"> Science</a>
-                <br>
-                <a href="sport.jsp" class="sport"> Sport</a>
-                <br>
-
-
-
-                <a href="sport2.jsp" class="sport2"> Sport 2</a>
-                <br>
-
-                <a href="arabic.jsp" class="arabic"> Arabic</a>
-                <br>
-
-                <a href="french.jsp" class="french"> French</a>
-                <br>
-
-                <a href="english.jsp" class="english"> English</a>
-                <br>
-
-
-                <a href="#" class="islamia"> islamia</a>
+                <a href="<c:url value="/listLesson?module=math"/>" class="math hover"> <c:out value="${matier_name }" /></a>
+                
             </div>
             <div class="resulttext" id="contentmodel">
                     
@@ -289,7 +233,7 @@
                         <i class='bx bx-x btnclosewritelesson'></i>
                     </span>
                 </div>
-                <form action="<c:url value="/addLesson?module=math"/>" method="post">
+                <form action="<%=request.getContextPath()%>/cahier?module=<c:out value="${matier_name }"/>" method="post">
                     <textarea cols="60" rows="60" placeholder="ContentLesson" class="Advertise"
                         name="contentleson"  required></textarea>
                     <input type="submit" value=" + Add Lesson" class="published">

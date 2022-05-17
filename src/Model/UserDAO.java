@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Array;
+
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -70,6 +71,12 @@ public class UserDAO {
 	private static final String programme_class_sql="select * from emploi_temp where emploi_id=?;";
 	private static final String programme_matieres_sql="select matiere_id from emploi_temp where  emploi_id=?;";
 	private static final String class_info_sql="select * from class where id=?;";
+	private static final String spet_class_sql="select  specialiste from class where id=?;";
+	private static final String cahier_id_class_sql="select cahier_id from class where id=?;";
+
+
+	// matieres
+	private static final String matieres_enseig_inClass_sql="select matières_id from enseignement_has_matières where matières_Niveau_id =? and enseign_id=?;";
 
 	
 	
@@ -77,11 +84,10 @@ public class UserDAO {
 	
 	
 	
-	
-	
 	//TextBook
-		private static final String Add_Lesson_sql="insert into lesson(date,text)values(?,?);";
-		private static final String Select_All_Lesson="select * from lesson;";
+	private static final String select_lesson_sql="select * from cahier_text where cahier=? and matier_id=?;";
+
+		private static final String Add_Lesson_sql="insert into cahier_text(text,date,matier_id,ensieg_id,cahier)values(?,?,?,?,?);";
 		private static final String Select_Enseignant_byId="select FirstName,LastName,UserName,Password from teacher where id=?;";
 		private static final String delete_Lesson_sql="delete  from lesson where idLesson=?;";
 
@@ -111,7 +117,103 @@ public class UserDAO {
 		
 	
 	}
+	//get  matiere_id that the teacher explain in niveau_class 
+
+	public ArrayList<Integer> matiere_enseign_class(int niveau_id,int enseign_id) throws SQLException  {
+
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+
+    ArrayList<Integer> matieres_id=new ArrayList();
+    int matiere_id=0;
+	PreparedStatement mystat;
+    mystat=mycon.prepareStatement(matieres_enseig_inClass_sql);
+	    mystat.setInt(1, niveau_id);
+	    mystat.setInt(2, enseign_id);
+
+			ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		 matiere_id=result.getInt(1);
+		 matieres_id.add(matiere_id);
+		 
+	 }
+	 
+	 mycon.close();		
+	 return matieres_id;
+	 
+	 }
+	/*
+	*
+	*
+	*/
 	
+	
+public Matiére  nom_matiere(ArrayList<Integer> matieres_id,String specialiste) throws SQLException  {
+		
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 ArrayList<Group> class_info= new ArrayList();
+		 Group group;
+		 Matiére matiére =new Matiére() ;
+		 
+		PreparedStatement mystat;
+		range="";
+		int d=matieres_id.size();
+		
+		System.out.println(d);
+		int i;
+		for( i=0;i<d;i++) {
+			range=range+"?,";
+		}
+		String k;
+		k=range.substring(0, range.length() - 1);;
+		
+		range=k;
+		String sql="select * from matières where id in (";
+		sql=sql+k;
+		sql=sql+") and specialiste=?;";
+		
+		System.out.print(sql);
+
+		
+       mystat=mycon.prepareStatement(sql);
+        int d1=1;
+       for( i=0;i<=matieres_id.size()-1;i++) {
+			mystat.setInt(d1, matieres_id.get(i));
+			d1=d1+1;
+			System.out.print(" class_id"+matieres_id.get(i)+"d1:"+d1);
+
+		}
+          
+           mystat.setString(d1, specialiste);
+      
+     String nom_matiere="";
+   
+         
+		ResultSet result=mystat.executeQuery();
+		 while(result.next()) {
+			 matiére.setId(result.getInt(1));
+			 matiére.setNom_matiere(result.getString(2));
+			 matiére.setNiveau_id(result.getInt(3));
+			 
+		 }
+	     mycon.close();		
+
+
+		 return matiére ;
+		 
+		 
+		 
+		 }
 	/*
 	 * 
 	 * add Lesson
@@ -128,45 +230,61 @@ public class UserDAO {
 		}
 		PreparedStatement mystat;
 		mystat=mycon.prepareStatement(Add_Lesson_sql);
-		mystat.setString(1,mylesson.getDate());
-		mystat.setString(2,mylesson.getText());
+		mystat.setString(1,mylesson.getText());
+		mystat.setString(2,mylesson.getDate());
+		mystat.setInt(3, mylesson.getMatiere_id());
+		mystat.setInt(4, mylesson.getEnseig_id());
+		mystat.setInt(5, mylesson.getCahier());
        mystat.executeUpdate();
        mycon.close();		
 		
 	}
 	
-	// list of  Lesson
 	
-			public ArrayList<Lesson> select_all_Lesson() throws SQLException {
-				
-			       ArrayList<Lesson>list=new ArrayList();
-			
-					try {
-						Connectdb();
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					PreparedStatement mystat;
-					mystat=mycon.prepareStatement(Select_All_Lesson);
-					
-					
-					Lesson myLesson;
-					 
-					 ResultSet result=mystat.executeQuery();
-					 while(result.next()) {
-						 myLesson=new Lesson();
-						 myLesson.setId(result.getInt(1));
-						 myLesson.setDate(result.getString(2));
-						 myLesson.setText(result.getString(3));
-						
-						 list.add(myLesson);
-					 }
-					 mycon.close();
-					 return list;		
+	
+	
+
+	//get list de lesson  of the class in 
+
+	public ArrayList<Cahier_text> lesson_matiere(int cahier_id ,int matier_id) throws SQLException  {
+		
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
-	
+		ArrayList<Cahier_text> lesson_matiere=new ArrayList();
+		Cahier_text cahier_text;
+		
+	    PreparedStatement mystat;
+		
+	    mystat=mycon.prepareStatement(select_lesson_sql);
+	   mystat.setInt(1, cahier_id);
+	   mystat.setInt(2, matier_id);
+
+
+
+	 
+	 ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		 cahier_text=new Cahier_text();
+		 cahier_text.setId(result.getInt(1));
+		 cahier_text.setText(result.getString(2));
+		 cahier_text.setDate(result.getString(3));
+		 cahier_text.setMatiere_id(result.getInt(4));
+		 cahier_text.setEnseig_id(result.getInt(5));
+		 cahier_text.setCahier(result.getInt(6));
+		 
+		 lesson_matiere.add(cahier_text);
+		 
+	 }
+		 
+		 
+	 
+		 
+		return lesson_matiere;
+	}
 
 			
 
@@ -189,7 +307,7 @@ public class UserDAO {
 				}
 				/*
 				 * 
-				 * add Lesson
+				 * save inscription
 				 */
 				
 				
@@ -580,6 +698,7 @@ public ArrayList<Group>  class_info(ArrayList<Integer> class_id) throws SQLExcep
 				 group.setSpecialiste(result.getString(4));
 				 group.setId_niveau(result.getInt(5));
 				 group.setEmlpoi_id(result.getInt(6));
+				 group.setCahier_id(result.getInt(7));
              
 				 class_info.add(group);
 				 
@@ -592,6 +711,62 @@ public ArrayList<Group>  class_info(ArrayList<Integer> class_id) throws SQLExcep
 			 
 			 
 			 }
+//get the specialiste of class 
+
+	public String   class_spet( String class_id) throws SQLException  {
+		
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String spet="";
+		PreparedStatement mystat;
+		mystat=mycon.prepareStatement(spet_class_sql);
+		mystat.setString(1, class_id);
+		ResultSet result=mystat.executeQuery();
+		 while(result.next()) {
+			 spet=result.getString(1);
+			
+			 
+		 }
+	     mycon.close();		
+
+
+		 return spet;
+		 
+		 
+		 
+		 }
+	//get cahier_id of class 
+
+			public int  cahier_id_class( String class_id) throws SQLException  {
+				
+				try {
+					Connectdb();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+      int cahier_id =0;
+           PreparedStatement mystat;
+				mystat=mycon.prepareStatement(cahier_id_class_sql);
+				mystat.setString(1, class_id);
+				ResultSet result=mystat.executeQuery();
+				 while(result.next()) {
+					 cahier_id=result.getInt(1)	;				 
+				 }
+			     mycon.close();		
+
+
+				 return cahier_id;
+				 
+				 
+				 
+				 }
+	
 		
 // emploi de temps 
 
@@ -818,6 +993,8 @@ public ArrayList<Group>  class_emploi(ArrayList<Integer> emploi_id) throws SQLEx
 		 group.setSpecialiste(result.getString(4));
 		 group.setId_niveau(result.getInt(5));
 		 group.setEmlpoi_id(result.getInt(6));
+		 group.setCahier_id(result.getInt(7));
+
         System.out.println(group.getSpecialiste());
 		 class_info.add(group);
 		 
@@ -900,46 +1077,14 @@ public ArrayList<Emploi> programme_class(int emploi_class_id) throws SQLExceptio
 	 return programme;
 	 
 	 }
-/*
- * 
- * 
- */
-//get list de matiere_id inside  programme of the  class  by using emploi_temp tale
-
-
-
-public ArrayList<Integer> list_matiere_id(int emploi_class_id) throws SQLException  {
-
-try {
-	Connectdb();
-} catch (ClassNotFoundException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
-
-ArrayList<Integer> list_matieres_id=new ArrayList();
-int matieres_id=0;
-PreparedStatement mystat;
-    mystat=mycon.prepareStatement(programme_matieres_sql);
-     mystat.setInt(1, emploi_class_id);
-		ResultSet result=mystat.executeQuery();
-    while(result.next()) {
-	matieres_id=result.getInt(1);
-	System.out.println("matieres_id_111"+"\n"+matieres_id);
-	 list_matieres_id.add(matieres_id);
-	 
-}
-
-mycon.close();		
-return list_matieres_id;
-
-}
-
 
 
 
 
 //get list de matiere inside  programme of the  class  by using emploi_temp tale
+
+
+
 
 public ArrayList<Matiére> programme_class_matiere(ArrayList<Integer> list_matieres_id) throws SQLException  {
 	
@@ -1000,6 +1145,46 @@ PreparedStatement mystat;
 	 }
 	 
 
+
+/*
+ * 
+ * 
+ */
+//get list de matiere_id inside  programme of the  class  by using emploi_temp tale
+
+
+
+public ArrayList<Integer> list_matiere_id(int emploi_class_id) throws SQLException  {
+
+try {
+	Connectdb();
+} catch (ClassNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+
+ArrayList<Integer> list_matieres_id=new ArrayList();
+int matieres_id=0;
+PreparedStatement mystat;
+    mystat=mycon.prepareStatement(programme_matieres_sql);
+     mystat.setInt(1, emploi_class_id);
+		ResultSet result=mystat.executeQuery();
+    while(result.next()) {
+	matieres_id=result.getInt(1);
+	System.out.println("matieres_id_111"+"\n"+matieres_id);
+	 list_matieres_id.add(matieres_id);
+	 
+}
+
+mycon.close();		
+return list_matieres_id;
+
+}
+
+
+
+
+
 // get class info 
 
 
@@ -1017,6 +1202,46 @@ public Group class_info( int class_id) throws SQLException {
 		PreparedStatement mystat;
 		mystat=mycon.prepareStatement(class_info_sql);
 		mystat.setInt(1, class_id);
+		
+		
+		
+		 
+		 ResultSet result=mystat.executeQuery();
+		 while(result.next()) {
+			 
+			 groupe.setId(result.getInt(1));
+			 groupe.setNbr_class(result.getInt(2));
+			 groupe.setId_period(result.getInt(3));
+			 groupe.setSpecialiste(result.getString(4));
+			 groupe.setId_niveau(result.getInt(5));
+			 groupe.setEmlpoi_id(result.getInt(6));
+			 groupe.setCahier_id(result.getInt(7));
+
+			
+		 }
+		 mycon.close();
+		 return groupe;		
+}
+
+    
+
+// get information about class y uding String 
+
+
+public Group class_info( String class_id) throws SQLException {
+	
+    
+
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Group groupe=new Group();
+		PreparedStatement mystat;
+		mystat=mycon.prepareStatement(class_info_sql);
+		mystat.setString(1, class_id);
 		
 		
 		

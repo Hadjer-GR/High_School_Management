@@ -12,16 +12,31 @@
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
 
-  <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 880px)">
-    <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
-      <link rel="stylesheet" href="<c:url value="/css/table.css"/>">
-      
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/smallmobile.css" media="(max-width: 390px)">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table.css" >
     
-</head>
+    <style>
+    
+    .content form .picture .img ,.sidebar header .imageprofil{
+      background-image: url('../img/profilimg.jpg');
 
-     <script defer src="<c:url value="/js/script.js"/>"></script>
-     <script defer src="<c:url value="/js/mobilescreen.js"/>"></script>
+    }
+    
+    
+    
+    
+    
+    
+    </style>
+    
+    
+   <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/js/script.js"></script>
+    <script defer type="text/javascript" src="${pageContext.request.contextPath}/js/profil.js"></script>
+    <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
+    
+    </head>
 <body>
 
  <nav class="sidebar close">
@@ -160,7 +175,7 @@
 
                 <li class="">
 
-                    <a href="#">
+                    <a href="<%=request.getContextPath()%>/login">
 
                         <i class='bx bx-log-out icon'></i>
 
@@ -172,27 +187,7 @@
 
 
 
-                <li class="mode">
-
-                    <div class="sun-moon">
-
-                        <i class='bx bx-moon icon moon'></i>
-
-                        <i class='bx bx-sun icon sun'></i>
-
-                    </div>
-
-                    <span class="mode-text text">Dark mode</span>
-
-
-
-                    <div class="toggle-switch">
-
-                        <span class="switch"></span>
-
-                    </div>
-
-                </li>
+                
 
 
 

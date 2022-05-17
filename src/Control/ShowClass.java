@@ -38,7 +38,7 @@ public class ShowClass extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
-		int class_id=Integer.parseInt( req.getParameter("class_id"));
+		int class_id=Integer.parseInt(req.getParameter("class_id"));
 		System.out.println("\n "+" Show class servlet ");
 
 		System.out.println("class_id is :"+class_id);

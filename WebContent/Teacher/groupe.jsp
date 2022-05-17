@@ -12,17 +12,28 @@
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
 
-  <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 880px)">
-    <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
-      <link rel="stylesheet" href="<c:url value="/css/table.css"/>">
+ 
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/smallmobile.css" media="(max-width: 390px)">
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table.css">
+    
+    
+    <style>
+    
+    .content form .picture .img ,.sidebar header .imageprofil{
+      background-image: url('../img/profilimg.jpg');
 
- 
-</head>
- <script defer src="<c:url value="/js/etud.js"/>"></script>
-  <script defer src="<c:url value="/js/script.js"/>"></script>
- 
-     <script defer src="<c:url value="/js/mobilescreen.js"/>"></script>
+    }
+
+    </style>
+    
+    
+   <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/js/script.js"></script>
+    <script defer type="text/javascript" src="${pageContext.request.contextPath}/js/profil.js"></script>
+    <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
+    </head>
+    
 <body>
 
     <nav class="sidebar close">
@@ -107,34 +118,13 @@
 
 
 
-                    <li class="nav-link ">
-
-                        <a href="/appele.html">
-
-                            <i class='bx bx-credit-card-front icon'></i>
-
-                            <span class="text nav-text ">Verre Appele</span>
-
-                        </a>
-
-                    </li>
+                   
 
 
 
 
 
-
-                    <li class="nav-link">
-
-                        <a href="/communication.html">
-
-                            <i class='bx bx-message-minus icon'></i>
-
-                            <span class="text nav-text">Communication</span>
-
-                        </a>
-
-                    </li>
+                    
 
 
 
@@ -148,7 +138,7 @@
 
                             <i class='bx bx-bell icon'></i>
 
-                            <span class="text nav-text ">Advertisement</span>
+                            <span class="text nav-text ">Annoces</span>
 
                         </a>
 
@@ -166,7 +156,7 @@
                 <ul>
                     <li class="">
 
-                        <a href="#">
+                        <a href="<%=request.getContextPath()%>/login">
 
                             <i class='bx bx-log-out icon'></i>
 
@@ -178,27 +168,7 @@
 
 
 
-                    <li class="mode">
-
-                        <div class="sun-moon">
-
-                            <i class='bx bx-moon icon moon'></i>
-
-                            <i class='bx bx-sun icon sun'></i>
-
-                        </div>
-
-                        <span class="mode-text text">Dark mode</span>
-
-
-
-                        <div class="toggle-switch">
-
-                            <span class="switch"></span>
-
-                        </div>
-
-                    </li>
+                   
 
 
                 </ul>
@@ -216,7 +186,7 @@
         <div class="headermobile">
             <i class='bx bx-menu togglemenu'></i>
 
-            <div class="text texthome">1AS</div>
+            <div class="text texthome"> <c:out value="${groupe.getId_niveau() }" /> AS</div>
         </div>
         <div class="titlenote">
             <a href="<%=request.getContextPath()%>/Groupes" class="btnleft"> <i class='bx bx-reply'></i>
@@ -230,21 +200,22 @@
             </span>
            
         </div>
+       
         <div class="contentetud groupe">
             <div class="holder">
 
                 <div class="holde1 absences">
                     <input type="checkbox" id="checkabsences">
-                    <label for="checkabsences"> Absences And Delay <br>
+                    <label for="checkabsences"> Absences  <br>
                         <i class='bx bx-run'></i>
                     </label>
 
                 </div>
                 <div class=" holde1 note">
-                    <a href="studentList.html">&nbsp;&nbsp;Student&nbsp;&nbsp; <br>
-                        <i class='bx bx-receipt'></i> </div>
+                    <a href="#">&nbsp;&nbsp;Student&nbsp;&nbsp; <br>
+                        <i class='bx bx-receipt'></i></a> </div>
                 <div class="holde1 textbook">
-                    <a href="textbook.html"> The Text Book <br>
+                    <a href="<%=request.getContextPath()%>/cahier?id_class= <c:out value="${groupe.getId()}" />"> The Text Book <br>
                         <i class='bx bx-book-open'></i>
                     </a>
                 </div>
@@ -462,30 +433,11 @@
                 </div>
             </div>
 
-            <!-- design Absences And Delay  after enter btn Absences And Delay -->
-            <div class=" contentabsences" id="contentAbsent">
-
-                <div class="cardeabsences">
-                    <h2> &nbsp;&nbsp;<i class='bx bx-run'></i> &nbsp;&nbsp;Absences</h2>
-                    <div class="time">
-                        <h2>19/03/2022</h2>
-                        <h2> 10:00-> 11:00</h2>
-                    </div>
-                    <div class="justifie">
-                        <i class='bx bxs-user-check'></i>
-                        <a href="#" class="justified"> Justified</a>
-                    </div>
-                </div>
 
 
+</div>
 
-
-                <!-- design btn View Alll -->
-                <div class="view">
-                    <a href="/Absences.html"> View All</a>
-                </div>
-
-            </div>
+           
 
 
     </section>
@@ -493,22 +445,6 @@
 
 
 
-
- <script>
-       
-        const absences = document.getElementById("contentAbsent");
-        console.log(absences);
-        const showabsences = document.querySelectorAll("#checkabsences");
-        showabsences.forEach((item) => {
-            item.addEventListener("change", (eo) => {
-                if (item.checked) {
-                    absences.style.display = "block";
-                } else {
-                    absences.style.display = "none";
-                }
-            });
-        });
-    </script>
 
 
  

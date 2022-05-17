@@ -27,16 +27,16 @@ public class login extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    
-    
-    
 
-	@Override
+    
+    
+ 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		
+		 
+		   HttpSession ses =req.getSession();
+		   ses.removeAttribute("type_account");
+
 		this.getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
 
 		
@@ -66,9 +66,9 @@ public class login extends HttpServlet {
           
 		 if(id_account>0) {
 			 HttpSession ses =req.getSession();
-			 
-			 
-			 
+			
+		
+		 
 			 try {
 				 type_Account= user.type_account(id_account);
 			    ses.setAttribute("type_account",  type_Account);

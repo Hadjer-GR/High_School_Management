@@ -7,7 +7,26 @@ public class Group {
 	 private String specialiste ;
 	 private int id_niveau;
 	 private int emlpoi_id;
+	 private int cahier_id;
 	 
+	 
+	public Group(int id, int nbr_class, int id_period, String specialiste, int id_niveau, int emlpoi_id,
+			int cahier_id) {
+		super();
+		this.id = id;
+		this.nbr_class = nbr_class;
+		this.id_period = id_period;
+		this.specialiste = specialiste;
+		this.id_niveau = id_niveau;
+		this.emlpoi_id = emlpoi_id;
+		this.cahier_id = cahier_id;
+	}
+	public int getCahier_id() {
+		return cahier_id;
+	}
+	public void setCahier_id(int cahier_id) {
+		this.cahier_id = cahier_id;
+	}
 	public int getEmlpoi_id() {
 		return emlpoi_id;
 	}
@@ -47,15 +66,7 @@ public class Group {
 	
 	
 	
-	public Group(int id, int nbr_class, int id_period, String specialiste, int id_niveau, int emlpoi_id) {
-		super();
-		this.id = id;
-		this.nbr_class = nbr_class;
-		this.id_period = id_period;
-		this.specialiste = specialiste;
-		this.id_niveau = id_niveau;
-		this.emlpoi_id = emlpoi_id;
-	}
+	
 	public Group() {
 		
 	}
