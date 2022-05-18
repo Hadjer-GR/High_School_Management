@@ -110,32 +110,10 @@
 
 
 
-                    <li class="nav-link ">
-
-                        <a href="appele.html">
-
-                            <i class='bx bx-credit-card-front icon'></i>
-
-                            <span class="text nav-text ">Verre Appele</span>
-
-                        </a>
-
-                    </li>
+                    
 
 
-
-                    <li class="nav-link">
-
-                        <a href="/communication.html">
-
-                            <i class='bx bx-message-minus icon'></i>
-
-                            <span class="text nav-text">Communication</span>
-
-                        </a>
-
-                    </li>
-
+                  
 
 
 
@@ -151,7 +129,7 @@
 
                             <i class='bx bx-bell icon'></i>
 
-                            <span class="text nav-text ">Advertisement</span>
+                            <span class="text nav-text ">Annonces</span>
 
                         </a>
 
@@ -173,7 +151,7 @@
 
                         <i class='bx bx-log-out icon'></i>
 
-                        <span class="text nav-text">Logout</span>
+                        <span class="text nav-text">Se déconnecter</span>
 
                     </a>
 

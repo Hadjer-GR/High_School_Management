@@ -85,11 +85,13 @@ public class UserDAO {
 	
 	
 	//TextBook
-	private static final String select_lesson_sql="select * from cahier_text where cahier=? and matier_id=?;";
-
+        private static final String select_lesson_sql="select * from cahier_text where cahier=? and matier_id=? and ensieg_id=?;";
+	    private static final String get_Lesson_sql="select * from cahier_text where id=?;";
 		private static final String Add_Lesson_sql="insert into cahier_text(text,date,matier_id,ensieg_id,cahier)values(?,?,?,?,?);";
-		private static final String Select_Enseignant_byId="select FirstName,LastName,UserName,Password from teacher where id=?;";
-		private static final String delete_Lesson_sql="delete  from lesson where idLesson=?;";
+		private static final String delete_Lesson_sql="delete  from cahier_text where id=?;" ;
+		private static final String edite_Lesson_sql="update  cahier_text set text=? where id=?;" ;
+
+				
 
 		/*
 		 * 
@@ -220,7 +222,7 @@ public Matiére  nom_matiere(ArrayList<Integer> matieres_id,String specialiste) t
 	 */
 	
 	
-	public void add_Lesson(Lesson mylesson) throws SQLException  {
+	public void add_Lesson( Cahier_text mylesson) throws SQLException  {
 		
 		try {
 			Connectdb();
@@ -246,7 +248,7 @@ public Matiére  nom_matiere(ArrayList<Integer> matieres_id,String specialiste) t
 
 	//get list de lesson  of the class in 
 
-	public ArrayList<Cahier_text> lesson_matiere(int cahier_id ,int matier_id) throws SQLException  {
+	public ArrayList<Cahier_text> lesson_matiere(int cahier_id ,int matier_id,int enseig_id) throws SQLException  {
 		
 		try {
 			Connectdb();
@@ -262,6 +264,7 @@ public Matiére  nom_matiere(ArrayList<Integer> matieres_id,String specialiste) t
 	    mystat=mycon.prepareStatement(select_lesson_sql);
 	   mystat.setInt(1, cahier_id);
 	   mystat.setInt(2, matier_id);
+	   mystat.setInt(3, enseig_id);
 
 
 
@@ -300,6 +303,63 @@ public Matiére  nom_matiere(ArrayList<Integer> matieres_id,String specialiste) t
 					PreparedStatement mystat;
 					mystat=mycon.prepareStatement(delete_Lesson_sql);
 					 mystat.setInt(1, id);
+			          mystat.executeUpdate();
+					mycon.close();
+					
+					
+				}
+				/*
+				 * 
+				 * 
+				 */
+				
+              // get _lesson_sql
+				
+				public Cahier_text get_lesson( int id ) throws SQLException {
+					try {
+						Connectdb();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Cahier_text lesson =new Cahier_text();
+					PreparedStatement mystat;
+					mystat=mycon.prepareStatement(get_Lesson_sql);
+					mystat.setInt(1, id);
+					ResultSet result;
+					 result=mystat.executeQuery();
+
+					 while(result.next()) {
+						 lesson.setId(result.getInt(1));
+						 lesson.setText(result.getString(2));
+						 lesson.setDate(result.getString(3));
+						 lesson.setMatiere_id(result.getInt(4));
+						 lesson.setEnseig_id(result.getInt(5));
+						 lesson.setCahier(result.getInt(6));
+						 
+						 
+					 }
+			          
+			          
+			          
+			          
+					mycon.close();
+					 return lesson;
+					
+				}
+				// edite_lesson_sql
+				
+				public void edite_lesson( String text,int id ) throws SQLException {
+					try {
+						Connectdb();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					PreparedStatement mystat;
+					mystat=mycon.prepareStatement(edite_Lesson_sql);
+					mystat.setString(1, text);
+					 mystat.setInt(2, id);
 			          mystat.executeUpdate();
 					mycon.close();
 					
@@ -1255,6 +1315,8 @@ public Group class_info( String class_id) throws SQLException {
 			 groupe.setSpecialiste(result.getString(4));
 			 groupe.setId_niveau(result.getInt(5));
 			 groupe.setEmlpoi_id(result.getInt(6));
+			 groupe.setCahier_id(result.getInt(7));
+
 			
 		 }
 		 mycon.close();

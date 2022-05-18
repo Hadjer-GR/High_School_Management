@@ -3,6 +3,7 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"    %>
         <%@ page import="Model.*" %>
         <%@ page import="java.util.ArrayList" %>
+        
 <!DOCTYPE html>
 <html  >
 <head>
@@ -53,9 +54,9 @@
 
                 <div class="text logo-text">
 
-                    <a href="/index.html" class="hometext"><span class="name ">Accueil </span></a>
+                    <a href="<%=request.getContextPath()%>/index" class="hometext"><span class="name ">Accueil </span></a>
 
-                    <a href="/profil.html" class="username "> <span class="profession ">
+                    <a href="<%=request.getContextPath()%>/Teacherprofil" class="username "> <span class="profession ">
                             Nom Prenom
                         </span>
                     </a>
@@ -93,11 +94,11 @@
 
                     <li class="nav-link ">
 
-                        <a href="/schedule.html">
+                        <a href="<%=request.getContextPath()%>/Schedule">
 
                             <i class='bx bx-grid icon'></i>
 
-                            <span class="text nav-text ">Schedule</span>
+                            <span class="text nav-text ">Programme</span>
 
                         </a>
 
@@ -107,7 +108,7 @@
 
                     <li class="nav-link hover">
 
-                        <a href="class.html">
+                        <a href="<%=request.getContextPath()%>/Groupes">
 
                             <i class='bx bx-copy icon  texthover'></i>
 
@@ -131,7 +132,7 @@
 
                             <i class='bx bx-bell icon'></i>
 
-                            <span class="text nav-text ">Advertisement</span>
+                            <span class="text nav-text ">Annonces</span>
 
                         </a>
 
@@ -153,7 +154,7 @@
 
                         <i class='bx bx-log-out icon'></i>
 
-                        <span class="text nav-text">Logout</span>
+                        <span class="text nav-text">Se déconnecter</span>
 
                     </a>
 
@@ -178,15 +179,17 @@
         <div class="headermobile">
             <i class='bx bx-menu togglemenu'></i>
 
-            <div class="text texthome">1AS-G1</div>
+            <div class="text texthome"><c:out value="${groupe.getId_niveau()}" />AS-G <c:out value="${groupe.getNbr_class()}" /></div>
         </div>
+       <br/>
+
 
 
         <div class="titlenote">
-            <a href="/Etud1.html" class="btnleft"> <i class='bx bx-reply'></i>
+            <a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${groupe.getId()}" />" class="btnleft"> <i class='bx bx-reply'></i>
             </a>
             <span>
-                Text Book
+               Cahier de Text 
             </span>
         </div>
         <div class="contentnotes">
@@ -216,7 +219,7 @@
                         <div>
                          
                      
-                            <a href="<%=request.getContextPath()%>/editelesson?id=<c:out value="${listlesson.getId()}" />"> <i class='bx bx-edit'></i></a>
+                            <a href="<%=request.getContextPath()%>/editeLesson?id=<c:out value="${listlesson.getId()}" />"> <i class='bx bx-edit'></i></a>
                             <a href="<%=request.getContextPath()%>/deleteLesson?id=<c:out value="${listlesson.getId()}" />"><i class='bx bx-trash'></i></a>
                      
                        </div>
@@ -224,10 +227,36 @@
                      </c:forEach>
                 </div>
                 <div class="addlesson">
-                    <a href="#" class="btnaddleson"> <i class='bx bx-book-add'></i> Add Lesson</a>
+                    <a href="#" class="btnaddleson"> <i class='bx bx-book-add'></i> ajouter une leçon</a>
                 </div>
             </div>
+                        <c:if test="${lesson != null}">
+                        
+                         <div style="display:block;" class="makeposte">
+                          <div class="closewritelesson">
+                    <span>
+                     <a href="<%=request.getContextPath()%>/listLesson">
+                     <i class='bx bx-x btnclosewritelesson'></i>  
+                     </a> 
+                    </span>
+                </div>
+                <form action="<%=request.getContextPath()%>/editeLesson" method="post">
+       
+                         <textarea cols="60" rows="60" placeholder="ContentLesson" class="Advertise"
+                        name="contentleson"  required><c:out value="${lesson.getText()  }"/></textarea>
+                        <input  name="id" type="number" value="<c:out value="${lesson.getId()}"/>" style="display:none"   />
+                    <input type="submit" value=" enregistrer la leçon" class="published">
+                </form>
+                
+                
+
+            </div>
+                        
+                        </c:if>
+          <c:if test="${lesson == null}">
+            
             <div class="makeposte">
+            
                 <div class="closewritelesson">
                     <span>
                         <i class='bx bx-x btnclosewritelesson'></i>
@@ -236,12 +265,16 @@
                 <form action="<%=request.getContextPath()%>/cahier?module=<c:out value="${matier_name }"/>" method="post">
                     <textarea cols="60" rows="60" placeholder="ContentLesson" class="Advertise"
                         name="contentleson"  required></textarea>
-                    <input type="submit" value=" + Add Lesson" class="published">
+                    <input type="submit" value=" + ajouter une leçon" class="published">
                 </form>
+                
+                
 
             </div>
-
-
+             </c:if>
+            
+             
+              
 
 
 

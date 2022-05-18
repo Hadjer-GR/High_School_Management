@@ -1,6 +1,7 @@
 package Control;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,6 @@ import javax.servlet.http.HttpSession;
 
 import Model.Cahier_text;
 import Model.Group;
-import Model.Lesson;
 import Model.Matiére;
 import Model.Type_Account;
 import Model.UserDAO;
@@ -43,10 +43,14 @@ public class cahier extends HttpServlet {
 
 		resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
-		  String class_id= req.getParameter("id_class");
-
-          System.out.println("\n cahier : \n"+class_id);
+		 
+        
+        
           HttpSession ses=req.getSession();
+        
+        	   String class_id= req.getParameter("id_class");
+              ses.setAttribute("class_id", class_id);
+             
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 
                   if (type_Account != null) {
@@ -57,26 +61,32 @@ public class cahier extends HttpServlet {
                 	  Group groupe=new Group();
                 	    ArrayList<Integer> matieres_id=new ArrayList();
                 	    Matiére matiere =new Matiére();
+                	    Cahier_text mylesson =new Cahier_text();  
+      				  ArrayList<Cahier_text>listlesson=new ArrayList();
 
                 	  
-                	  
+                	  String id=(String)req.getSession().getAttribute("class_id");
                 	
                 	  try {
-						groupe=user.class_info(class_id);
+						groupe=user.class_info(id);
+						System.out.println("\n id :"+id);
 						matieres_id=user.matiere_enseign_class(groupe.getId_niveau(), type_Account.getId_user());	
 						matiere=user.nom_matiere(matieres_id,groupe.getSpecialiste());
+				       listlesson=user.lesson_matiere(groupe.getCahier_id(),matiere.getId(),type_Account.getId_user());
+
 					} catch (NumberFormatException | SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+                	  
+                	  ses.setAttribute("groupe", groupe);
+                	  ses.setAttribute("matiere", matiere);
           		
-          			ses.setAttribute("groupe", groupe);
-          			ses.setAttribute("matiere", matiere);
-
-                  req.setAttribute("matier_name", matiere.getNom_matiere());
-                  
-
-			this.getServletContext().getRequestDispatcher("/Teacher/cahier.jsp").forward(req, resp);
+			      req.setAttribute("matier_name", matiere.getNom_matiere());
+		         req.setAttribute("listlesson",listlesson);
+		              req.setAttribute("groupe", groupe);
+		            
+		 		this.getServletContext().getRequestDispatcher("/Teacher/cahier.jsp").forward(req, resp);
 
 		}else {
 			
@@ -98,7 +108,7 @@ public class cahier extends HttpServlet {
 		
 			 resp.setContentType("text/html");
 			  req.setCharacterEncoding("UTF-8");
-			  Lesson mylesson =new Lesson();
+			  Cahier_text mylesson =new  Cahier_text();
 			  UserDAO user=new UserDAO();
 			  
 			     Group groupe=(Group)req.getSession().getAttribute("groupe");
@@ -118,10 +128,7 @@ public class cahier extends HttpServlet {
 		     mylesson.setMatiere_id(matiere.getId());
 		     mylesson.setEnseig_id(type_Account.getId_user());
 		     mylesson.setCahier(groupe.getCahier_id());
-		     /*
-		       out.print(mylesson.getDate() +"<br>");
-		       out.print(mylesson.getText());
-		       */
+		     
 		     try {
 				user.add_Lesson(mylesson);
 			} catch (SQLException e) {
@@ -129,7 +136,7 @@ public class cahier extends HttpServlet {
 				e.printStackTrace();
 			}
 				
-				this.getServletContext().getRequestDispatcher("/Teacher/cahier.jsp").forward(req, resp);
+			 resp.sendRedirect(req.getContextPath() + "/listLesson");
 	    	
 		}
 		

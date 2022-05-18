@@ -130,7 +130,7 @@
 
                             <i class='bx bx-bell icon'></i>
 
-                            <span class="text nav-text ">Annoces</span>
+                            <span class="text nav-text ">Annonces</span>
 
                         </a>
 
@@ -151,7 +151,7 @@
 
                         <i class='bx bx-log-out icon'></i>
 
-                        <span class="text nav-text">Logout</span>
+                        <span class="text nav-text">Se déconnecter</span>
 
                     </a>
 

@@ -1,6 +1,7 @@
 package Control;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.Lesson;
+import Model.Cahier_text;
+import Model.Group;
+import Model.Matiére;
+import Model.Type_Account;
 import Model.UserDAO;
 
 /**
@@ -33,21 +37,39 @@ public class listLesson extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		 resp.setContentType("text/html");
+		
+		
+		resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
-		  Lesson mylesson =new Lesson();
-		  UserDAO user=new UserDAO();
-		  ArrayList< Lesson>listlesson=new ArrayList();
-       
-	       try {
-	    	   listlesson=user.select_all_Lesson();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+  
+		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
+		if (type_Account != null) {
+         
+		    Cahier_text mylesson =new Cahier_text();
+		    Matiére matiere =( Matiére) req.getSession().getAttribute("matiere");
+		    Group  groupe =( Group) req.getSession().getAttribute("groupe");
+
+			  UserDAO user=new UserDAO();
+			  ArrayList<Cahier_text>listlesson=new ArrayList();
+	       
+		       try {
+		    	   listlesson=user.lesson_matiere(groupe.getCahier_id(),matiere.getId(),type_Account.getId_user());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		       req.setAttribute("groupe", groupe);
+            req.setAttribute("matier_name", matiere.getNom_matiere());
+	         req.setAttribute("listlesson",listlesson);
+	 		this.getServletContext().getRequestDispatcher("/Teacher/cahier.jsp").forward(req, resp);
+		}else {
+			
+			 resp.sendRedirect(req.getContextPath() + "/login");
+
+			
+			
 		}
-	      
-         req.setAttribute("listlesson",listlesson);
- 		this.getServletContext().getRequestDispatcher("/Teacher/textbook.jsp").forward(req, resp);
+		
 
 
 		

@@ -138,7 +138,7 @@
 
                             <i class='bx bx-bell icon'></i>
 
-                            <span class="text nav-text ">Annoces</span>
+                            <span class="text nav-text ">Annonces</span>
 
                         </a>
 
@@ -160,7 +160,7 @@
 
                             <i class='bx bx-log-out icon'></i>
 
-                            <span class="text nav-text">Logout</span>
+                            <span class="text nav-text">Se déconnecter</span>
 
                         </a>
 
@@ -212,10 +212,10 @@
 
                 </div>
                 <div class=" holde1 note">
-                    <a href="#">&nbsp;&nbsp;Student&nbsp;&nbsp; <br>
+                    <a href="#">&nbsp;&nbsp;étudiants&nbsp;&nbsp; <br>
                         <i class='bx bx-receipt'></i></a> </div>
                 <div class="holde1 textbook">
-                    <a href="<%=request.getContextPath()%>/cahier?id_class= <c:out value="${groupe.getId()}" />"> The Text Book <br>
+                    <a href="<%=request.getContextPath()%>/cahier?id_class= <c:out value="${groupe.getId()}" />"> Cahier de Text <br>
                         <i class='bx bx-book-open'></i>
                     </a>
                 </div>
@@ -223,7 +223,7 @@
 
             </div>
             <!-- design schedule of the student -->
-            <div class="text textschedule"> <span> schedule </span> </div>
+            <div class="text textschedule"> <span> Programme </span> </div>
 
             <div class="table  grouptable">
                 <div class="row">
