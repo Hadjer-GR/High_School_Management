@@ -39,21 +39,24 @@
 .day-columns {
   position: relative;
   width: 100% !important;
-  height: 100% !important;
+  height: 80vh !important;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-
   justify-content: flex-start;
 }
+.home .contentetud .table .day-columns {
+  height: 90vh !important;
+}
 .day-columns .day-column {
+  position: relative;
+  height: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
   height: auto;
   /* min-width: 160px; */
   border: 1px solid #ebedf2;
-
   border-left: none;
 }
 .day-columns .day-column:first-child {
@@ -82,8 +85,16 @@
   padding: 3px;
   color: white;
   height: 60px;
+  width: 160px;
   padding: 5px;
   box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+}
+.day-columns .day-column .day-content .event:hover {
+  cursor: pointer;
+  transform: scaleY(1.2);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  transition: 0.2s;
 }
 .day-columns .day-column .day-content .event .title {
   font-size: 1.1em;
@@ -106,13 +117,18 @@
 }
 
 .table_teacher .container {
-  width: 100vw;
   height: 80vh !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 80% !important;
+  max-width: none !important;
   padding: 0 !important;
   margin-left: 5% !important;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 880px) {
   .table_teacher .container {
+    height: 90vh !important;
+    width: 98vw !important;
     overflow-x: scroll !important;
     margin: 0 !important;
   }

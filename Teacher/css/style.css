@@ -902,17 +902,18 @@ body.dark .home .text {
   position: relative;
   border: 2px solid rgba(0, 0, 0, 0.5);
   margin-left: 4%;
-  width: 60%;
-  height: 500px;
+  width: 80%;
+  height: 90vh !important;
+  background-color: #fff;
   margin-top: 3%;
-  border: 2px solid red;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  border: none !important;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
   background-size: cover;
+  margin-bottom: 10px !important;
 }
 .home .contentetud .grouptable {
   margin-top: 5px !important;
-  height: 400px !important;
 }
 /* design home analyse statistics
   index.html
@@ -1663,4 +1664,26 @@ form .button input:hover {
   word-break: break-all;
   line-height: 5px;
   direction: rtl !important;
+}
+
+/*
+List Student  design input 
+*/
+
+.setresult,
+.student .edite {
+  all: unset;
+}
+.setresult {
+  width: 60px;
+}
+.student .edite {
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.07);
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.student .edite:hover {
+  transform: scale(1.1);
 }
