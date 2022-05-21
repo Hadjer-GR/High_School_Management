@@ -32,7 +32,7 @@ public class UserDAO {
 	private  static final  String type_teacher_sql="select id from enseignement where Account_id=?;";
 	private  static final  String type_Parent_sql="select id  from parent where Account_id=?;";
 	private  static final  String type_Admin_sql="select id  from admin where Account_id=?;";
-	private  static final  String type_Secretaire_sql="select id  from sécretaire where Account_id=?;";
+	private  static final  String type_Secretaire_sql="select id  from secretaire where Account_id=?;";
 /*
  * 
  * Acount
@@ -47,8 +47,8 @@ public class UserDAO {
 	 *  Teacher qeury
 	 * 
 	 */
-	private static final String teacher_info_sql="select id,nom,prenom,date_naissance,numéro_contact,email,account_id,img from enseignement where id=?;";
-	private static final String update_Teacher_sql="update  enseignement set nom=?,prenom=?,numéro_contact=?,email=?,img=? where id=?;";
+	private static final String teacher_info_sql="select id,nom,prenom,date_naissance,num_contact,email,account_id,img from enseignement where id=?;";
+	private static final String update_Teacher_sql="update  enseignement set nom=?,prenom=?,num_contact=?,email=?,img=? where id=?;";
 	private static final String teacher_class_sql="select class_id from enseignement_has_class where enseig_id=?;";
 	private static final String teacher_emploi_sql="select Emploi_temp_id from  emploi_temp_has_enseignement where enseig_id=?;";
 
@@ -76,7 +76,7 @@ public class UserDAO {
 
 
 	// matieres
-	private static final String matieres_enseig_inClass_sql="select matières_id from enseignement_has_matières where matières_Niveau_id =? and enseign_id=?;";
+	private static final String matieres_enseig_inClass_sql="select matiere_id from enseignement_has_matiere where matiere_Niveau_id =? and enseign_id=?;";
 
 	
 	
@@ -109,7 +109,7 @@ public class UserDAO {
 	public void Connectdb() throws  ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		try {
-			mycon=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Hadjer,Xp06");
+			mycon=DriverManager.getConnection("jdbc:mysql://localhost:3306/database_gg", "root", "Hadjer,Xp06");
 			System.out.println(" is secussful access to database");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -180,7 +180,7 @@ public Matiére  nom_matiere(ArrayList<Integer> matieres_id,String specialiste) t
 		k=range.substring(0, range.length() - 1);;
 		
 		range=k;
-		String sql="select * from matières where id in (";
+		String sql="select * from matiere where id in (";
 		sql=sql+k;
 		sql=sql+") and specialiste=?;";
 		
@@ -1171,7 +1171,7 @@ PreparedStatement mystat;
 	k=range.substring(0, range.length() - 1);;
 	
 	range=k;
-	String sql="select * from matières where id in (";
+	String sql="select * from matiere where id in (";
 	sql=sql+k;
 	sql=sql+");";
 	

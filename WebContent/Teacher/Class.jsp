@@ -58,14 +58,12 @@
 
             </div>
 
-
             <i class='bx bx-chevron-right toggle'></i>
             <i class='bx bx-menu togglemenu2'></i>
 
         </header>
-
-
-
+        
+        
         <div class="menu-bar">
 
             <div class="menu">
@@ -305,7 +303,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('mathématiques')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('mathematiques')}">
                               <%    nbr_2as_1=nbr_2as_1+1; %>
                               
                              <li>                             
@@ -373,7 +371,7 @@
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
-                                                            <c:if test="${class_list.getSpecialiste().equals('génie-civil')}">
+                                                            <c:if test="${class_list.getSpecialiste().equals('genie-civil')}">
                               <%     nbr_2as_3= nbr_2as_3+1; %>
                               
                              <li>                             

@@ -87,6 +87,31 @@ public class login extends HttpServlet {
 				 if(type_Account.getType().equals("Teacher")) {
 				 		this.getServletContext().getRequestDispatcher("/Teacher/index.jsp").forward(req, resp);
 
+				 }else {
+					 
+					 
+					 if(type_Account.getType().equals("Admin")) {
+						 resp.sendRedirect(req.getContextPath() + "/HomeAdmin");
+
+
+					 }else {
+						 
+						 
+						 if(type_Account.getType().equals("Secretaire")) {
+						 		this.getServletContext().getRequestDispatcher("#").forward(req, resp);
+
+						 }
+						 
+						 
+					 }
+					 
+					 
+					 
+					 
+					 
+					 
+					 
+					 
 				 }
 			 }
 

@@ -2,8 +2,10 @@ package Model;
 
 import java.io.InputStream;
 
-public class Teacher {
-	private int id;
+public class Secretaire {
+	
+
+private int id;
 	
 	private String first_name;
 	private String last_name;
@@ -11,39 +13,15 @@ public class Teacher {
 	private String contact_number;
 	private String email;
     private InputStream img;
-   private String Module;
+
 	private int id_account;
+
 	
-	
-	
-	
-	public String getModule() {
-		return Module;
-	}
-
-
-
-
-
-	public void setModule(String module) {
-		Module = module;
-	}
-
-
-
-
-
-	public Teacher() {
+	public Secretaire() {
 		
 	}
-	
-	
-	
-	
-	
-	
-	public Teacher(int id, String first_name, String last_name, String date_birth, String contact_number, String email,
-			InputStream img, String module, int id_account) {
+	public Secretaire(int id, String first_name, String last_name, String date_birth, String contact_number,
+			String email, InputStream img, int id_account) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -52,14 +30,8 @@ public class Teacher {
 		this.contact_number = contact_number;
 		this.email = email;
 		this.img = img;
-		Module = module;
 		this.id_account = id_account;
 	}
-
-
-
-
-
 	public int getId() {
 		return id;
 	}
@@ -111,6 +83,9 @@ public class Teacher {
 	public void setId_account(int id_account) {
 		this.id_account = id_account;
 	}
+	
+
+	
 	
 
 }

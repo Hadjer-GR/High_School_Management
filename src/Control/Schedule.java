@@ -50,9 +50,16 @@ public class Schedule extends HttpServlet {
 			 
 			  try {
 				emploi_temp_id=user.teacher_emploi(type_Account.getId_user());
-			    list_emploi=user.teacher_emploi_info(emploi_temp_id);
-			    list_emploi_id=user.list_emploi_id(emploi_temp_id);
-			    class_emploi=user.class_emploi(list_emploi_id);
+				if(emploi_temp_id.isEmpty()) {
+					
+					
+					
+				}else {
+					 list_emploi=user.teacher_emploi_info(emploi_temp_id);
+					    list_emploi_id=user.list_emploi_id(emploi_temp_id);
+					    class_emploi=user.class_emploi(list_emploi_id);
+				}
+			   
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,12 +67,9 @@ public class Schedule extends HttpServlet {
 			 
 			 req.setAttribute("list_emploi", list_emploi);
 			 req.setAttribute("class_emploi", class_emploi);
-			// System.out.println("class_emploi.size"+class_emploi.size());
-			// System.out.println("comlpet schedule section");
 			
-			 
-			  System.out.println("Genie 1:"+class_emploi.get(0).getSpecialiste());
-			  System.out.println("Genie 2:"+class_emploi.get(1).getSpecialiste());
+			
+			
 
           
 			this.getServletContext().getRequestDispatcher("/Teacher/schedule.jsp").include(req, resp);

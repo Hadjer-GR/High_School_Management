@@ -1,30 +1,27 @@
 package Control;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.Group;
 import Model.Type_Account;
-import Model.UserDAO;
 
 /**
- * Servlet implementation class Groupes
+ * Servlet implementation class HomeAdmin
  */
-@WebServlet("/Groupes")
-public class Groupes extends HttpServlet {
+@WebServlet("/HomeAdmin")
+public class HomeAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Groupes() {
+    public HomeAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,56 +30,41 @@ public class Groupes extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		resp.setContentType("text/html");
+		 resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
 
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 		if (type_Account != null) {
+			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/home.jsp");
+			  dispatchor.forward(req, resp);	
 			
-			UserDAO user=new UserDAO();
-			ArrayList<Integer> list_class_id=new ArrayList();
-			ArrayList<Group> class_list=new ArrayList();
 			
-			try {
-				list_class_id=user.teacher_class(type_Account.getId_user());
-				
-				if(list_class_id.isEmpty()) {
-					
-				}else {
-					class_list=user.class_info(list_class_id);
-					
-				}
-		    	
-
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
-			req.setAttribute("class_list", class_list);
-			this.getServletContext().getRequestDispatcher("/Teacher/Class.jsp").forward(req, resp);
-    
 			
 		}else {
 			
 			
 			 resp.sendRedirect(req.getContextPath() + "/login");
-
 			
 			
+			
+		
 		}
-		
-		
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		// TODO Auto-generated method stub
-		doGet(request, response);
+				doGet(req, resp);
+		
+		
+		
+		
 	}
 
 }
