@@ -20,7 +20,7 @@
     <script defer src="js/script.js"></script>
     <script defer src="js/textbook.js"></script>
     <script defer src="js/list.js"></script>
-    <script src="Teacher/js/studentlist.js"></script>
+    <script defer src="js/studentlist.js"></script>
     <title>Student</title>
 </head>
 
@@ -225,60 +225,135 @@
         </div>
         <div class="contentnotes liststudent">
 
+            <div class="rTable" id="studentList">
+                <div class="rTableRow headtable">
+                    <div class="rTableHead"><strong>Nom</strong></div>
+                    <div class="rTableHead"><strong>Prenom</strong></div>
+                    <div class="rTableHead"><strong>Evalution</strong></div>
+                    <div class="rTableHead"><strong> Devoir-1</strong></div>
+                    <div class="rTableHead"><strong> Devoir-2</strong></div>
+                    <div class="rTableHead"><strong> Control</strong></div>
+                    <div class="rTableHead"><strong>Mouyenne</strong></div>
+                    <div class="rTableHead"><strong> &nbsp;</strong></div>
 
-            <div class="table student-table">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>evalution</th>
-                        <th>devoir-1</th>
-                        <th>devoir-2</th>
-                        <th>Control </th>
-                        <th>mouyene </th>
-                        <th>update </th>
+                    <div class="rTableHead"><strong> Update</strong></div>
 
-                    </tr>
-                </thead>
 
-                <tbody>
 
-                    <tr class="student">
-                        <form class="savelistStudent">
 
-                            <td>Ghrab</td>
-                            <td>hadjer</td>
-                            <td><input type="number" name="id" value="15" class="setresult">
-                            </td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td>
-                                <input type="Submit" value="Save" class="edite ">
-                            </td>
-                        </form>
+                </div>
+                <form class="rTableRow activeedite">
+                    <!--<div class="rTableRow activeedite">-->
 
-                    </tr>
-                    <tr class="student active-row">
-                        <form class="savelistStudent">
-                            <td>Ghrab</td>
-                            <td>Wissal</td>
-                            <td><input type="number" name="id" value="15" class="setresult">
-                            </td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td><input type="number" name="id" value="15" class="setresult"></td>
-                            <td> <input type="Submit" value="Save" class="edite "></td>
-                    </tr>
-                </tbody>
+                    <div class="rTableCell">Ghrab
+                        <input type="hidden" name="nom" value="ghrab" class="setresult">
 
-                </table>
+                    </div>
+                    <div class="rTableCell">Hadjer
+                        <input type="hidden" name="prenom" value="hadjer" class="setresult">
 
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="evalution" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-1" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-2" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="control" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="mouyenne" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="hidden" name="id" value="2" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="Submit" value="Save" class="edite ">
+                    </div>
+
+
+                </form>
+                <form class="rTableRow">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell">Ghrab
+                        <input type="hidden" name="nom" value="ghrab" class="setresult">
+
+                    </div>
+                    <div class="rTableCell">Hadjer
+                        <input type="hidden" name="prenom" value="hadjer" class="setresult">
+
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="evalution" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-1" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-2" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="control" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="mouyenne" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="hidden" name="id" value="2" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="Submit" value="Save" class="edite ">
+                    </div>
+
+
+                </form>
+                <form class="rTableRow">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell">Ghrab
+                        <input type="hidden" name="nom" value="ghrab" class="setresult">
+
+                    </div>
+                    <div class="rTableCell">Hadjer
+                        <input type="hidden" name="prenom" value="hadjer" class="setresult">
+
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="evalution" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-1" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-2" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="control" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="mouyenne" value="15" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="hidden" name="id" value="2" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="Submit" value="Save" class="edite ">
+                    </div>
+
+
+                </form>
 
 
             </div>
+
+
+
+        </div>
     </section>
 
 
