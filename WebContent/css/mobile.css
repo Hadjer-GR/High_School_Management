@@ -587,4 +587,12 @@ dialog.writelesson {
   z-index: 2;
   display: none;
 }
+.rTableCell,
+.rTableHead {
+  display: table-cell;
+  padding: 12px 15px;
+  cursor: pointer;
+  width:12% !important;
+  font-size: 1em !important;
+}
 

@@ -3,6 +3,7 @@ package Control;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import Model.Account;
 import Model.AdminDAO;
 import Model.Secretaire;
+import Model.Type_Account;
 import Model.UserDAO;
 
 /**
@@ -33,7 +35,26 @@ public class addSecretaire extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		 resp.setContentType("text/html");
+		  req.setCharacterEncoding("UTF-8");
+
+		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
+		if (type_Account != null) {
+			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/AddProfil2.jsp");
+			  dispatchor.forward(req, resp);	
+			
+			
+			
+			
+		}else {
+			
+			
+			 resp.sendRedirect(req.getContextPath() + "/login");
+			
+			
+			
+		
+		}
 	}
 
 	/**
@@ -85,7 +106,7 @@ public class addSecretaire extends HttpServlet {
  		
  		
 
- 	    resp.sendRedirect(req.getContextPath() + ("/addTeacher"));
+ 	    resp.sendRedirect(req.getContextPath() + ("/addSecretaire"));
  		 
 
 	}

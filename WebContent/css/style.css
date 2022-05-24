@@ -1679,21 +1679,65 @@ List Student  design input
 */
 
 .setresult,
-.student .edite {
+.rTable .edite {
   all: unset;
 }
 .setresult {
   width: 60px;
 }
-.student .edite {
+.rTable .edite {
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.07);
   padding: 8px 15px;
   border-radius: 10px;
   font-weight: 600;
   transition: 0.4s;
 }
-.student .edite:hover {
+ .edite:hover {
   transform: scale(1.1);
+}
+
+
+.rTable {
+	  position: relative;
+
+  display: table;
+  height: auto;
+  width: 100%;
+}
+.rTableRow {
+  display: table-row;
+}
+.headtable {
+  background-color: #009879;
+  color: #ffffff;
+
+font-weight:600; 
+}
+.rTableHeading {
+  display: table-header-group;
+}
+.rTableBody {
+  display: table-row-group;
+}
+.rTableFoot {
+  display: table-footer-group;
+}
+.rTableCell,
+.rTableHead {
+  display: table-cell;
+  padding: 12px 15px;
+  cursor: pointer;
+  width:14%;
+  font-weight:600;
+  font-size: 1.3em;
+}
+
+.student-table tbody tr.active-row {
+  font-weight: bold;
+  color: 	#009879;
+}
+.activeedite {
+  color: 	#009879 !important;
 }
 
 

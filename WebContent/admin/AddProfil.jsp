@@ -13,14 +13,14 @@
   <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 880px)">
     <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
- <link rel="stylesheet" href="<c:url value="/cssadmin/admin.css"/>" >
+      <link rel="stylesheet" href="<c:url value="/cssadmin/admin.css"/>" >
         <link rel="stylesheet" href="<c:url value="/cssadmin/adminmobile.css"/>" media="(max-width: 880px)">
      <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/js/script.js"></script>
   
     <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
 </head>
 <body>
- <nav class="sidebar close">
+  <nav class="sidebar close">
 
         <header>
 
@@ -33,7 +33,7 @@
 
                 <div class="text logo-text">
 
-                    <a href="<%=request.getContextPath()%>/HomeAdmin" class="hometext"><span class="name   hovername   ">Accueil</span></a>
+                    <a href="<%=request.getContextPath()%>/HomeAdmin" class="hometext"><span class="name     ">Accueil</span></a>
 
                     <a href="/profil.html" class="username "> <span class="profession ">
                             Nom Prenom
@@ -83,13 +83,13 @@
                     </li>
 
 
-                    <li class="nav-link ">
+                    <li class="nav-link  hover">
 
                         <a href="<%=request.getContextPath()%>/addTeacher">
 
-                            <i class='bx bx-copy icon  '></i>
+                            <i class='bx bx-copy icon  texthover'></i>
 
-                            <span class="text nav-text ">Ajoute un compte</span>
+                            <span class="text nav-text texthover">Ajoute un compte</span>
 
                         </a>
 
@@ -153,5 +153,68 @@
 
         </div>
     </nav>
+    <section class="home homeprofile  containerAccount">
+        <div class="headermobile">
+            <i class='bx bx-menu togglemenu'></i>
+            <div class="text texthome"> un compte</div>
+
+        </div>
+        <div class="container  containerAccount">
+            <div class="title">Ajoute un Enseignant</div>
+            <div class="content">
+                <form method="post" action="<%=request.getContextPath()%>/addTeacher">
+
+
+
+
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Nom </span>
+                            <input type="text" required name="name">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Prenom </span>
+                            <input type="text" required name="prenom">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Date de naissance </span>
+                            <input type="text" required name="date">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">email </span>
+                            <input type="text" required name="email">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Numéro de Contact</span>
+                            <input type="text" required name="numero">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Specialiste</span>
+                            <input type="text" required name="modul">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Nom d'utilisateur</span>
+                            <input type="text" required name="username">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">mote de passe</span>
+                            <input type="text" required name="password">
+                        </div>
+
+
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" value="Ajoute">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="change">
+            <a href="<%=request.getContextPath()%>/addSecretaire"> Ajouter une Secretaire</a>
+
+        </div>
+    </section>
 </body>
 </html>

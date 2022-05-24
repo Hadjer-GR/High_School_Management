@@ -35,7 +35,7 @@ public class HomeAdmin extends HttpServlet {
 
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 		if (type_Account != null) {
-			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/home.jsp");
+			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/Home.jsp");
 			  dispatchor.forward(req, resp);	
 			
 			

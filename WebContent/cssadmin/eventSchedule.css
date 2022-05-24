@@ -1,0 +1,71 @@
+.addevent {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  background-color: #fff;
+  width: 30%;
+  border-radius: 10px;
+  padding-top: 2px;
+  min-height: 65%;
+  height: auto;
+
+  box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.15), -4px -4px 6px rgb(0, 0, 0, 0.15);
+}
+
+.addevent select {
+  all: unset;
+}
+
+.addevent .eventclose {
+  position: absolute;
+  top: 2px;
+  font-size: 1.4em;
+  right: 2px;
+}
+.addevent .eventclose span i {
+  font-size: 1.4em;
+  transition: 0.2s;
+  cursor: pointer;
+  color: #7f8c8d;
+}
+.addevent .close span i:hover {
+  transform: scale(1.1);
+}
+.addevent select {
+  position: relative;
+  padding: 10px 15px;
+  border: 1px solid rgb(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+.addevent .eventtitle {
+  margin-bottom: 5px;
+}
+.addevent div {
+  margin: 10px;
+}
+.addevent .saveEvent {
+  all: unset;
+}
+.addevent .saveEvent {
+  position: absolute;
+  background-color: #7f8c8d;
+  border: 1px solid #7f8c8d;
+
+  display: inline-block;
+  width: 100px;
+  bottom: 4%;
+  left: 4%;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.2s;
+  box-shadow: 4px 4px 6px rgb(0, 0, 0, 0.15), -4px -4px 6px rgb(0, 0, 0, 0.15);
+}
+.addevent .saveEvent:hover {
+  transform: scale(1.1);
+}

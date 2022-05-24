@@ -30,6 +30,8 @@
     <script defer type="text/javascript" src="${pageContext.request.contextPath}/js/profil.js"></script>
     <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
         <script defer src="${pageContext.request.contextPath}/js/list.js"></script>
+      <script defer src="${pageContext.request.contextPath}/js/studentlist.js"></script>
+        
     
 </head>
 <body>
@@ -181,76 +183,143 @@
 
 
     <section class="home hometextbool">
-        <div class="headermobile">
+         <div class="headermobile">
             <i class='bx bx-menu togglemenu'></i>
 
-            <div class="text texthome">1AS-G1</div>
+            <div class="text texthome"><c:out value="${groupe.getId_niveau()}" />AS-G <c:out value="${groupe.getNbr_class()}" /></div>
         </div>
 
 
         <div class="titlenote">
-            <a href="/Etud1.html" class="btnleft"> <i class='bx bx-reply'></i>
+            <a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${groupe.getId()}" />" class="btnleft"> <i class='bx bx-reply'></i>
             </a>
             <span>
                 Student
             </span>
         </div>
         <div class="contentnotes liststudent">
-              <table class="student-table">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>evalution</th>
-                        <th>devoir-1</th>
-                        <th>devoir-2</th>
-                        <th>Control </th>
-                        <th>mouyene </th>
-                        <th>update </th>
-
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr class="student">
-
-                            <td>Ghrab</td>
-                            <td>hadjer</td>
-                            <td><input type="number" name="evalution" value="15" class="setresult">
-                            </td>
-                            <td><input type="number" name="devoir-1" value="15" class="setresult"></td>
-                            <td><input type="number" name="devoir-2" value="15" class="setresult"></td>
-                            <td><input type="number" name="control" value="15" class="setresult"></td>
-                            <td><input type="number" name="mouyenne" value="15" class="setresult"></td>
-                            <td>
-                                <a href="#" class="edite">Save</a>
-                            </td>
-                        
-
-                    </tr>
-                    
-                    <tr class="student active-row">
-                    
-                            <td>Ghrab</td>
-                            <td>Wissal</td>
-                            <td><input type="number" name="evalution" value="15" class="setresult">
-                            </td>
-                            <td><input type="number" name="devoir-1" value="15" class="setresult"></td>
-                            <td><input type="number" name="devoir-2" value="15" class="setresult"></td>
-                            <td><input type="number" name="control" value="15" class="setresult"></td>
-                            <td><input type="number" name="mouyenne" value="15" class="setresult"></td>
-                            <td>    <a href="#" class="edite">Save</a>
-
-                        </td>
-                             
-                    </tr>
-                </tbody>
-
-            </table>
            
-           
+             <div class="rTable" id="studentList">
+                <div class="rTableRow headtable">
+                    <div class="rTableHead"><strong>Nom</strong></div>
+                    <div class="rTableHead"><strong>Prenom</strong></div>
+                    <div class="rTableHead"><strong>Evalution</strong></div>
+                    <div class="rTableHead"><strong> Devoir-1</strong></div>
+                    <div class="rTableHead"><strong> Devoir-2</strong></div>
+                    <div class="rTableHead"><strong> Control</strong></div>
+                    <div class="rTableHead"><strong>Mouyenne</strong></div>
+                    <div class="rTableHead"><strong> &nbsp;</strong></div>
+
+                    <div class="rTableHead"><strong> Update</strong></div>
+
+
+
+
+                </div>
+                
+       <%   int nbr_edtud=1; %>
+                
+                         <c:forEach  var="student_resulte"  items="${student_resulte}"  >
+                          <% if(nbr_edtud==0){
+                                
+                                    %>
+                
+                <form class="rTableRow"  action="<%=request.getContextPath()%>/StudentList" method="post">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell"><c:out value="${student_resulte.getLast_name() }" />
+                        <input type="hidden" name="nom" value="<c:out value="${list_student.getLast_name() }" />" class="setresult">
+
+                    </div>
+                    <div class="rTableCell"><c:out value="${student_resulte.getFirst_name() }" />
+                        <input type="hidden" name="prenom" value="<c:out value="${student_resultet.getFirst_name() }" />" class="setresult">
+
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="evalution" value="<c:out value="${student_resulte.getEvalution() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-1" value="<c:out value="${student_resulte.getDevoir_1() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-2" value="<c:out value="${student_resulte.getDevoir_2() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="control" value="<c:out value="${student_resulte.getControl() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="mouyenne" value="<c:out value="${student_resulte.getMouyenne() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="hidden" name="id" value="<c:out value="${student_resulte.getEleve_id() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="Submit" value="Save" class="edite ">
+                    </div>
+
+
+                </form>
+                                               <% }   else{ %>
+                                               
+                                               
+                                               
+                                                <form class="rTableRow activeedite"  action="<%=request.getContextPath()%>/StudentList" method="post">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell"><c:out value="${student_resulte.getLast_name() }" />
+                        <input type="hidden" name="nom" value="<c:out value="${student_resulte.getLast_name() }" />" class="setresult">
+
+                    </div>
+                    <div class="rTableCell"><c:out value="${student_resulte.getFirst_name() }" />
+                        <input type="hidden" name="prenom" value="<c:out value="${student_resulte.getFirst_name() }" />" class="setresult">
+
+                    </div>
+                  
+                    <div class="rTableCell">
+                        <input type="number" name="evalution" value="<c:out value="${student_resulte.getEvalution() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-1" value="<c:out value="${student_resulte.getDevoir_1() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="devoir-2" value="<c:out value="${student_resulte.getDevoir_2() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="control" value="<c:out value="${student_resulte.getControl() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="number" name="mouyenne" value="<c:out value="${student_resulte.getMouyenne() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="hidden" name="id" value="<c:out value="${student_resulte.getEleve_id() }" />" class="setresult">
+                    </div>
+                    <div class="rTableCell">
+                        <input type="Submit" value="Save" class="edite ">
+                    </div>
+
+
+                </form>
+                                               
+                                               
+                                               <%  
+                                               
+                                               nbr_edtud=nbr_edtud-1;
+                                               
+                                               } %>
+                
+                
+                </c:forEach>
+                
+              
+
+            </div>
+          
+
         </div>
+
+                   
+           
+       
     </section>
 
 

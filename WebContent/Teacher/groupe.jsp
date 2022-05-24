@@ -212,7 +212,7 @@
 
                 </div>
                 <div class=" holde1 note">
-                    <a href="#">&nbsp;&nbsp;étudiants&nbsp;&nbsp; <br>
+                    <a href="<%=request.getContextPath()%>/StudentList?id_class= <c:out value="${groupe.getId()}" />">&nbsp;&nbsp;étudiants&nbsp;&nbsp; <br>
                         <i class='bx bx-receipt'></i></a> </div>
                 <div class="holde1 textbook">
                     <a href="<%=request.getContextPath()%>/cahier?id_class= <c:out value="${groupe.getId()}" />"> Cahier de Text <br>

@@ -98,6 +98,18 @@ public class UserDAO {
 		 * 
 		 * 
 		 */
+		
+		//Students 
+         private static final String student_class_sql="select * from eleve where class_id=?; ";
+         private static final String student_result_sql="select nom,prenom, n_evalution,n_devoir_1,n_devoir_2,n_control,Mouyen,eleve_id "
+         		+ "from eleve  "
+         		+ "inner join resultats "
+         		+ "on resultats.eleve_id=eleve.id where resultats.class_id=?; ";
+
+         private static final String set_student_Resulte_sql="update  resultats set n_evalution=?, n_devoir_1=?, n_devoir_2=?,n_control=?, Mouyen=? where eleve_id=?; ";
+
+		
+		
 	
 	// Inscription
 		private static final String insert_inscription_sql="insert into inscription(nom,prenom,numéro_contact,email,date_naissance,anneè,file) values(?,?,?,?,?,?,?);";
@@ -1323,6 +1335,105 @@ public Group class_info( String class_id) throws SQLException {
 		 return groupe;		
 }
 
-    
+// Student Resulte in class 
+
+public ArrayList<Student> student_class(String class_id) throws SQLException  {
+
+try {
+	Connectdb();
+} catch (ClassNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+ArrayList<Student> list_student=new ArrayList();
+Student student;
+PreparedStatement mystat;
+mystat=mycon.prepareStatement(student_class_sql);
+mystat.setString(1, class_id);
+ResultSet result=mystat.executeQuery();
+ while(result.next()) {
+	 student=new Student();
+	 student.setId(result.getInt(1));
+	 student.setLast_name(result.getString(2));
+	 student.setFirst_name(result.getString(3));
+	 student.setDate_birth(result.getString(4));
+	 student.setParent_id(result.getInt(5));
+	 student.setClass_id(result.getInt(6));
+	 
+	 list_student.add(student);
+ }
+ 
+ mycon.close();		
+ return list_student;
+ 
+ }
+
+
+
+// Resulte student 
+
+ public ArrayList<Resulte> student_Resulte(String class_id) throws SQLException  {
+
+try {
+	Connectdb();
+} catch (ClassNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+ArrayList<Resulte> student_resulte=new ArrayList();
+Resulte resulte;
+PreparedStatement mystat;
+mystat=mycon.prepareStatement(student_result_sql);
+mystat.setString(1, class_id);
+ResultSet result=mystat.executeQuery();
+ while(result.next()) {
+	 resulte=new Resulte();
+	 resulte.setLast_name(result.getString(1));;
+	 resulte.setFirst_name(result.getString(2));
+	 resulte.setEvalution(result.getDouble(3));
+
+	 resulte.setDevoir_1(result.getDouble(4));
+	 resulte.setDevoir_2(result.getDouble(5));
+	 resulte.setControl(result.getDouble(6));
+	 resulte.setMouyenne(result.getDouble(7));
+	 resulte.setEleve_id(result.getInt(8));
+	 
+	 student_resulte.add( resulte);
+ }
+ 
+ mycon.close();		
+ return student_resulte;
+ 
+ }
+
+ 
+ 
+//edite_Resulte_Student_sql
+	
+	public void edite_Resulte( String text,int id ) throws SQLException {
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PreparedStatement mystat;
+		mystat=mycon.prepareStatement(edite_Lesson_sql);
+		mystat.setString(1, text);
+		 mystat.setInt(2, id);
+       mystat.executeUpdate();
+		mycon.close();
+		
+		
+	}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 }

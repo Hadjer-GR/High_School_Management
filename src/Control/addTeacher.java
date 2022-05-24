@@ -41,7 +41,7 @@ public class addTeacher extends HttpServlet {
 
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 		if (type_Account != null) {
-			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/add.jsp");
+			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/AddProfil.jsp");
 			  dispatchor.forward(req, resp);	
 			
 			
@@ -92,10 +92,20 @@ public class addTeacher extends HttpServlet {
 		 teacher .setDate_birth(req.getParameter("date"));
 		 teacher .setModule(req.getParameter("modul"));
 	
-		 account.setUsername(req.getParameter("usernam"));
-		 account.setPassword(req.getParameter("modepass"));
+		 account.setUsername(req.getParameter("username"));
+		 account.setPassword(req.getParameter("password"));
 		
 		 
+		 System.out.println("\n add teacher : \n");
+		 System.out.println(req.getParameter("email"));
+		 System.out.println(req.getParameter("numero"));
+		 System.out.println(req.getParameter("name"));
+		 System.out.println(req.getParameter("date"));
+		 System.out.println(req.getParameter("modul"));
+		 System.out.println(req.getParameter("username"));
+		 System.out.println(req.getParameter("modepass"));
+
+
 		 try {
 			adminDAO.addAccount(account);
 			id_account=user.checklogin(account.getUsername(), account.getPassword());
