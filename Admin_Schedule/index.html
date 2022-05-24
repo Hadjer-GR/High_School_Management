@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/eventSchedule.css">
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="css/table.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/mobilescreen.js"></script>
+
+
+    <title>Admin</title>
+</head>
+
+<body>
+
+
+
+    <nav class="sidebar close">
+
+        <header>
+
+            <div class="image-text">
+
+                <span class="imageprofil">
+
+
+                </span>
+
+
+
+                <div class="text logo-text">
+
+                    <a href="/index.html" class="hometext"><span class="name   ">Home Admin</span></a>
+
+                    <a href="/profil.html" class="username "> <span class="profession ">
+                            Nom Prenom
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <i class='bx bx-chevron-right toggle'></i>
+            <i class='bx bx-menu togglemenu2'></i>
+
+        </header>
+
+
+
+        <div class="menu-bar">
+
+            <div class="menu">
+
+
+
+                <li class="search-box">
+
+                    <i class='bx bx-search icon'></i>
+
+                    <input type="text" placeholder="Search...">
+
+                </li>
+
+
+
+                <ul class="menu-links">
+
+                    <li class="nav-link hover ">
+
+                        <a href="index.html">
+
+                            <i class='bx bx-grid icon  texthover'></i>
+
+                            <span class="text nav-text texthover ">Emploi de temp</span>
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-link ">
+
+                        <a href="addProfil.html">
+
+                            <i class='bx bx-copy icon '></i>
+
+                            <span class="text nav-text ">Ajoute un compte</span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="/annoces.html">
+
+                            <i class='bx bx-bell icon'></i>
+
+                            <span class="text nav-text ">Annoces</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="bottom-content">
+
+                <li class="">
+
+                    <a href="#">
+
+                        <i class='bx bx-log-out icon'></i>
+
+                        <span class="text nav-text">Logout</span>
+
+                    </a>
+
+                </li>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="home homeetud table_teacher">
+        <div class="headermobile">
+            <i class='bx bx-menu togglemenu'></i>
+
+            <div class="text texthome">Programme</div>
+        </div>
+        <div class="contentetud">
+
+            <div class="text textschedule"> <span> le programme :</span> </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row day-columns">
+                            <div class="day-column">
+                                <div class="day-header">Dimenche</div>
+                                <div class="day-content">
+                                    <div class="event gray">
+                                        <span class="title"> Math </span>
+                                        <footer>
+                                            <span> GHRAB RANIA</span>
+                                            <br>
+                                            <span>8:00</span>
+                                        </footer>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Lundi</div>
+                                <div class="day-content">
+
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Mardi</div>
+                                <div class="day-content">
+
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Mercredi</div>
+                                <div class="day-content">
+
+
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Jeudi</div>
+                                <div class="day-content">
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="addevent" style="display:none">
+                <div class="eventclose">
+                    <span>
+                        <i class='bx bx-x btnclosewritelesson'></i>
+                    </span>
+                </div>
+                <from>
+
+                    <div>
+                        <div class="time" name="time">
+                            <h4 class="eventtitle"> jour :</h4>
+                            <select name="start_time">
+
+                                <option>Dimenche</option>
+                                <option>Lundi</option>
+                                <option>Mardi</option>
+                                <option>Mercredi</option>
+                                <option>Jeudi</option>
+                            </select>
+                        </div>
+                        <div class="time" name="time">
+                            <h4 class="eventtitle">Temp de debut :</h4>
+                            <select name="start_time">
+                                <option>8 :00</option>
+                                <option>9 :00</option>
+                                <option>10 :00</option>
+                                <option>11 :00</option>
+                                <option>14 :00</option>
+                                <option>15 :00</option>
+                                <option>16 :00</option>
+                            </select>
+                        </div>
+                        <div class="matiere" name="matiere">
+                            <h4 class="eventtitle">Matiere :</h4>
+                            <select>
+
+                                <option>Math</option>
+                                <option>Sport</option>
+                                <option>Science</option>
+                                <option>Arabic</option>
+                            </select>
+                        </div>
+                        <div class="Enseignant" name="Ensei">
+                            <h4 class="eventtitle">Enseignant :</h4>
+                            <select>
+
+                                <option>rania ghrab</option>
+                                <option>gobbi fatima</option>
+                                <option>Wissal ghrab</option>
+                                <option>malak </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="hidden" name="day" value="">
+                        <input type="submit " value="Add" class="saveEvent">
+                    </div>
+                </from>
+            </div>
+
+    </section>
+
+
+
+
+
+</body>
+
+</html>
