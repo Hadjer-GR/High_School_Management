@@ -172,7 +172,7 @@
                                 
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_class %>?niv_id=1?spet=sciences" ><i class='bx bx-plus'></i></a></h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_class %>&niv_id=1&spet=sciences" ><i class='bx bx-plus'></i></a></h4>
                                    
                                 </li>
                                     
@@ -191,7 +191,7 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                 <%   int  nbr=0; %>
+                                 <%   int  nbr=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==1}">
@@ -207,8 +207,8 @@
                                 
                     
                                     <li>
-                                    <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr%>&niv_id=1&spet=lettres" ><i class='bx bx-plus'></i></a></h4>
+                                    
                                 </li>
                                     
                               
@@ -232,7 +232,7 @@
                         <li>
 
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as=0; %>
+                                  <%   int  nbr_2as=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -248,8 +248,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as%>?niv_id=2?spet=sciences" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
                              
@@ -264,7 +264,7 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                 <%   int  nbr_2as_1=0; %>
+                                 <%   int  nbr_2as_1=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -280,8 +280,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_1%>?niv_id=2?spet=mathematiques" ><i class='bx bx-plus'></i></a></h4>
+                                    
                                 </li>
                                     
                              
@@ -296,7 +296,7 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                 <%   int  nbr_2as_2=0; %>
+                                 <%   int  nbr_2as_2=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -312,8 +312,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_2%>?niv_id=2?spet=économie/gestion" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
                              
@@ -327,7 +327,7 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as_3=0; %>
+                                  <%   int  nbr_2as_3=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -343,9 +343,9 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
-                                </li>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_3%>?niv_id=2?spet=genie-civil" ><i class='bx bx-plus'></i></a></h4>
+                                  
+                                  </li>
                                     
                                
                                
@@ -361,7 +361,7 @@
                         <li>
                            
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as_4=0; %>
+                                  <%   int  nbr_2as_4=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -369,7 +369,7 @@
                               <%    nbr_2as_4= nbr_2as_4+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_4%>?niv_id=2?spet=génie des procédés" ><i class='bx bx-plus'></i></a></h4>
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -395,7 +395,7 @@
                         <li>
                            
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as_6=0; %>
+                                  <%   int  nbr_2as_6=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -411,8 +411,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_6%>?niv_id=2?spet=génie-mécanique" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
                                
@@ -427,7 +427,7 @@
                         <li>
                            
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as_9=0; %>
+                                  <%   int  nbr_2as_9=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -442,8 +442,8 @@
                                   </c:forEach>
                               
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_9%>?niv_id=2?spet=génie-électrique" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
                              
@@ -459,7 +459,7 @@
                         <li>
                            
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as_7=0; %>
+                                  <%   int  nbr_2as_7=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -475,8 +475,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_7%>?niv_id=2?spet=lettres" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
                               
@@ -492,7 +492,7 @@
                         <li>
                             
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_2as_8=0; %>
+                                  <%   int  nbr_2as_8=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==2}">
@@ -508,8 +508,8 @@
                                 
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_8%>?niv_id=2?spet=langues étrangères" ><i class='bx bx-plus'></i></a></h4>
+                                    
                                 </li>
                                     
                               
@@ -530,7 +530,7 @@
                         <li>
 
                             <ol class="level-4-wrapper">
-                                  <%   int  nbr_3as=0; %>
+                                  <%   int  nbr_3as=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
@@ -545,8 +545,8 @@
                                   </c:forEach>
                                
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_3as%>?niv_id=3?spet=sciences" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
                               
@@ -561,7 +561,7 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                 <%   int  nbr_3as_1=0; %>
+                                 <%   int  nbr_3as_1=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
@@ -577,8 +577,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_3as_1%>?niv_id=3?spet=mathématiques" ><i class='bx bx-plus'></i></a></h4>
+                                   
                                 </li>
                                     
 
@@ -592,7 +592,7 @@
                     <ol class="level-3-wrapper">
                         <li>
                             <ol class="level-4-wrapper">
-                                 <%   int  nbr_3as_2=0; %>
+                                 <%   int  nbr_3as_2=1; %>
                              <c:forEach  items="${class_list}" var="class_list" >
                            
                               <c:if test="${class_list.getId_niveau()==3}">
@@ -608,8 +608,8 @@
                                
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a href="#" class="btnadd"><i class='bx bx-plus'></i></a>
-                                    </h4>
+                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_3as_2%>&niv_id=3&spet=économie/gestion" ><i class='bx bx-plus'></i></a></h4>
+                                  
                                 </li>
                                     
 

@@ -76,11 +76,12 @@ public class AdminDAO {
 	 * 
 	*/
 	/*
-	 * Emploi de temp
+	 * add class 
 	 * 
 	 */
 
-	
+	private static final String add_class_sql="insert into class(nbr_class,id_period,specialiste,id_niveau)values(?,?,?,?);";
+
 	
 	
 	
@@ -249,6 +250,35 @@ public class AdminDAO {
 	
 	
 	
+	/*
+	 * 
+	 * Add Class 
+	 */
+	
+	
+	
+
+
+	public void addClass(Group groupe) throws SQLException {
+		
+		
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		PreparedStatement mystat;
+		mystat=mycon.prepareStatement(add_class_sql);
+		mystat.setInt(1, groupe.getNbr_class());
+		mystat.setInt(2, groupe.getId_period());
+		 mystat.setString(3, groupe.getSpecialiste());
+		 mystat.setInt(4, groupe.getId_niveau());
+		 System.out.println("AddClass:"+groupe.getSpecialiste() );
+		 mystat.executeUpdate();
+	       mycon.close();
+ 
+	}
 	
 	
 
