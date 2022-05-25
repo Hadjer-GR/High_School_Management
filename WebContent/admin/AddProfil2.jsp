@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html  >
 <head>
- <title>Smartschool</title>
+ <title>MySmartschool</title>
  <meta name="viewport" content="width=device-width,initial-scale=1">
  
  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -75,7 +75,7 @@
 
                     <li class="nav-link  ">
 
-                        <a href="index.html">
+                        <a href="<%=request.getContextPath()%>/emploi">
 
                             <i class='bx bx-grid icon  '></i>
 
@@ -88,7 +88,7 @@
 
                     <li class="nav-link  hover">
 
-                        <a href="addProfil.html">
+                        <a href="<%=request.getContextPath()%>/addTeacher">
 
                             <i class='bx bx-copy icon  texthover'></i>
 

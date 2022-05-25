@@ -74,7 +74,7 @@ public class addSecretaire extends HttpServlet {
 		  * 
 		  */
  		
- 		secri.setFirst_name(req.getParameter("nom"));
+ 		secri.setFirst_name(req.getParameter("name"));
  		secri.setLast_name(req.getParameter("prenom"));
  		secri.setDate_birth(req.getParameter("date"));
  		secri.setEmail(req.getParameter("email"));
@@ -83,7 +83,8 @@ public class addSecretaire extends HttpServlet {
  	
  		 account.setUsername(req.getParameter("username"));
  		 account.setPassword(req.getParameter("password"));
- 		
+ 		 
+		
  		
  		 
  		 try {

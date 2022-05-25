@@ -3,7 +3,9 @@ package Model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AdminDAO {
 	
@@ -73,7 +75,11 @@ public class AdminDAO {
 	 * 
 	 * 
 	*/
-	
+	/*
+	 * Emploi de temp
+	 * 
+	 */
+
 	
 	
 	
@@ -195,7 +201,51 @@ public class AdminDAO {
 	   mycon.close();		
 	}	
 	
+	// show class in emploi de temps 
+	// get class indormation that the teacher study 	 
 	
+	public ArrayList<Group>  show_class() throws SQLException  {
+				
+				try {
+					Connectdb();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 ArrayList<Group> class_info= new ArrayList();
+				 Group group;
+				 
+				PreparedStatement mystat;
+				
+				
+		       mystat=mycon.prepareStatement(Select_All_group);
+		      
+		     
+	       
+		         
+				ResultSet result=mystat.executeQuery();
+				 while(result.next()) {
+					 group=new Group();
+					 
+					 group.setId(result.getInt(1));
+					 group.setNbr_class(result.getInt(2));
+					 group.setId_period(result.getInt(3));
+					 group.setSpecialiste(result.getString(4));
+					 group.setId_niveau(result.getInt(5));
+					 group.setEmlpoi_id(result.getInt(6));
+					 group.setCahier_id(result.getInt(7));
+	             
+					 class_info.add(group);
+					 
+				 }
+			     mycon.close();		
+
+
+				 return class_info ;
+				 
+				 
+				 
+				 }
 	
 	
 	

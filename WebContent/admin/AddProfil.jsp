@@ -72,7 +72,7 @@
 
                     <li class="nav-link  ">
 
-                        <a href="index.html">
+                        <a href="<%=request.getContextPath()%>/emploi">
 
                             <i class='bx bx-grid icon  '></i>
 
