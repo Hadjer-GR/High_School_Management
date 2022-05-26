@@ -5,8 +5,11 @@ public class Emploi {
 	private int id;
 	private String open_time;
 	private String day;
-    private int emploi_id;
-	private int matiere_id;
+	private String matiere;
+	private int salle;
+	private int class_id;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -25,37 +28,41 @@ public class Emploi {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public int getEmploi_id() {
-		return emploi_id;
+	public String getMatiere() {
+		return matiere;
 	}
-	public void setEmploi_id(int emploi_id) {
-		this.emploi_id = emploi_id;
+	public void setMatiere(String matiere) {
+		this.matiere = matiere;
 	}
-	public int getMatiere_id() {
-		return matiere_id;
+	public int getSalle() {
+		return salle;
 	}
-	public void setMatiere_id(int matiere_id) {
-		this.matiere_id = matiere_id;
+	public void setSalle(int salle) {
+		this.salle = salle;
 	}
-	public Emploi(int id, String open_time, String day, int emploi_id, int matiere_id) {
+	public int getClass_id() {
+		return class_id;
+	}
+	public void setClass_id(int class_id) {
+		this.class_id = class_id;
+	}
+	public Emploi(int id, String open_time, String day, String matiere, int salle, int class_id) {
 		super();
 		this.id = id;
 		this.open_time = open_time;
 		this.day = day;
-		this.emploi_id = emploi_id;
-		this.matiere_id = matiere_id;
-	}
-	  
+		this.matiere = matiere;
+		this.salle = salle;
+		this.class_id = class_id;
+	} 
 	
 	public Emploi() {
+		
 		
 	}
 	
 	
 	
-	
-	
-	
-	
-
 }
+	
+	

@@ -53,7 +53,8 @@ public class AdminDAO {
 	private static final String teacher_class_sql="select class_id from enseignement_has_class where enseig_id=?;";
 	private static final String teacher_emploi_sql="select Emploi_temp_id from  emploi_temp_has_enseignement where enseig_id=?;";
 	private static final String addteacher="insert into enseignement(nom,prenom,date_naissance,num_contact,email,account_id,Module,img) values(?,?,?,?,?,?,?,?)";
-	private static final String Select_All_teacher="select * from enseignement;";
+	private static final String matieres_teacheres_sql="SELECT  id,nom ,prenom ,Module FROM enseignement;" ;
+
 
 
 	
@@ -83,8 +84,29 @@ public class AdminDAO {
 	private static final String add_class_sql="insert into class(nbr_class,id_period,specialiste,id_niveau)values(?,?,?,?);";
 
 	
+	/*
+	 * Matieres
+	 * 
+	 */
+	private static final String all_Matiere_sql="select nom_matiere from matiere  where specialiste='sciences' and Niveau_id=1;";
+	private static final String class_Matiere_sql="select nom_matiere from matiere  where specialiste=? and Niveau_id=?;";
+
 	
-	
+	/*
+	 * Emploi de temp 
+	 * 
+	 */
+	private static final String verifie_salle_sql="select  id from emploi_temp where open_time=? and day=? and  salle=?;";
+	private static final String enseig_disponible_sql="select id,nom,prenom,Module  "
+			+ "from enseignement "
+			+ "where id not in ( "
+			+ " "
+			+ "select enseig_id from emploi_temp_has_enseignement "
+			+ "join emploi_temp  "
+			+ "on emploi_temp_has_enseignement.Emploi_temp_id=emploi_temp.id and  day=?  and open_time=? "
+			+ " "
+			+ ") and Module=? ; ";
+
 	
 	
 	// connect database
@@ -281,5 +303,167 @@ public class AdminDAO {
 	}
 	
 	
+	
+	
+	// get class indormation that the teacher study 	 
+	
+		public ArrayList<String>  all_matiere() throws SQLException  {
+					
+					try {
+						Connectdb();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					 ArrayList<String> matieres= new ArrayList();
+					 String nom;
+					 
+					PreparedStatement mystat;
+					
+					
+			       mystat=mycon.prepareStatement(all_Matiere_sql);
+			      
+			     
+		       
+			         
+					ResultSet result=mystat.executeQuery();
+					 while(result.next()) {
+						nom=result.getString(1);	
+		             
+						matieres.add(nom);
+						 
+					 }
+				     mycon.close();		
+
+
+					 return matieres ;
+					 
+					 
+					 
+					 }
+		// give the list of matieres in specifiec class
+		public ArrayList<String>  class_matiere(int niv_id,String spet) throws SQLException  {
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ArrayList<String> matieres= new ArrayList();
+			 String nom;
+			 
+			PreparedStatement mystat;
+			
+			
+	       mystat=mycon.prepareStatement(class_Matiere_sql);
+	       mystat.setString(1, spet);
+	       mystat.setInt(2, niv_id);
+
+	     
+       
+	         
+			ResultSet result=mystat.executeQuery();
+			 while(result.next()) {
+				nom=result.getString(1);	
+             
+				matieres.add(nom);
+				 
+			 }
+		     mycon.close();		
+
+
+			 return matieres ;
+			 
+			 
+			 
+			 }
+		/*
+		 * 
+		 * Verifie disponibilite de la salle
+		 */
+		
+public  boolean  virefie_salle(String open_time,String day ,String salle) throws SQLException  {
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			boolean  disp =true;
+			int salle1=0;
+			 
+			PreparedStatement mystat;
+		
+	       mystat=mycon.prepareStatement(verifie_salle_sql);
+			 mystat.setString(1, open_time);
+			 mystat.setString(2, day);
+			 mystat.setString(3, salle);
+			ResultSet result=mystat.executeQuery();
+			 while(result.next()) {
+				salle1=result.getInt(1);
+				 
+			 }
+			 if(salle1 !=0) {
+				 disp=false;
+			 }
+		     mycon.close();	
+		     
+       System.out.println("AdminDAO Disp :" +disp);
+
+			 return disp ;
+			 
+			 
+			 
+			 }
+		
+		
+		
+		
+		// give the list of teacher disponible
+	public ArrayList<Teacher>  Teacher_disp( String day,String open_time,String matiere) throws SQLException  {
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ArrayList<Teacher> Teacher_matiere= new ArrayList();
+			 
+			PreparedStatement mystat;
+			
+			
+	       mystat=mycon.prepareStatement(enseig_disponible_sql);
+	       mystat.setString(1, day);
+	       mystat.setString(2, open_time);
+	       mystat.setString(3, matiere);
+
+			 Teacher teacher;
+
+	      
+			ResultSet result=mystat.executeQuery();
+			 while(result.next()) {
+				 teacher=new Teacher();
+				teacher.setId(result.getInt(1));
+				teacher.setLast_name(result.getString(2));
+				teacher.setFirst_name(result.getString(3));
+				teacher.setModule(result.getString(4));
+				
+				
+				Teacher_matiere.add(teacher);
+				 
+			 }
+		     mycon.close();		
+
+
+			 return Teacher_matiere ;
+			 
+			 
+			 
+			 }
+		
+		
 
 }

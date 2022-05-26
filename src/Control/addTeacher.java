@@ -2,6 +2,7 @@ package Control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,6 +42,19 @@ public class addTeacher extends HttpServlet {
 
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 		if (type_Account != null) {
+			
+			
+			 ArrayList<String> matieres= new ArrayList();
+              AdminDAO admin =new AdminDAO();
+              
+              try {
+				matieres=admin.all_matiere();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+              req.setAttribute("matieres", matieres);
+			
 			RequestDispatcher dispatchor=req.getRequestDispatcher("/admin/AddProfil.jsp");
 			  dispatchor.forward(req, resp);	
 			

@@ -181,7 +181,7 @@
                         </div>
                         <div class="input-box">
                             <span class="details">Date de naissance </span>
-                            <input type="text" required name="date">
+                            <input type="date" required name="date">
                         </div>
                         <div class="input-box">
                             <span class="details">email </span>

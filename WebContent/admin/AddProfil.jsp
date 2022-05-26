@@ -10,11 +10,13 @@
  <meta name="viewport" content="width=device-width,initial-scale=1">
  
  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="<c:url value="/css/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/mobile.css"/>" media="(max-width: 880px)">
-    <link rel="stylesheet" href="<c:url value="/css/smallmobile.css"/>" media="(max-width: 390px)">
-      <link rel="stylesheet" href="<c:url value="/cssadmin/admin.css"/>" >
-        <link rel="stylesheet" href="<c:url value="/cssadmin/adminmobile.css"/>" media="(max-width: 880px)">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mobile.css" media="(max-width: 880px)">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/smallmobile.css" media="(max-width: 390px)">
+      <link rel="stylesheet" href="${pageContext.request.contextPath}/cssadmin/admin.css" >
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/cssadmin/adminmobile.css" media="(max-width: 880px)">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/cssadmin/eventSchedule.css">
+        
      <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/js/script.js"></script>
   
     <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
@@ -178,7 +180,7 @@
                         </div>
                         <div class="input-box">
                             <span class="details">Date de naissance </span>
-                            <input type="text" required name="date">
+                            <input type="date" required name="date">
                         </div>
                         <div class="input-box">
                             <span class="details">email </span>
@@ -188,10 +190,7 @@
                             <span class="details">Numéro de Contact</span>
                             <input type="text" required name="numero">
                         </div>
-                        <div class="input-box">
-                            <span class="details">Specialiste</span>
-                            <input type="text" required name="modul">
-                        </div>
+                        
                         <div class="input-box">
                             <span class="details">Nom d'utilisateur</span>
                             <input type="text" required name="username">
@@ -199,6 +198,17 @@
                         <div class="input-box">
                             <span class="details">mote de passe</span>
                             <input type="text" required name="password">
+                        </div>
+                         <div class="input-box">
+                     <span class="details">Matiere :</span>
+                         
+                            <select name="modul">
+                             <c:forEach  items="${matieres}" var="matieres" >
+
+                                <option><c:out value="${matieres}" /></option>
+                               
+                                </c:forEach>
+                            </select>
                         </div>
 
 

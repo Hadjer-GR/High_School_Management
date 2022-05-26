@@ -596,3 +596,19 @@ dialog.writelesson {
   font-size: 1em !important;
 }
 
+.addevent {
+	  width: 70% !important;
+	  top: 10% !important;
+	  left: 7% !important;
+	  height: auto !important;
+	  min-height: 75% !important;
+	}
+	.addevent2 {
+	  width: 80% !important;
+	  left: 5% !important;
+	}
+	.addevent3 {
+		  width: 80% !important;
+		  left: 2% !important;
+		}
+
