@@ -93,9 +93,25 @@ Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_a
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		   String class_id =(String)req.getSession().getAttribute("class_id");
+		   String emploi_id =(String)req.getSession().getAttribute("emploi_id");
+		   String enseig_id=req.getParameter("Enseig");
+		  System.out.println("\n enseig_id \n"+enseig_id +"class"+class_id);
+          AdminDAO admin =new AdminDAO();
+
+          try {
+			admin.emploi_enseig(emploi_id, enseig_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         resp.sendRedirect(req.getContextPath() + "/Showemploi");
+
+		
+		
 	}
 
 }

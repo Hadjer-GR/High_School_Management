@@ -299,12 +299,12 @@
                 </div>
 
             <div  >
-            <form action="<%=request.getContextPath()%>/Showemploi">
+            <form action="<%=request.getContextPath()%>/Showemploi" method="post">
                          <div class="Enseignant" >
                          <br>
                             <h4 class="eventtitle">Enseignant  Disponible:</h4>
                             <br>
-                            <select name="Ensei" id="enseig">
+                            <select name="Enseig" >
                             
                                   <c:forEach  items="${teacher_matiere}" var="teacher_matiere" > 
                                                   
@@ -317,7 +317,6 @@
                                 
                             </select>
                             <div>
-                       <input type="hidden" value="<c:out value="${class_id}" />"  name="class_id">
                             
                         <input type="submit" value="Add" class="saveEvent">
                     </div>

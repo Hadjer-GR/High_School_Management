@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Model.AdminDAO;
+import Model.Emploi;
 import Model.Group;
 import Model.Teacher;
 import Model.Type_Account;
@@ -94,8 +95,34 @@ public class emploiGroup extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			  String class_id =(String)req.getSession().getAttribute("class_id");
+             int id=Integer.parseInt(class_id);
+			 int d=Integer.parseInt(salle);
+			 Emploi emploi =new Emploi();
+			 emploi.setClass_id(id); 
+			 emploi.setDay(day);
+			 emploi.setOpen_time(open_time);
+			 emploi.setMatiere(matiere);
+			 emploi.setSalle(d);
+			 // insert in emploi de temps
+			  int emploi_id =0;
+			  String id_emploi;
+
+			 try {
+				admin.insert_emploi(emploi);
+				emploi_id=admin.get_emploi_id(emploi);
+				id_emploi=String.valueOf(emploi_id);
+				 HttpSession ses =req.getSession();
+				  ses.setAttribute("emploi_id", id_emploi);
+				  System.out.println("\n emploi_id \n " +id_emploi);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			 
-             req.setAttribute("teacher_matiere",teacher_matiere);
+			 
+			 
+			 req.setAttribute("teacher_matiere",teacher_matiere);
 
   			req.setAttribute("step", 1);
   			this.getServletContext().getRequestDispatcher("/admin/EmploiGroup.jsp").forward(req, resp);

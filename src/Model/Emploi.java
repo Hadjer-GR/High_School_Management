@@ -6,7 +6,7 @@ public class Emploi {
 	private String open_time;
 	private String day;
 	private String matiere;
-	private int salle;
+	private 	int salle;
 	private int class_id;
 	
 	

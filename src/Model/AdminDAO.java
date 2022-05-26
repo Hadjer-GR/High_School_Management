@@ -107,7 +107,10 @@ public class AdminDAO {
 			+ " "
 			+ ") and Module=? ; ";
 
-	
+	private static final String insert_emploi_sql="insert into emploi_temp (open_time,day,matiere,salle,class_id) values(?,?,?,?,?);";
+	private static final String get_emploi_id_sql="select id from emploi_temp  where open_time=? and day=? and salle=? and matiere=? and class_id=?;";
+	private static final String emploi_enseig_sql="insert into emploi_temp_has_enseignement (Emploi_temp_id,enseig_id)values(?,?);";
+
 	
 	// connect database
 	
@@ -464,6 +467,95 @@ public  boolean  virefie_salle(String open_time,String day ,String salle) throws
 			 
 			 }
 		
+		/*
+		 *  Insert into emploi de temp 
+		 * 
+		 */
+
+public void insert_emploi(Emploi emploi) throws SQLException {
 		
+		
+		try {
+			Connectdb();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		PreparedStatement mystat;
+		mystat=mycon.prepareStatement(insert_emploi_sql);
+       mystat.setString(1,emploi.getOpen_time());
+       mystat.setString(2, emploi.getDay());		
+       mystat.setString(3, emploi.getMatiere());		
+       mystat.setInt(4, emploi.getSalle());		
+       mystat.setInt(5, emploi.getClass_id());		
+
+		 mystat.executeUpdate();
+	       mycon.close();
+ 
+	}
+	
+
+/*
+ * get emploi id 
+ * 
+ */
+public int get_emploi_id(Emploi emploi) throws SQLException {
+	
+	
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} 
+	PreparedStatement mystat;
+	mystat=mycon.prepareStatement(get_emploi_id_sql);
+   mystat.setString(1,emploi.getOpen_time());
+   mystat.setString(2, emploi.getDay());
+   mystat.setInt(3, emploi.getSalle());		
+   mystat.setString(4, emploi.getMatiere());		
+   mystat.setInt(5, emploi.getClass_id());		
+
+     int id=0;
+	ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		
+	 	 id=result.getInt(1);
+	  }
+        mycon.close();		
+
+
+	    return id ;
+	 
+
+}
+
+/*
+ * 
+ * Insert enseign has emploi de temp
+ * 
+ * 
+ */
+
+
+public void emploi_enseig(String emploi_id,String enseig_id) throws SQLException {
+	
+	
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} 
+	PreparedStatement mystat;
+	mystat=mycon.prepareStatement(emploi_enseig_sql);
+	mystat.setString(1, emploi_id);
+	mystat.setString(2, enseig_id);
+
+	 mystat.executeUpdate();
+       mycon.close();
+
+}
+
 
 }
