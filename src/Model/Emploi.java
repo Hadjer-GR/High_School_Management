@@ -8,8 +8,15 @@ public class Emploi {
 	private String matiere;
 	private 	int salle;
 	private int class_id;
+	private int enseig_id;
 	
 	
+	public int getEnseig_id() {
+		return enseig_id;
+	}
+	public void setEnseig_id(int enseig_id) {
+		this.enseig_id = enseig_id;
+	}
 	public int getId() {
 		return id;
 	}

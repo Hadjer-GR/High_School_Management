@@ -18,15 +18,17 @@
                 
        <link rel="stylesheet" href="${pageContext.request.contextPath}/cssadmin/admin.css" >
       <link rel="stylesheet" href="${pageContext.request.contextPath}/cssadmin/eventSchedule.css">
+       <link rel="stylesheet" href="${pageContext.request.contextPath}/cssadmin/adminmobile.css" media="(max-width: 880px)">
        
                     
+               <script  defer type="text/javascript" src="${pageContext.request.contextPath}/jsAdmin/main.js"></script>
    
        <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/js/script.js"></script>
          <script defer type="text/javascript"  src="${pageContext.request.contextPath}/js/mobilescreen.js"></script>
-            <script  defer type="text/javascript"   src="${pageContext.request.contextPath}/jsAdmin/main.js"></script>
     
 </head>
 <body>
+               <script  defer type="text/javascript" src="<%=request.getContextPath()%>/jsAdmin/main.js"></script>
 
 <nav class="sidebar close">
 
@@ -160,30 +162,48 @@
         <div class="contentetud">
 
 
-            <div class="container">
+            <div class="container" id="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="row day-columns">
                             <div class="day-column">
                                 <div class="day-header">Dimenche</div>
                                 <div class="day-content">
+                                
+                                
+                     <c:forEach  var="list_emploi"  items="${list_emploi}"  >
+                         <c:if test="${list_emploi.getDay().equals('Dimenche')}">
+                                
                                     <div class="event gray">
                                         <div class="eventtableclose">
+                                          <a href="<%=request.getContextPath()%>/DeleteEmploi?emploi_id=<c:out value="${list_emploi.getId() }" />">
                                             <span>
-                                                <a href="#"><i class='bx bx-x btnclosewritelesson'></i></a>
+                                              <i class='bx bx-x btnclosewritelesson'></i>
                                             </span>
+                                            </a>
                                         </div>
-                                        <span class="title"> Math </span>
+                                        <span class="title"> <c:out value="${list_emploi.getMatiere() }" /> </span>
 
-
+                               <c:forEach  var="list_teacher_emploi"  items="${list_teacher_emploi}"  >
+                         <c:if test="${list_emploi.getEnseig_id() eq list_teacher_emploi.getId() }">
+                                     
                                         <footer>
-                                            <span> GHRAB RANIA</span>
+                                            <span><c:out value="${list_teacher_emploi.getFirst_name() }" />
+                                            <c:out value="${list_teacher_emploi.getLast_name() }" />
+                                            </span>
                                             <br>
-                                            <span>8:00</span>
+                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
                                         </footer>
-                                        <span class="title"> S: 5 </span>
+                                        
+                                        </c:if>
+                                        </c:forEach>
+                                        <span class="title"> S: <c:out value="${list_emploi.getSalle() }" />  </span>
 
                                     </div>
+</c:if>
+</c:forEach>
+
+
 
 
                                 </div>
@@ -191,6 +211,38 @@
                             <div class="day-column">
                                 <div class="day-header">Lundi</div>
                                 <div class="day-content">
+            
+                     <c:forEach  var="list_emploi"  items="${list_emploi}"  >
+                         <c:if test="${list_emploi.getDay().equals('Lundi')}">
+                                
+                                    <div class="event navy">
+                                        <div class="eventtableclose">
+                                          <a href="<%=request.getContextPath()%>/DeleteEmploi?emploi_id=<c:out value="${list_emploi.getId() }" />">
+                                            <span class="btnclose">
+                                              <i class='bx bx-x btnclosewritelesson'></i>
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <span class="title"> <c:out value="${list_emploi.getMatiere() }" /> </span>
+
+                               <c:forEach  var="list_teacher_emploi"  items="${list_teacher_emploi}"  >
+                         <c:if test="${list_emploi.getEnseig_id() eq list_teacher_emploi.getId() }">
+                                     
+                                        <footer>
+                                            <span><c:out value="${list_teacher_emploi.getFirst_name() }" />
+                                            <c:out value="${list_teacher_emploi.getLast_name() }" />
+                                            </span>
+                                            <br>
+                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                                        </footer>
+                                        
+                                        </c:if>
+                                        </c:forEach>
+                                        <span class="title"> S: <c:out value="${list_emploi.getSalle() }" />  </span>
+
+                                    </div>
+</c:if>
+</c:forEach>
 
                                 </div>
                             </div>
@@ -198,12 +250,76 @@
                                 <div class="day-header">Mardi</div>
                                 <div class="day-content">
 
+            
+                     <c:forEach  var="list_emploi"  items="${list_emploi}"  >
+                         <c:if test="${list_emploi.getDay().equals('Mardi')}">
+                                
+                                    <div class="event math">
+                                        <div class="eventtableclose">
+                                          <a href="<%=request.getContextPath()%>/DeleteEmploi?emploi_id=<c:out value="${list_emploi.getId() }" />">
+                                            <span>
+                                              <i class='bx bx-x btnclosewritelesson'></i>
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <span class="title"> <c:out value="${list_emploi.getMatiere() }" /> </span>
+
+                               <c:forEach  var="list_teacher_emploi"  items="${list_teacher_emploi}"  >
+                         <c:if test="${list_emploi.getEnseig_id() eq list_teacher_emploi.getId() }">
+                                     
+                                        <footer>
+                                            <span><c:out value="${list_teacher_emploi.getFirst_name() }" />
+                                            <c:out value="${list_teacher_emploi.getLast_name() }" />
+                                            </span>
+                                            <br>
+                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                                        </footer>
+                                        
+                                        </c:if>
+                                        </c:forEach>
+                                        <span class="title"> S: <c:out value="${list_emploi.getSalle() }" />  </span>
+
+                                    </div>
+</c:if>
+</c:forEach>
+
                                 </div>
                             </div>
                             <div class="day-column">
                                 <div class="day-header">Mercredi</div>
                                 <div class="day-content">
+            
+                     <c:forEach  var="list_emploi"  items="${list_emploi}"  >
+                         <c:if test="${list_emploi.getDay().equals('Mercredi')}">
+                                
+                                    <div class="event sport">
+                                        <div class="eventtableclose">
+                                          <a href="<%=request.getContextPath()%>/DeleteEmploi?emploi_id=<c:out value="${list_emploi.getId() }" />">
+                                            <span>
+                                              <i class='bx bx-x btnclosewritelesson'></i>
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <span class="title"> <c:out value="${list_emploi.getMatiere() }" /> </span>
 
+                               <c:forEach  var="list_teacher_emploi"  items="${list_teacher_emploi}"  >
+                         <c:if test="${list_emploi.getEnseig_id() eq list_teacher_emploi.getId() }">
+                                     
+                                        <footer>
+                                            <span><c:out value="${list_teacher_emploi.getFirst_name() }" />
+                                            <c:out value="${list_teacher_emploi.getLast_name() }" />
+                                            </span>
+                                            <br>
+                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                                        </footer>
+                                        
+                                        </c:if>
+                                        </c:forEach>
+                                        <span class="title"> S: <c:out value="${list_emploi.getSalle() }" />  </span>
+
+                                    </div>
+</c:if>
+</c:forEach>
 
                                 </div>
                             </div>
@@ -211,7 +327,38 @@
                                 <div class="day-header">Jeudi</div>
                                 <div class="day-content">
 
+            
+                     <c:forEach  var="list_emploi"  items="${list_emploi}"  >
+                         <c:if test="${list_emploi.getDay().equals('Jeudi')}">
+                                
+                                    <div class="event arabic">
+                                        <div class="eventtableclose">
+                                          <a href="<%=request.getContextPath()%>/DeleteEmploi?emploi_id=<c:out value="${list_emploi.getId() }" />">
+                                            <span>
+                                              <i class='bx bx-x btnclosewritelesson'></i>
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <span class="title"> <c:out value="${list_emploi.getMatiere() }" /> </span>
 
+                               <c:forEach  var="list_teacher_emploi"  items="${list_teacher_emploi}"  >
+                         <c:if test="${list_emploi.getEnseig_id() eq list_teacher_emploi.getId() }">
+                                     
+                                        <footer>
+                                            <span><c:out value="${list_teacher_emploi.getFirst_name() }" />
+                                            <c:out value="${list_teacher_emploi.getLast_name() }" />
+                                            </span>
+                                            <br>
+                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                                        </footer>
+                                        
+                                        </c:if>
+                                        </c:forEach>
+                                        <span class="title"> S: <c:out value="${list_emploi.getSalle() }" />  </span>
+
+                                    </div>
+</c:if>
+</c:forEach>
 
                                 </div>
                             </div>
@@ -221,10 +368,10 @@
                     </div>
                 </div>
             </div>
-
+</div>
  
- <div class="addevent">
-       <div class="eventclose">
+ <div class="addevent closeadd" id="addevent">
+       <div class="eventclose" id="btnclose">
                     <span>
                         <i class='bx bx-x btnclose'></i>
                     </span>
@@ -341,8 +488,39 @@
                     <div>
 
                         <br>
-
-                        <div class="Enseignant" name="Ensei">
+                        <c:choose>
+                        <c:when test="${dispclass.equals('0') && salle.equals('0') }">
+                        
+                        <div class="Enseignant" >
+                            <h4 > le class etudie auter matiere a ce temp et aussi     </h4>
+                         <h4 >la salle qui demende est reserve    </h4>
+                            
+                            <br>
+                            
+                              <h5 > choisie un auter salle , temp svp  .   </h5>
+                            
+                            <br>
+                           
+                        </div>
+                        
+                        </c:when>
+                        <c:when test="${dispclass.equals('0') }">
+                        
+                        <div class="Enseignant" >
+                            <h4 > le class etudie auter matiere a ce temp    </h4>
+                            <br>
+                            
+                              <h5 > choisie un auter temp svp  .   </h5>
+                            
+                            <br>
+                           
+                        </div>
+                        
+                        </c:when>
+                        
+                        <c:when test="${salle.equals('0') }">
+                        
+                         <div class="Enseignant" >
                             <h4 > la salle n'est pas disponible   </h4>
                             <br>
                             
@@ -351,6 +529,19 @@
                             <br>
                            
                         </div>
+                        
+                        </c:when>
+                        
+                         
+
+                       
+                        
+          
+                       </c:choose>
+                       
+                       
+                        
+                   
 
                     </div>
 
@@ -365,44 +556,42 @@
  
  </c:choose>
 
-           
+           <div class="change" id="addemploi">
+                <a href="#"> Ajouter</a>
+
+            </div>
     </section>
    
-  
-
 <script>
 
-const addevent = document.querySelector(".addevent");
+
+
+
+const addevent = document.getElementById("addevent");
 const addevent2 = document.querySelector(".addevent2");
-
-const btnclose = document.querySelector(".btnclose");
-const container = document.querySelector(".container");
+const btnclose = document.getElementById("btnclose");
+const container = document.getElementById("container");
 const btnclosee = document.querySelector(".btnclosee");
-console.log(btnclosee);
-/*
-btnclosee.addEventListener("click", () => {
-  addevent2.classList.add("closeevent2");
+const addemploi = document.getElementById("addemploi");
+
+
+console.log(addemploi);
+console.log(btnclose);
+addemploi.addEventListener("click", (eo) => {
+  document.getElementById("addevent").classList.remove("closeadd");
 });
-*/
 btnclose.addEventListener("click", (eo) => {
-  addevent.classList.add("closeadd");
+  document.getElementById("addevent").classList.add("closeadd");
 });
-container.addEventListener("click", (eo) => {
-  switch (eo.target.parentElement.className) {
-    case "eventtableclose":
-      addevent.classList.add("closeadd");
 
-      break;
-    case "event gray":
-      addevent.classList.add("closeadd");
-
-      break;
-    default:
-      addevent.classList.remove("closeadd");
-
-      break;
-  }
+btnclosee.addEventListener("click", (eo) => {
+  addevent2.classList.add("closeadd");
 });
+
+
+
+
+
 
 
 </script>

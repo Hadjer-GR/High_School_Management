@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.AdminDAO;
+import Model.Emploi;
 import Model.Group;
 import Model.Teacher;
 import Model.Type_Account;
@@ -45,17 +46,17 @@ Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_a
       	     int step_1=0;
                UserDAO user =new UserDAO();
               ArrayList<String> matieres= new ArrayList();
- 			 ArrayList<Teacher> teacher_matiere= new ArrayList();
-                 System.out.println("Class id in Get method"+class_id);
- 			  
+				 ArrayList<Emploi> list_emploi= new ArrayList();
+				 ArrayList<Teacher> list_teacher_emploi= new ArrayList();
+				 
               Group group;
               AdminDAO admin =new AdminDAO();
               
               try {
             	  group=user.class_info(class_id);
-				matieres=admin.class_matiere(group.getId_niveau(), group.getSpecialiste());
-				
-				
+				  matieres=admin.class_matiere(group.getId_niveau(), group.getSpecialiste());
+				  list_emploi=admin.show_emploi_class(class_id);
+				  list_teacher_emploi=admin.enseig_emploi_class(class_id);
 
 
 			} catch (SQLException e) {
@@ -63,10 +64,11 @@ Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_a
 				e.printStackTrace();
 			}
              
-  			req.setAttribute("step", step_1);
-           req.setAttribute("class_id", class_id);
+  		      req.setAttribute("step", step_1);
+              req.setAttribute("class_id", class_id);
               req.setAttribute("matieres", matieres);
-              
+              req.setAttribute("list_emploi", list_emploi);
+              req.setAttribute("list_teacher_emploi", list_teacher_emploi);
               
   			this.getServletContext().getRequestDispatcher("/admin/EmploiGroup.jsp").forward(req, resp);
 

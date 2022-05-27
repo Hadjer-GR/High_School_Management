@@ -96,6 +96,9 @@ public class AdminDAO {
 	 * Emploi de temp 
 	 * 
 	 */
+	
+	private static final String verifie_class_sql="select id from emploi_temp where open_time=? and day=? and class_id=?;";
+
 	private static final String verifie_salle_sql="select  id from emploi_temp where open_time=? and day=? and  salle=?;";
 	private static final String enseig_disponible_sql="select id,nom,prenom,Module  "
 			+ "from enseignement "
@@ -110,6 +113,21 @@ public class AdminDAO {
 	private static final String insert_emploi_sql="insert into emploi_temp (open_time,day,matiere,salle,class_id) values(?,?,?,?,?);";
 	private static final String get_emploi_id_sql="select id from emploi_temp  where open_time=? and day=? and salle=? and matiere=? and class_id=?;";
 	private static final String emploi_enseig_sql="insert into emploi_temp_has_enseignement (Emploi_temp_id,enseig_id)values(?,?);";
+	private static final String emploi_class_sql="select enseig_id , id,open_time,day,matiere,salle\r\n"
+			+ "from emploi_temp_has_enseignement \r\n"
+			+ "inner join  emploi_temp\r\n"
+			+ "on emploi_temp.id =emploi_temp_has_enseignement.Emploi_temp_id\r\n"
+			+ "and emploi_temp.class_id=? order by open_time;";
+	private static final String enseig_class_sql="select id,nom,prenom \r\n"
+			+ "from enseignement \r\n"
+			+ "where id in (select enseig_id \r\n"
+			+ "from emploi_temp_has_enseignement \r\n"
+			+ "inner join  emploi_temp\r\n"
+			+ "on emploi_temp.id =emploi_temp_has_enseignement.Emploi_temp_id\r\n"
+			+ "and emploi_temp.class_id=?);";
+	private static final String delete_enseig_emploi_sql="delete from emploi_temp_has_enseignement where Emploi_temp_id= ?;\r\n"
+			+ "";
+	private static final String delete_emploi_sql="delete from emploi_temp where id=?;";
 
 	
 	// connect database
@@ -127,9 +145,6 @@ public class AdminDAO {
 		
 	
 	}
-	
-	
-	
 	
 	// Add Profil
 	
@@ -421,7 +436,47 @@ public  boolean  virefie_salle(String open_time,String day ,String salle) throws
 			 
 			 }
 		
-		
+/*
+ * 
+ * Verifie disponibilite de la class
+ */
+
+public  boolean  virefie_class(String open_time,String day ,String class_id) throws SQLException  {
+	
+	try {
+		Connectdb();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	boolean  disp =true;
+	int salle1=0;
+	 
+	PreparedStatement mystat;
+
+   mystat=mycon.prepareStatement(verifie_class_sql);
+	 mystat.setString(1, open_time);
+	 mystat.setString(2, day);
+	 mystat.setString(3, class_id);
+	ResultSet result=mystat.executeQuery();
+	 while(result.next()) {
+		salle1=result.getInt(1);
+		 
+	 }
+	 if(salle1 !=0) {
+		 disp=false;
+	 }
+     mycon.close();	
+     
+System.out.println("AdminDAO Disp class :" +disp);
+
+	 return disp ;
+	 
+	 
+	 
+	 }
+
+
 		
 		
 		// give the list of teacher disponible
@@ -556,6 +611,148 @@ public void emploi_enseig(String emploi_id,String enseig_id) throws SQLException
        mycon.close();
 
 }
+
+
+//get list emploi in specific class 	 
+
+	public ArrayList<Emploi>  show_emploi_class(String class_id) throws SQLException  {
+				
+				try {
+					Connectdb();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 ArrayList<Emploi> list_emploi= new ArrayList();
+				 Emploi emploi;
+				 
+				PreparedStatement mystat;
+				
+				
+		       mystat=mycon.prepareStatement(emploi_class_sql);
+		      mystat.setString(1, class_id);
+		     
+	       
+		         
+				ResultSet result=mystat.executeQuery();
+				 while(result.next()) {
+					 emploi=new Emploi();
+					 emploi.setEnseig_id(result.getInt(1));
+					 emploi.setId(result.getInt(2));
+					 emploi.setOpen_time(result.getString(3));
+					 emploi.setDay(result.getString(4));
+					 emploi.setMatiere(result.getString(5));
+					 emploi.setSalle(result.getInt(6));
+           			 list_emploi.add(emploi);
+					 
+				 }
+			     mycon.close();		
+
+
+				 return list_emploi ;
+				 
+				 
+				 
+				 }
+	
+	//get list teacher in  emploi in specific class 	 
+
+		public ArrayList<Teacher>  enseig_emploi_class(String class_id) throws SQLException  {
+					
+					try {
+						Connectdb();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					 ArrayList<Teacher> list_teacher_emploi= new ArrayList();
+					 Teacher teacher;
+					 
+					PreparedStatement mystat;
+					
+					
+			       mystat=mycon.prepareStatement(enseig_class_sql);
+			      mystat.setString(1, class_id);
+			     
+		       
+			         
+					ResultSet result=mystat.executeQuery();
+					 while(result.next()) {
+						 teacher=new Teacher();
+						 teacher.setId(result.getInt(1));
+						 teacher.setLast_name(result.getString(2));
+						 teacher.setFirst_name(result.getString(3));				 
+						 list_teacher_emploi.add(teacher);
+						 
+					 }
+				     mycon.close();		
+
+
+					 return list_teacher_emploi ;
+					 
+					 
+					 
+					 }
+		
+
+
+
+		/*
+		 * 
+		 * Add emploi from emploi_temp
+		 */
+		
+
+		public void delete_emploi(String emploi_id) throws SQLException {
+			
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			PreparedStatement mystat;
+			mystat=mycon.prepareStatement(delete_emploi_sql);
+			mystat.setString(1, emploi_id);
+			
+			 mystat.executeUpdate();
+		       mycon.close();
+	 
+		}
+
+		/*
+		 * 
+		 * Add enseign  from emploi_temp
+		 */
+		
+		
+		
+		
+
+		public void delete_enseig_emploi(String emploi_id) throws SQLException {
+			
+			
+			try {
+				Connectdb();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			PreparedStatement mystat;
+			mystat=mycon.prepareStatement(delete_enseig_emploi_sql);
+			mystat.setString(1, emploi_id);
+			
+			 mystat.executeUpdate();
+		       mycon.close();
+	 
+		}
+
+
+
+
+
+
 
 
 }

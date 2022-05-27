@@ -67,24 +67,32 @@
 }
 
 .day-columns .day-column .day-content .event {
-  height: 90px !important;
+  height: 100px !important;
+  width:180px;
+  
 }
 
 .day-columns .day-column .day-content .event .eventtableclose {
+ 
   position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
-.day-columns .day-column .day-content .event .eventtableclose span {
-  position: absolute;
-  right: 2px;
-}
+.day-columns .day-column .day-content .event .eventtableclose a {
+	  color: #fff;
+	  font-size: 1.2em;
+	  right: 2px;
+	}
+
 .day-columns .day-column .day-content .event .eventtableclose span a i {
   position: relative;
-  font-size: 1.4em;
+  font-size: 1.2em;
   transition: 0.2s;
   color: #fff;
 }
 .eventtableclose span a i:hover {
-  color: red !important;
+  
   font-size: 1.4em;
 }
 .addevent .close span i:hover {

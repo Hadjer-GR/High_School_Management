@@ -1,10 +1,11 @@
 /* design add profil */
-.containerAccount .change {
+.change {
   position: absolute;
   top: 5%;
   right: 10%;
 }
-.containerAccount .change a {
+
+.change a {
   text-decoration: none;
   background-color: #657383 !important;
   padding: 15px 10px;
@@ -20,7 +21,10 @@
   cursor: pointer;
   transition: 0.2s;
 }
-.containerAccount .change:hover {
+.table_teacher .change a {
+  border-radius: 10px !important;
+}
+.change:hover {
   transform: scale(1.1);
   transition: 0.2s;
 }

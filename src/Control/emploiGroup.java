@@ -73,21 +73,25 @@ public class emploiGroup extends HttpServlet {
 		 matiere=  req.getParameter("matiere");
 		 salle=req.getParameter("salle");
 		  System.out.println("kkk"+open_time +"hhh" +day+"mm"+matiere +"salee:"+salle);
-     
-		  boolean disp =false;
-		  
+		  String class_id =(String)req.getSession().getAttribute("class_id");
+		  boolean dispSalle =false;
+		  boolean dispClass =false;
+
  AdminDAO admin =new AdminDAO();
 
  try {
-	disp=admin.virefie_salle(open_time, day, salle);
+	 dispSalle=admin.virefie_salle(open_time, day, salle);
+	 dispClass=admin.virefie_class(open_time, day, class_id);
 } catch (SQLException e) {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
 }
   
 	       
-		System.out.println("\n disp:"+disp);
-		if(disp) {
+		System.out.println("\n dispSalle:"+dispSalle);
+		System.out.println("\n dispClass:"+dispClass);
+
+		if(dispSalle &&  dispClass) {
 			 ArrayList<Teacher> teacher_matiere= new ArrayList();
 			 try {
 				teacher_matiere=admin.Teacher_disp(day, open_time, matiere);
@@ -95,7 +99,7 @@ public class emploiGroup extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			  String class_id =(String)req.getSession().getAttribute("class_id");
+			 
              int id=Integer.parseInt(class_id);
 			 int d=Integer.parseInt(salle);
 			 Emploi emploi =new Emploi();
@@ -107,11 +111,14 @@ public class emploiGroup extends HttpServlet {
 			 // insert in emploi de temps
 			  int emploi_id =0;
 			  String id_emploi;
-
+			  ArrayList<Emploi> list_emploi= new ArrayList();
+				 ArrayList<Teacher> list_teacher_emploi= new ArrayList();
 			 try {
 				admin.insert_emploi(emploi);
 				emploi_id=admin.get_emploi_id(emploi);
 				id_emploi=String.valueOf(emploi_id);
+				 list_emploi=admin.show_emploi_class(class_id);
+				  list_teacher_emploi=admin.enseig_emploi_class(class_id);
 				 HttpSession ses =req.getSession();
 				  ses.setAttribute("emploi_id", id_emploi);
 				  System.out.println("\n emploi_id \n " +id_emploi);
@@ -123,15 +130,35 @@ public class emploiGroup extends HttpServlet {
 			 
 			 
 			 req.setAttribute("teacher_matiere",teacher_matiere);
-
+			 req.setAttribute("list_emploi", list_emploi);
+             req.setAttribute("list_teacher_emploi", list_teacher_emploi);
   			req.setAttribute("step", 1);
   			this.getServletContext().getRequestDispatcher("/admin/EmploiGroup.jsp").forward(req, resp);
 
 			
 		}else {
-  			req.setAttribute("step", 2);
-  			this.getServletContext().getRequestDispatcher("/admin/EmploiGroup.jsp").forward(req, resp);
+			if(dispClass) {
+				req.setAttribute("dispclass", "1");
+				req.setAttribute("salle", "0");
 
+			}else {
+				req.setAttribute("dispclass", "0");
+
+				if(dispSalle) {
+					req.setAttribute("salle", "1");
+
+               	 
+                }else {
+					req.setAttribute("salle", "0");
+					
+
+                }
+				
+			}
+			
+  			
+			req.setAttribute("step", 2);
+  			this.getServletContext().getRequestDispatcher("/admin/EmploiGroup.jsp").forward(req, resp);
 			
 		}
 		
