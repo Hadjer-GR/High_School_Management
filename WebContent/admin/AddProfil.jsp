@@ -205,9 +205,17 @@
                             <select name="modul">
                              <c:forEach  items="${matieres}" var="matieres" >
 
-                                <option><c:out value="${matieres}" /></option>
-                               
+                                <option><c:out value="${matieres}" /></option>                         
                                 </c:forEach>
+                                 <option><c:out value="Droit" /></option>
+                          <option><c:out value="Comptabilite" /></option>
+                            <option><c:out value="Economie et Managment" /></option>
+                          <option><c:out value="philosophie" /></option>
+                        <option><c:out value="langues étrangères" /></option>
+                      <option><c:out value="Economie" /></option>
+                        
+                          
+                            
                             </select>
                         </div>
 

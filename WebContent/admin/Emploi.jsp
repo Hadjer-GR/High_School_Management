@@ -498,7 +498,7 @@
                               <%      nbr_2as_8=  nbr_2as_8+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -506,7 +506,8 @@
                                 
                     
                                     <li>
-                            <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_8%>&niv_id=2&spet=langues étrangères" ><i class='bx bx-plus'></i></a></h4>
+                           <h4 class="level-4 rectangle"><a class="btnadd"  href="<%=request.getContextPath()%>/AddClass?nbr_class=<%= nbr_2as_8%>&niv_id=2&spet=langues étrangères" ><i class='bx bx-plus'></i></a></h4>
+                                    
                                     
                                 </li>
                                     
@@ -536,7 +537,7 @@
                               <%    nbr_3as=nbr_3as+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -567,7 +568,7 @@
                               <%    nbr_3as_1=nbr_3as_1+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -598,7 +599,7 @@
                               <%    nbr_3as_2=nbr_3as_2+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -629,7 +630,7 @@
                               <%     nbr_3as_3= nbr_3as_3+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -661,7 +662,7 @@
                               <%    nbr_3as_4= nbr_3as_4+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -693,7 +694,7 @@
                               <%     nbr_3as_6= nbr_3as_6+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -725,7 +726,7 @@
                               <%     nbr_3as_9= nbr_3as_9+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -757,7 +758,7 @@
                               <%      nbr_3as_7=  nbr_3as_7+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
@@ -789,7 +790,7 @@
                               <%      nbr_3as_8=  nbr_3as_8+1; %>
                               
                              <li>                             
-                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/ShowClass?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
+                               <h4 class="level-4 rectangle"><a href="<%=request.getContextPath()%>/emploiGroup?class_id=<c:out value="${class_list.getId()}" />"> <c:out value="${class_list.getNbr_class() }" /> </a></h4>               
                                 </li>    
                                 </c:if>
                                 </c:if>
