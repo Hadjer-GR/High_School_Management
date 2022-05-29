@@ -207,10 +207,9 @@
                     <div class="rTableHead"><strong> Devoir-1</strong></div>
                     <div class="rTableHead"><strong> Devoir-2</strong></div>
                     <div class="rTableHead"><strong> Control</strong></div>
-                    <div class="rTableHead"><strong>Mouyenne</strong></div>
                     <div class="rTableHead"><strong> &nbsp;</strong></div>
-
-                    <div class="rTableHead"><strong> Update</strong></div>
+                    <div class="rTableHead"><strong> &nbsp;</strong></div>
+                    <div class="rTableHead"><strong> enregisteré</strong></div>
 
 
 
@@ -236,22 +235,32 @@
 
                     </div>
                     <div class="rTableCell">
-                        <input type="number" name="evalution" value="<c:out value="${student_resulte.getEvalution() }" />" class="setresult">
+                   
+                    
+                        <input type="number" name="evalut" value="
+                       <c:out value="${student_resulte.getEvalution() }" 
+ 
+                        /> " class="setresult">
+                       
+                        
                     </div>
                     <div class="rTableCell">
-                        <input type="number" name="devoir-1" value="<c:out value="${student_resulte.getDevoir_1() }" />" class="setresult">
+                    
+                   
+                        <input type="number" name="devoir_1" value="<c:out value="${student_resulte.getDevoir_1() }" />" class="setresult">
                     </div>
                     <div class="rTableCell">
-                        <input type="number" name="devoir-2" value="<c:out value="${student_resulte.getDevoir_2() }" />" class="setresult">
+                        <input type="number" name="devoir_2" value="<c:out value="${student_resulte.getDevoir_2() }" />" class="setresult">
                     </div>
                     <div class="rTableCell">
                         <input type="number" name="control" value="<c:out value="${student_resulte.getControl() }" />" class="setresult">
                     </div>
+                   
                     <div class="rTableCell">
-                        <input type="number" name="mouyenne" value="<c:out value="${student_resulte.getMouyenne() }" />" class="setresult">
+                        <input type="hidden" name="eleve_id" value="<c:out value="${student_resulte.getEleve_id() }" />" class="setresult">
                     </div>
-                    <div class="rTableCell">
-                        <input type="hidden" name="id" value="<c:out value="${student_resulte.getEleve_id() }" />" class="setresult">
+                     <div class="rTableCell">
+                        <input type="hidden" name="id" value="<c:out value="${student_resulte.getId() }" />" class="setresult">
                     </div>
                     <div class="rTableCell">
                         <input type="Submit" value="Save" class="edite ">
@@ -287,8 +296,9 @@
                     <div class="rTableCell">
                         <input type="number" name="control" value="<c:out value="${student_resulte.getControl() }" />" class="setresult">
                     </div>
+                    
                     <div class="rTableCell">
-                        <input type="number" name="mouyenne" value="<c:out value="${student_resulte.getMouyenne() }" />" class="setresult">
+                        <input type="hidden" name="eleve_id" value="<c:out value="${student_resulte.getEleve_id() }" />" class="setresult">
                     </div>
                     <div class="rTableCell">
                         <input type="hidden" name="id" value="<c:out value="${student_resulte.getEleve_id() }" />" class="setresult">

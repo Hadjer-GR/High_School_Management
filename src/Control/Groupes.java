@@ -41,26 +41,15 @@ public class Groupes extends HttpServlet {
 		if (type_Account != null) {
 			
 			UserDAO user=new UserDAO();
-			ArrayList<Integer> list_class_id=new ArrayList();
 			ArrayList<Group> class_list=new ArrayList();
-			
+			 int teacher_id=type_Account.getId_user();
+           
 			try {
-				list_class_id=user.teacher_class(type_Account.getId_user());
-				
-				if(list_class_id.isEmpty()) {
-					
-				}else {
-					class_list=user.class_info(list_class_id);
-					
-				}
-		    	
-
-				
+				class_list=user.show_teacher_class(teacher_id);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			req.setAttribute("class_list", class_list);
 			this.getServletContext().getRequestDispatcher("/Teacher/Class.jsp").forward(req, resp);
     

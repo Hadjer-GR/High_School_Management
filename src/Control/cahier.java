@@ -4,7 +4,9 @@ import java.io.IOException;
 
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -48,8 +50,8 @@ public class cahier extends HttpServlet {
         
           HttpSession ses=req.getSession();
         
-        	   String class_id= req.getParameter("id_class");
-              ses.setAttribute("class_id", class_id);
+        	   String class_id= (String)req.getSession().getAttribute("class_id");
+              
              
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 
@@ -58,21 +60,21 @@ public class cahier extends HttpServlet {
                 	  // 2. get the matiere name the the teacher study
    	 
                 	  UserDAO user=new UserDAO();
+                	  int enseig_id=type_Account.getId_user();
                 	  Group groupe=new Group();
-                	    ArrayList<Integer> matieres_id=new ArrayList();
-                	    Matiére matiere =new Matiére();
-                	    Cahier_text mylesson =new Cahier_text();  
-      				  ArrayList<Cahier_text>listlesson=new ArrayList();
+                	    String nom_matiere="";
+                	    
+      				  ArrayList<Cahier_text> lesson_textbook=new ArrayList();
 
                 	  
                 	  String id=(String)req.getSession().getAttribute("class_id");
                 	
                 	  try {
-						groupe=user.class_info(id);
-						System.out.println("\n id :"+id);
-						matieres_id=user.matiere_enseign_class(groupe.getId_niveau(), type_Account.getId_user());	
-						matiere=user.nom_matiere(matieres_id,groupe.getSpecialiste());
-				       listlesson=user.lesson_matiere(groupe.getCahier_id(),matiere.getId(),type_Account.getId_user());
+						
+                		  nom_matiere=user.get_teacher_matiere(enseig_id);
+					      groupe=user.class_info(id);
+					      lesson_textbook=user.textbook_lesson(class_id, nom_matiere, enseig_id);
+				     
 
 					} catch (NumberFormatException | SQLException e) {
 						// TODO Auto-generated catch block
@@ -80,11 +82,11 @@ public class cahier extends HttpServlet {
 					}
                 	  
                 	  ses.setAttribute("groupe", groupe);
-                	  ses.setAttribute("matiere", matiere);
-          		
-			      req.setAttribute("matier_name", matiere.getNom_matiere());
-		         req.setAttribute("listlesson",listlesson);
-		              req.setAttribute("groupe", groupe);
+                	 
+    			ses.setAttribute("matier_name", nom_matiere);	
+			     req.setAttribute("matier_name", nom_matiere);
+			     req.setAttribute("listlesson", lesson_textbook);
+
 		            
 		 		this.getServletContext().getRequestDispatcher("/Teacher/cahier.jsp").forward(req, resp);
 
@@ -111,24 +113,31 @@ public class cahier extends HttpServlet {
 			  Cahier_text mylesson =new  Cahier_text();
 			  UserDAO user=new UserDAO();
 			  
-			     Group groupe=(Group)req.getSession().getAttribute("groupe");
-			     Matiére matiere=( Matiére)req.getSession().getAttribute("matiere");
-
+			    String class_id=(String)req.getSession().getAttribute("class_id");
 				Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
+			      String nom_matiere=(String)req.getSession().getAttribute("matier_name");;
 
 			  PrintWriter out=resp.getWriter();
 			 // get the date 
+			  
+			 
 				Date d=new Date();
+				
+				
 				int mm=d.getMonth()+1;
-				int dd=d.getDate();
+				int dd=d.getDate()+1;
 				int y=d.getYear()-100+2000;
 		     String Lesson_date=y+"-"+mm+"-"+dd;
-		     mylesson.setText(req.getParameter("contentleson"));
-		     mylesson.setDate(Lesson_date);
-		     mylesson.setMatiere_id(matiere.getId());
-		     mylesson.setEnseig_id(type_Account.getId_user());
-		     mylesson.setCahier(groupe.getCahier_id());
-		     
+		    
+		      mylesson.setText(req.getParameter("contentleson"));
+		      mylesson.setDate(Lesson_date);
+		      mylesson.setMatiere(nom_matiere);
+		      mylesson.setEnseig_id(type_Account.getId_user());
+		      mylesson.setClass_id(class_id);
+		    
+		      
+		    
+		      
 		     try {
 				user.add_Lesson(mylesson);
 			} catch (SQLException e) {
@@ -136,7 +145,7 @@ public class cahier extends HttpServlet {
 				e.printStackTrace();
 			}
 				
-			 resp.sendRedirect(req.getContextPath() + "/listLesson");
+			 resp.sendRedirect(req.getContextPath() + "/cahier");
 	    	
 		}
 		

@@ -44,37 +44,35 @@ public class editeLesson extends HttpServlet {
 			Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 
 	                  if (type_Account != null) {
-
-	                	  Cahier_text lesson =new Cahier_text();
-	          		    Matiére matiere =( Matiére) req.getSession().getAttribute("matiere");
-	          		    Group  groupe =( Group) req.getSession().getAttribute("groupe");
-
 	          			  UserDAO user=new UserDAO();
-	          			  ArrayList<Cahier_text>listlesson=new ArrayList();
+
+	  			       String nom_matiere=(String)req.getSession().getAttribute("matier_name");;
+	  			      String class_id=(String)req.getSession().getAttribute("class_id");
+	          		    Group groupe =( Group) req.getSession().getAttribute("groupe");
+                         String lesson_id=req.getParameter("id");
+                            int enseig_id=  type_Account.getId_user();
+              				  ArrayList<Cahier_text> lesson_textbook=new ArrayList();
+
+                              
+	          			 Cahier_text  lesson=new Cahier_text();
 	          	       
 	          		       try {
-	          		    	   listlesson=user.lesson_matiere(groupe.getCahier_id(),matiere.getId(),type_Account.getId_user());
+	          		    	 lesson=user.get_lesson(lesson_id);
+	          		    	 lesson_textbook=user.textbook_lesson(class_id, nom_matiere, enseig_id);
+	          		    	   
 	          			} catch (SQLException e) {
 	          				// TODO Auto-generated catch block
 	          				e.printStackTrace();
 	          			}
-	          		       req.setAttribute("groupe", groupe);
-	                      req.setAttribute("matier_name", matiere.getNom_matiere());
-	          	           req.setAttribute("listlesson",listlesson);
-	                	  int  cahier_temp_id=Integer.parseInt(req.getParameter("id"));
-	                	 
-	                	 
-	                	    try {
-								lesson=user.get_lesson(cahier_temp_id);
-								lesson.setId(cahier_temp_id);
-			                	  req.setAttribute("lesson", lesson);
-			                	
-
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+	          		      
 	                	  
+	          		       
+	          		        
+		          		     req.setAttribute("groupe", groupe);
+
+	          		     req.setAttribute("matier_name", nom_matiere);
+	    			     req.setAttribute("listlesson", lesson_textbook);
+	          		       req.setAttribute("lesson", lesson);
 	        		 		this.getServletContext().getRequestDispatcher("/Teacher/cahier.jsp").forward(req, resp);
 
 	                  }else {
@@ -107,7 +105,7 @@ public class editeLesson extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		 resp.sendRedirect(req.getContextPath() + "/listLesson");
+		 resp.sendRedirect(req.getContextPath() + "/cahier");
 
 		
 		

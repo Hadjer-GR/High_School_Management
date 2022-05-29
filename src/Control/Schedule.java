@@ -41,33 +41,27 @@ public class Schedule extends HttpServlet {
 		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
 		if (type_Account != null) {
 			 UserDAO user =new UserDAO();
-			 ArrayList<Integer> emploi_temp_id=new ArrayList();
-			  ArrayList<Emploi> list_emploi=new ArrayList();
-			  ArrayList<Integer> list_emploi_id=new ArrayList();
+			
+			 ArrayList<Emploi> list_emploi= new ArrayList();
+			 ArrayList<Group> class_emploi= new ArrayList();
 
-			  ArrayList<Group> class_emploi=new ArrayList();
-			  
+			 int enseig_id=type_Account.getId_user();
+			
 			 
-			  try {
-				emploi_temp_id=user.teacher_emploi(type_Account.getId_user());
-				if(emploi_temp_id.isEmpty()) {
-					
-					
-					
-				}else {
-					 list_emploi=user.teacher_emploi_info(emploi_temp_id);
-					    list_emploi_id=user.list_emploi_id(emploi_temp_id);
-					    class_emploi=user.class_emploi(list_emploi_id);
-				}
-			   
+			 try {
+				list_emploi=user.show_emploi_teacher(enseig_id);
+				class_emploi=user.show_teacher_class(enseig_id);
+				 
+				 
+				 req.setAttribute("class_emploi", class_emploi);
+				 req.setAttribute("list_emploi", list_emploi);
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			 
-			 req.setAttribute("list_emploi", list_emploi);
-			 req.setAttribute("class_emploi", class_emploi);
-			
+			 
 			
 			
 

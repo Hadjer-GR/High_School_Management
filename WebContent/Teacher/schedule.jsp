@@ -194,21 +194,35 @@
          <c:forEach  var="list_emploi"  items="${list_emploi}"  >
         
 
-            <c:if test="${list_emploi.getDay().equals('dimenche')}">
+            <c:if test="${list_emploi.getDay().equals('Dimenche')}">
           
                                  <div class="event gray">
-                               <c:forEach  var="class_emploi"  items="${class_emploi}"  >
-                         <c:if test="${list_emploi.getEmploi_id() eq class_emploi.getEmlpoi_id() }">
+                      <c:forEach  var="class_emploi"  items="${class_emploi}"  >
+                         <c:if test="${list_emploi.getClass_id() eq class_emploi.getId() }">
                                
                                    
                                           <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
                                         <footer>
                                             <span>G:<c:out value="${class_emploi.getNbr_class() }" /></span>
-                                              
+                                                 &nbsp;
                                             <span><c:out value="${class_emploi.getSpecialiste() }" /></span>
+                                               &nbsp;
+                                                </footer>
                            </c:if> 
                  </c:forEach>
-                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                
+                                     <footer>
+                                         <span> Salle :<c:out value="${list_emploi.getSalle() }" /></span>
+  
+                                             
+                                            
+                                        </footer>
+                                              <footer>
+                          <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+
+  
+                                             
+                                            
                                         </footer>
                                    
           
@@ -235,35 +249,50 @@
                                 
                                 
                                                            
+                                 
          <c:forEach  var="list_emploi"  items="${list_emploi}"  >
         
 
-            <c:if test="${list_emploi.getDay().equals('lundi')}">
+            <c:if test="${list_emploi.getDay().equals('Lundi')}">
           
                                  <div class="event navy">
-                               <c:forEach  var="class_emploi"  items="${class_emploi}"  >
-                         <c:if test="${list_emploi.getEmploi_id() eq class_emploi.getEmlpoi_id() }">
+                      <c:forEach  var="class_emploi"  items="${class_emploi}"  >
+                         <c:if test="${list_emploi.getClass_id() eq class_emploi.getId() }">
                                
                                    
-                                         <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
+                                          <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
                                         <footer>
                                             <span>G:<c:out value="${class_emploi.getNbr_class() }" /></span>
-                                              
+                                                 &nbsp;
                                             <span><c:out value="${class_emploi.getSpecialiste() }" /></span>
+                                               &nbsp;
+                                                </footer>
                            </c:if> 
                  </c:forEach>
-                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                
+                                     <footer>
+                                         <span> Salle :<c:out value="${list_emploi.getSalle() }" /></span>
+  
+                                             
+                                            
+                                        </footer>
+                                              <footer>
+                          <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+
+  
+                                             
+                                            
                                         </footer>
                                    
           
           
           
           </div>
-          
+
           </c:if> 
-       
 
       </c:forEach>
+                    
                                    
       
                 
@@ -285,35 +314,50 @@
                                    
                                                           
                                                            
+                                 
          <c:forEach  var="list_emploi"  items="${list_emploi}"  >
         
 
-            <c:if test="${list_emploi.getDay().equals('mardi')}">
+            <c:if test="${list_emploi.getDay().equals('Mardi')}">
           
                                  <div class="event math">
-                               <c:forEach  var="class_emploi"  items="${class_emploi}"  >
-                         <c:if test="${list_emploi.getEmploi_id() eq class_emploi.getEmlpoi_id() }">
+                      <c:forEach  var="class_emploi"  items="${class_emploi}"  >
+                         <c:if test="${list_emploi.getClass_id() eq class_emploi.getId() }">
                                
                                    
-                                        <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
+                                          <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
                                         <footer>
                                             <span>G:<c:out value="${class_emploi.getNbr_class() }" /></span>
-                                              
+                                                 &nbsp;
                                             <span><c:out value="${class_emploi.getSpecialiste() }" /></span>
+                                               &nbsp;
+                                                </footer>
                            </c:if> 
                  </c:forEach>
-                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                
+                                     <footer>
+                                         <span> Salle :<c:out value="${list_emploi.getSalle() }" /></span>
+  
+                                             
+                                            
+                                        </footer>
+                                              <footer>
+                          <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+
+  
+                                             
+                                            
                                         </footer>
                                    
           
           
           
           </div>
-          
-          </c:if> 
-       
 
-      </c:forEach>   
+          </c:if> 
+
+      </c:forEach>
+                    
                                     
                                     
                                     
@@ -326,36 +370,50 @@
                                 
                                 
                                 
-                                                                                      
+                               
          <c:forEach  var="list_emploi"  items="${list_emploi}"  >
         
 
-            <c:if test="${list_emploi.getDay().equals('mercredi')}">
+            <c:if test="${list_emploi.getDay().equals('Mercredi')}">
           
                                  <div class="event sport">
-                               <c:forEach  var="class_emploi"  items="${class_emploi}"  >
-                         <c:if test="${list_emploi.getEmploi_id() eq class_emploi.getEmlpoi_id() }">
+                      <c:forEach  var="class_emploi"  items="${class_emploi}"  >
+                         <c:if test="${list_emploi.getClass_id() eq class_emploi.getId() }">
                                
                                    
                                           <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
                                         <footer>
                                             <span>G:<c:out value="${class_emploi.getNbr_class() }" /></span>
-                                              
+                                                 &nbsp;
                                             <span><c:out value="${class_emploi.getSpecialiste() }" /></span>
+                                               &nbsp;
+                                                </footer>
                            </c:if> 
                  </c:forEach>
-                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                
+                                     <footer>
+                                         <span> Salle :<c:out value="${list_emploi.getSalle() }" /></span>
+  
+                                             
+                                            
+                                        </footer>
+                                              <footer>
+                          <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+
+  
+                                             
+                                            
                                         </footer>
                                    
           
           
           
           </div>
-          
-          </c:if> 
-       
 
-      </c:forEach>   
+          </c:if> 
+
+      </c:forEach>
+                    
                                    
                                     
                                     
@@ -374,36 +432,48 @@
                                 
                                 
                                 
-                                                                                     
-         <c:forEach  var="list_emploi"  items="${list_emploi}"  >
+          <c:forEach  var="list_emploi"  items="${list_emploi}"  >
         
 
-            <c:if test="${list_emploi.getDay().equals('jeudi')}">
+            <c:if test="${list_emploi.getDay().equals('Jeudi')}">
           
                                  <div class="event arabic">
-                               <c:forEach  var="class_emploi"  items="${class_emploi}"  >
-                         <c:if test="${list_emploi.getEmploi_id() eq class_emploi.getEmlpoi_id() }">
+                      <c:forEach  var="class_emploi"  items="${class_emploi}"  >
+                         <c:if test="${list_emploi.getClass_id() eq class_emploi.getId() }">
                                
                                    
                                           <span class="title"> <c:out value="${class_emploi.getId_niveau() }" /> Anneé </span>
                                         <footer>
                                             <span>G:<c:out value="${class_emploi.getNbr_class() }" /></span>
-                                              
+                                                 &nbsp;
                                             <span><c:out value="${class_emploi.getSpecialiste() }" /></span>
+                                               &nbsp;
+                                                </footer>
                            </c:if> 
                  </c:forEach>
-                                            <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+                
+                                     <footer>
+                                         <span> Salle :<c:out value="${list_emploi.getSalle() }" /></span>
+  
+                                             
+                                            
+                                        </footer>
+                                              <footer>
+                          <span> <c:out value="${list_emploi.getOpen_time() }" /></span>
+
+  
+                                             
+                                            
                                         </footer>
                                    
           
           
           
           </div>
-          
-          </c:if> 
-       
 
-      </c:forEach>   
+          </c:if> 
+
+      </c:forEach>
                               
                                     
                                     

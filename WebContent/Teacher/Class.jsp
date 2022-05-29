@@ -203,7 +203,7 @@
                                 	%>
                 	
                                 	<li>
-                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a></i>
+                                    <h4 class="level-4 rectangle"><a href="#"><i class='bx bx-x'></i></a>
                                     </h4>
                                 </li>
                                 	

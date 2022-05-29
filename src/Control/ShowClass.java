@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.Emploi;
 import Model.Group;
@@ -36,62 +37,24 @@ public class ShowClass extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
-		int class_id=Integer.parseInt(req.getParameter("class_id"));
-		System.out.println("\n "+" Show class servlet ");
+		  Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
+			if (type_Account != null) {
+				  String class_id=req.getParameter("class_id");
+				  HttpSession ses =req.getSession();
+				  ses.setAttribute("class_id", class_id);		
+				 resp.sendRedirect(req.getContextPath() + "/ShowProgramClass");
 
-		System.out.println("class_id is :"+class_id);
-		 
-		Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
-		if (type_Account != null) {
-			int emploi_class_id =0;
-			UserDAO user=new UserDAO();
-			ArrayList<Emploi> programme=new ArrayList();
-			ArrayList<Integer>list_matiers_id=new ArrayList();
-			ArrayList<Matiére> programme_matiére_class=new ArrayList();
-			Group groupe=new Group();
-			 int  nbr_repeat=0;
-			
-			
-			try {
-				groupe=user.class_info(class_id);
-				emploi_class_id=user.emploi_class_id(class_id);
-				programme=user.programme_class(emploi_class_id);
-				if(programme.isEmpty()) {
-					System.out.println("\n the list of program is null");
-				}else {
-					
-					 list_matiers_id=user.list_matiere_id(emploi_class_id);
-
-					  programme_matiére_class=user.programme_class_matiere(list_matiers_id);
-				     nbr_repeat=list_matiers_id.size();
-					
-					
-				}
+			}else {
 				
-			} catch (SQLException e) {
-				
-}
-			
-			 req.setAttribute("programme", programme);
-		    req.setAttribute("programme_matiére", programme_matiére_class);
-		    req.setAttribute("size",  nbr_repeat);
-			req.setAttribute("groupe", groupe);
-			
+				 resp.sendRedirect(req.getContextPath() + "/login");
 
-			this.getServletContext().getRequestDispatcher("/Teacher/groupe.jsp").forward(req, resp);
-			
-		}else {
-			
-			
-			 resp.sendRedirect(req.getContextPath() + "/login");
-			
-			
-		}
+				
+			}
 		
 		
+
 	}
-
-	
 }

@@ -54,7 +54,7 @@ public class StudentList extends HttpServlet {
 
                      Group groupe =new Group();
                	  String class_id=req.getParameter("id_class");
-
+                  String nom_matiere;
 					System.out.println(class_id);
 
         			UserDAO user=new UserDAO();
@@ -63,7 +63,9 @@ public class StudentList extends HttpServlet {
         			try {
  						System.out.println("\n Student List class_id : \n"+class_id);
 
- 						student_resulte=user.student_Resulte(class_id);
+              		  nom_matiere=user.get_teacher_matiere(type_Account.getId_user());
+
+ 						student_resulte=user.student_Resulte(class_id, nom_matiere);
 						groupe=user.class_info(class_id);
                          if(student_resulte.isEmpty()) {
                         	 
@@ -106,10 +108,58 @@ public class StudentList extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		  req.setCharacterEncoding("UTF-8");
+		  String nom_matiere;
+		  int id=-1;
+		  Double devoir_1;
+		  Double devoir_2,evalut,control,eleve_id;
 		  
-		  System.out.println("Resulte  student \n"+req.getParameter("evalution"));
-		  System.out.println( "Resulte"+req.getParameter("devoir-2"));
-		  System.out.println("Resulte"+req.getParameter("devoir-1"));
+      id=Integer.parseInt(req.getParameter("id"));
+      devoir_1=Double.valueOf(req.getParameter("devoir_1"))   ;
+
+      evalut= Double.valueOf(req.getParameter("evalut"));
+     devoir_2=Double.valueOf(req.getParameter("devoir_2")) ;
+     control=Double.valueOf(req.getParameter("control")) ;
+     eleve_id= Double.valueOf(req.getParameter("eleve_id")) ;
+ 
+     System.out.println("\n resulte"+ id+devoir_1+devoir_2+eleve_id+control);
+
+    Type_Account type_Account = (Type_Account) req.getSession().getAttribute("type_account");
+      UserDAO user=new UserDAO();
+
+   
+   if(id <=0) {
+	   // insert in table resulte 
+		  try {
+			nom_matiere=user.get_teacher_matiere(type_Account.getId_user());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	   
+   }else {
+	   
+	  Resulte resulte=new Resulte();
+	   
+	  resulte.setEvalution(evalut);
+	  resulte.setDevoir_1(devoir_1);
+	  resulte.setDevoir_2(devoir_2);
+	  resulte.setControl(control);
+	  resulte.setId(id);
+	   
+	   
+	   try {
+		user.edite_Resulte(resulte);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	   
+			 resp.sendRedirect(req.getContextPath() + "/StudentList");
+
+	   
+   }
+		 
 		
 		
 		

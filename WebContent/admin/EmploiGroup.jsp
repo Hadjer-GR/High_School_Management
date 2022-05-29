@@ -369,6 +369,8 @@
                 </div>
             </div>
 </div>
+
+
  
  <div class="addevent closeadd" id="addevent">
        <div class="eventclose" id="btnclose">

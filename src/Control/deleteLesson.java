@@ -45,7 +45,7 @@ public class deleteLesson extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-			RequestDispatcher dispatchor=req.getRequestDispatcher("/listLesson");
+			RequestDispatcher dispatchor=req.getRequestDispatcher("/cahier");
 			  dispatchor.forward(req, resp);
 		
 	}

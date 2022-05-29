@@ -1,6 +1,8 @@
 package Model;
 
 public class Resulte {
+	
+	private int id;
 	private String first_name; 
 	private String last_name; 
 
@@ -8,13 +10,25 @@ public class Resulte {
 	private double devoir_1;
 	private double devoir_2;
 	private double control;
-	private double mouyenne;
+	private String class_id;
 	 private int eleve_id;
 	
 	 
 	 
 	 
 	 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getClass_id() {
+		return class_id;
+	}
+	public void setClass_id(String class_id) {
+		this.class_id = class_id;
+	}
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -51,12 +65,7 @@ public class Resulte {
 	public void setControl(double control) {
 		this.control = control;
 	}
-	public double getMouyenne() {
-		return mouyenne;
-	}
-	public void setMouyenne(double mouyenne) {
-		this.mouyenne = mouyenne;
-	}
+	
 	public int getEleve_id() {
 		return eleve_id;
 	}
@@ -65,16 +74,18 @@ public class Resulte {
 	}
 
 	 
-	public Resulte(String first_name, String last_name, double evalution, double devoir_1, double devoir_2,
-			double control, double mouyenne, int eleve_id) {
+	
+	public Resulte(int id, String first_name, String last_name, double evalution, double devoir_1, double devoir_2,
+			double control, String class_id, int eleve_id) {
 		super();
+		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.evalution = evalution;
 		this.devoir_1 = devoir_1;
 		this.devoir_2 = devoir_2;
 		this.control = control;
-		this.mouyenne = mouyenne;
+		this.class_id = class_id;
 		this.eleve_id = eleve_id;
 	}
 	public Resulte() {

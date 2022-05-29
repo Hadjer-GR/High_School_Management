@@ -262,7 +262,7 @@
                         <i class='bx bx-x btnclosewritelesson'></i>
                     </span>
                 </div>
-                <form action="<%=request.getContextPath()%>/cahier?module=<c:out value="${matier_name }"/>" method="post">
+                <form action="<%=request.getContextPath()%>/cahier" method="post">
                     <textarea cols="60" rows="60" placeholder="ContentLesson" class="Advertise"
                         name="contentleson"  required></textarea>
                     <input type="submit" value=" + ajouter une leçon" class="published">

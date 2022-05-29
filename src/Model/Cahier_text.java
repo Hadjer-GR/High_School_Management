@@ -4,19 +4,23 @@ public class Cahier_text {
 	private int id;
 	private String text;
 	private String date;
-	private int matiere_id;
-	private int cahier;
+	private String matiere;
+	private String class_id;
 	private int enseig_id;
 	
 	
 	
-	public Cahier_text(int id, String text, String date, int matiere_id, int cahier, int enseig_id) {
+	
+
+
+
+	public Cahier_text(int id, String text, String date, String matiere, String class_id, int enseig_id) {
 		super();
 		this.id = id;
 		this.text = text;
 		this.date = date;
-		this.matiere_id = matiere_id;
-		this.cahier = cahier;
+		this.matiere = matiere;
+		this.class_id = class_id;
 		this.enseig_id = enseig_id;
 	}
 
@@ -58,26 +62,29 @@ public class Cahier_text {
 
 
 
-	public int getMatiere_id() {
-		return matiere_id;
+
+
+
+	public String getMatiere() {
+		return matiere;
 	}
 
 
 
-	public void setMatiere_id(int matiere_id) {
-		this.matiere_id = matiere_id;
+	public void setMatiere(String matiere) {
+		this.matiere = matiere;
 	}
 
 
 
-	public int getCahier() {
-		return cahier;
+	public String getClass_id() {
+		return class_id;
 	}
 
 
 
-	public void setCahier(int cahier) {
-		this.cahier = cahier;
+	public void setClass_id(String class_id) {
+		this.class_id = class_id;
 	}
 
 
