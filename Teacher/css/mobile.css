@@ -586,3 +586,11 @@ dialog.writelesson {
   z-index: 2;
   display: none;
 }
+
+.listresult .editeresulte{
+  float: right;
+  margin-top:3vh;
+  width: 40vw !important;
+  
+
+}

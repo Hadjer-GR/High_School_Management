@@ -5,10 +5,516 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 700px)">
+    <link rel="stylesheet" href="css/smallmobile.css" media="(max-width: 390px)">
+    <link rel="stylesheet" href="css/liststudent.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/addevent.css">
+
+    <script defer src="js/etud.js">
+    </script>
+
+    <script defer src="js/mobilescreen.js"></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/textbook.js"></script>
+    <script defer src="js/list.js"></script>
+    <script defer src="js/studentlist.js"></script>
+    <title>MySmartSchool</title>
 </head>
 
 <body>
+
+
+    <nav class="sidebar close">
+
+        <header>
+
+            <div class="image-text">
+
+                <span class="imageprofil">
+
+
+                </span>
+
+
+
+                <div class="text logo-text">
+
+                    <a href="/index.html" class="hometext"><span class="name ">Home Teacher</span></a>
+
+                    <a href="/profil.html" class="username "> <span class="profession ">
+                            Nom Prenom
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+
+
+
+            <i class='bx bx-chevron-right toggle'></i>
+            <i class='bx bx-menu togglemenu2'></i>
+
+
+        </header>
+
+
+
+        <div class="menu-bar">
+
+            <div class="menu">
+
+
+
+                <li class="search-box">
+
+                    <i class='bx bx-search icon'></i>
+
+                    <input type="text" placeholder="Search...">
+
+                </li>
+
+
+
+                <ul class="menu-links">
+
+                    <li class="nav-link ">
+
+                        <a href="/schedule.html">
+
+                            <i class='bx bx-grid icon'></i>
+
+                            <span class="text nav-text ">Schedule</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="nav-link hover">
+
+                        <a href="class.html">
+
+                            <i class='bx bx-copy icon  texthover'></i>
+
+                            <span class="text nav-text texthover">Class</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="appele.html">
+
+                            <i class='bx bx-credit-card-front icon'></i>
+
+                            <span class="text nav-text ">Verre Appele</span>
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-link">
+
+                        <a href="/communication.html">
+
+                            <i class='bx bx-message-minus icon'></i>
+
+                            <span class="text nav-text">Communication</span>
+
+                        </a>
+
+                    </li>
+
+
+
+
+
+
+
+
+                    <li class="nav-link ">
+
+                        <a href="/annoces.html">
+
+                            <i class='bx bx-bell icon'></i>
+
+                            <span class="text nav-text ">Advertisement</span>
+
+                        </a>
+
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="bottom-content">
+
+                <li class="">
+
+                    <a href="#">
+
+                        <i class='bx bx-log-out icon'></i>
+
+                        <span class="text nav-text">Logout</span>
+
+                    </a>
+
+                </li>
+
+
+
+                <li class="mode">
+
+                    <div class="sun-moon">
+
+                        <i class='bx bx-moon icon moon'></i>
+
+                        <i class='bx bx-sun icon sun'></i>
+
+                    </div>
+
+                    <span class="mode-text text">Dark mode</span>
+
+
+
+                    <div class="toggle-switch">
+
+                        <span class="switch"></span>
+
+                    </div>
+
+                </li>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </nav>
+
+
+
+    <section class="home hometextbool">
+        <div class="headermobile">
+            <i class='bx bx-menu togglemenu'></i>
+
+            <div class="text texthome">1AS-G1</div>
+        </div>
+
+
+        <div class="titlenote">
+            <a href="/Etud1.html" class="btnleft"> <i class='bx bx-reply'></i>
+            </a>
+            <span>
+               Absences
+            </span>
+        </div>
+
+
+
+        <div class="contentnotes liststudent listabsences">
+
+            <div class="rTable" id="studentList">
+                <div class="rTableRow headtable">
+                    <div class="rTableHead"><strong>Nom</strong></div>
+                    <div class="rTableHead"><strong>Prenom</strong></div>
+                    <div class="rTableHead"><strong>&nbsp;8:00</strong></div>
+                    <div class="rTableHead"><strong>&nbsp;9:00</strong></div>
+                    <div class="rTableHead"><strong> 10:00</strong></div>
+                    <div class="rTableHead"><strong> 11:00</strong></div>
+                    <div class="rTableHead"><strong> 14:00</strong></div>
+                    <div class="rTableHead"><strong> 15:00</strong></div>
+
+                    <div class="rTableHead"><strong> 16:00</strong></div>
+
+
+
+
+                </div>
+                <form class="rTableRow ">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell">
+                     <h4>Ghrab</h4>
+                    </div>
+                    <div class="rTableCell">
+                        <h4>Hadjer</h4>
+
+                    </div>
+                    <div class="rTableCell">
+                       <a href="#">
+
+                        <i class='bx bx-check right'></i>
+
+                       </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-x fault' ></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                           </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+
+
+                </form>
+               
+
+                <form class="rTableRow ">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell">
+                     <h4>Ghrab</h4>
+                    </div>
+                    <div class="rTableCell">
+                        <h4>Hadjer</h4>
+
+                    </div>
+                    <div class="rTableCell">
+                       <a href="#">
+
+                        <i class='bx bx-check right'></i>
+
+                       </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-x fault' ></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                           </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+
+
+                </form>
+                <form class="rTableRow ">
+                    <!--<div class="rTableRow activeedite">-->
+
+                    <div class="rTableCell">
+                     <h4>Ghrab</h4>
+                    </div>
+                    <div class="rTableCell">
+                        <h4>Hadjer</h4>
+
+                    </div>
+                    <div class="rTableCell">
+                       <a href="#">
+
+                        <i class='bx bx-check right'></i>
+
+                       </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-x fault' ></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                           </div>
+                    <div class="rTableCell">
+                        <a href="#">
+
+                            <i class='bx bx-check right'></i>
+    
+                           </a>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="addevent3 " id="addevent">
+            <div class="eventclose" id="btnclose">
+                         <span>
+                             <i class='bx bx-x btnclose'></i>
+                         </span>
+                     </div>
+                     <form   action="#" method="post">
+     
+                         <div>
+                             <div class="absences" >
+                                 <h3 class="eventtitle"> Etudient est  :</h3>
+                                 <br>
+                                 <select name="day">
+     
+                                     <option>Absences</option>
+                                     <option>Retard</option>
+                                    
+                                 </select>
+                             </div>
+                         
+                            
+                            </div>
+                           
+        
+                         <div>
+                         
+                             <input type="submit" value="send" class="saveEvent">
+                         </div>
+                     </form>
+                     </div>
+      
+
+
+
+
+    </section>
+
+
+   
+    <script>
+
+
+
+
+        const addevent = document.getElementById("addevent");
+        const addevent2 = document.querySelector(".addevent2");
+        const btnclose = document.getElementById("btnclose");
+        const container = document.getElementById("container");
+        const btnclosee = document.querySelector(".btnclosee");
+        const addemploi = document.getElementById("addemploi");
+        
+        
+        console.log(addemploi);
+        console.log(btnclose);
+        addemploi.addEventListener("click", (eo) => {
+          document.getElementById("addevent").classList.remove("closeadd");
+        });
+        btnclose.addEventListener("click", (eo) => {
+          document.getElementById("addevent").classList.add("closeadd");
+        });
+        
+        btnclosee.addEventListener("click", (eo) => {
+          addevent2.classList.add("closeadd");
+        });
+        
+        
+        
+        
+        
+        
+        
+        </script>
+        
 
 </body>
 
